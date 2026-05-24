@@ -149,7 +149,7 @@ var PREV = ["הליכוד – 32 מנדטים","יש עתיד – 24 מנדטי�
 var AGES = ["18–24","25–34","35–44","45–59","60+"];
 var GENDERS = ["גבר","אישה","אחר / מעדיף לא לציין"];
 var CITIES = ["תל אביב-יפו","ירושלים","חיפה","ראשון לציון","פתח תקווה","אשדוד","נתניה","באר שבע","בני ברק","בת ים","רמת גן","אשקלון","רחובות","כפר סבא","הרצליה","חולון","מודיעין-מכבים-רעות","נס ציונה","לוד","רמלה","רעננה","הוד השרון","גבעתיים","נהריה","חדרה","עפולה","קריית אתא","אחר"];
-var LIVE = [{n:"הליכוד",s:32,c:"#818cf8"},{n:"יש עתיד",s:17,c:"#22d3ee"},{n:"המחנה הממלכתי",s:13,c:"#a3e635"},{n:"ש״ס",s:9,c:"#fb923c"},{n:"יהדות התורה",s:7,c:"#c084fc"},{n:"ישראל ביתנו",s:6,c:"#60a5fa"},{n:"הציונות הדתית",s:6,c:"#4ade80"},{n:"חד״ש-תע״ל",s:5,c:"#f43f5e"},{n:"רע״ם",s:5,c:"#34d399"},{n:"מרצ",s:0,c:"#475569"}];
+var LIVE = [{n:"הליכוד",s:32,c:"#818cf8"},{n:"יש עתיד",s:24,c:"#22d3ee"},{n:"הציונות הדתית",s:14,c:"#4ade80"},{n:"המחנה הממלכתי",s:12,c:"#a3e635"},{n:"ש״ס",s:11,c:"#fb923c"},{n:"יהדות התורה",s:7,c:"#c084fc"},{n:"ישראל ביתנו",s:6,c:"#60a5fa"},{n:"רע״ם",s:5,c:"#34d399"},{n:"חד״ש-תע״ל",s:5,c:"#f43f5e"},{n:"העבודה",s:4,c:"#f472b6"},{n:"מרצ",s:0,c:"#475569"}];
 var R22 = [{n:"הליכוד",s:32},{n:"יש עתיד",s:24},{n:"הציונות הדתית",s:14},{n:"המחנה הממלכתי",s:12},{n:"ש״ס",s:11},{n:"יהדות התורה",s:7},{n:"ישראל ביתנו",s:6},{n:"רע״ם",s:5},{n:"חד״ש-תע״ל",s:5},{n:"העבודה",s:4},{n:"מרצ",s:0}];
 
 function isOk() {
@@ -226,58 +226,140 @@ function bindBonusSelects() {
 
 /* ── S0 LANDING ── */
 function s0() {
-  var cols = ['#d4f542','#6366f1','#f97316','#22d3ee','#f43f5e','#a855f7','#fbbf24','#34d399'];
+  var cols = ['#d4f542','#6366f1','#f97316','#22d3ee','#f43f5e','#a855f7','#fbbf24','#34d399','#ec4899','#10b981'];
   var conf = '';
-  for (var i = 0; i < 24; i++) {
-    var l = Math.floor(Math.random() * 100), del = (Math.random() * 5).toFixed(2), dur = (3 + Math.random() * 5).toFixed(1);
-    var w = Math.floor(4 + Math.random() * 8), h = Math.floor(8 + Math.random() * 16), c = cols[i % cols.length];
-    conf += '<div class="cd" style="left:' + l + '%;width:' + w + 'px;height:' + h + 'px;background:' + c + ';animation-duration:' + dur + 's;animation-delay:' + del + 's;top:-30px"></div>';
+  for (var i = 0; i < 35; i++) {
+    var l = Math.floor(Math.random()*100), del = (Math.random()*4).toFixed(2), dur = (2.5+Math.random()*4).toFixed(1);
+    var w = Math.floor(5+Math.random()*9), h = Math.floor(10+Math.random()*18), c = cols[i%cols.length];
+    conf += '<div class="cd" style="left:'+l+'%;width:'+w+'px;height:'+h+'px;background:'+c+';animation-duration:'+dur+'s;animation-delay:'+del+'s;top:-30px;opacity:.9"></div>';
   }
-  var bars = LIVE.map(function(r) {
-    return '<div class="pbar"><div class="pbar-name">' + r.n + '</div>'
-      + '<div class="pbar-track"><div class="pbar-fill" style="width:' + Math.round(r.s * 2.9) + '%;background:' + r.c + '"></div></div>'
-      + '<div class="pbar-num">' + r.s + '</div></div>';
+
+  // Phone mockup bars — exact parties from image
+  var phoneBars = [
+    {n:'הליכוד',s:32,c:'#818cf8'},{n:'יש עתיד',s:17,c:'#22d3ee'},
+    {n:'המחנה הממלכתי',s:13,c:'#a3e635'},{n:"ש״ס",s:9,c:'#fb923c'},
+    {n:'יהדות התורה',s:7,c:'#c084fc'},{n:'ישראל ביתנו',s:6,c:'#60a5fa'},
+    {n:'הציונות הדתית',s:6,c:'#4ade80'},{n:"חד״ש-תע״ל",s:5,c:'#f43f5e'},
+    {n:"רע״ם",s:5,c:'#34d399'},{n:'מרצ',s:0,c:'#475569'}
+  ].map(function(r){
+    return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
+      +'<div style="width:78px;font-size:10px;font-weight:700;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+r.n+'</div>'
+      +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden"><div style="height:100%;width:'+Math.round(r.s*2.8)+'%;background:'+r.c+';border-radius:99px"></div></div>'
+      +'<div style="width:18px;font-size:10px;font-weight:900;color:rgba(255,255,255,.75)">'+r.s+'</div>'
+      +'</div>';
   }).join('');
 
-  return '<div class="land sc"><div class="confetti">' + conf + '</div><div style="position:relative;z-index:1">'
-    + '<div class="land-topbar">'
-      + '<div class="land-logo-box"><span class="land-logo-txt">הסקר</span><span class="land-logo-sub">של המדינה</span><span style="font-size:14px">✓</span></div>'
-      + '<span style="font-size:30px">🇮🇱</span>'
-      + '<div class="live-pill"><div class="hdr-dot"></div><span class="live-pill-num">2,311</span><span class="live-pill-lbl">עכשיו</span></div>'
-    + '</div>'
-    + '<div class="land-headline"><span class="wh">אם הבחירות</span><br><span class="wh">היו היום —</span><br><span class="yw">למי היית<br>מצביע?</span></div>'
-    + '<div class="land-tagline">השתתפו במשחק התחזיות הגדול בישראל</div>'
-    + '<div class="land-tagline2">וזכו בפרסים שנים!</div>'
-    + '<div class="phone">'
-      + '<div class="phone-head"><div class="live-badge"><div class="live-badge-dot"></div>LIVE</div><span style="font-size:12px;font-weight:900;color:#e0e7ff">תוצאות בזמן אמת</span><div><div class="phone-pnum">127,441</div><div class="phone-plbl">משתתפים</div></div></div>'
-      + bars
-      + '<div class="phone-footer"><div><div style="font-size:10px;color:rgba(255,255,255,.4)">תחזיית המנדטים</div></div><div style="text-align:center"><div class="gauge-num">127</div><div class="gauge-lbl">מנדטים בסך הכל</div></div></div>'
-    + '</div>'
-    + '<div class="feats">'
-      + '<div class="feat"><div class="feat-icon">🎁</div><div class="feat-main">מלא</div><div class="feat-sub">פרסים</div></div>'
-      + '<div class="feat"><div class="feat-icon">⚡</div><div class="feat-main">3 דקות</div><div class="feat-sub">בלבד</div></div>'
-      + '<div class="feat"><div class="feat-icon">🔒</div><div class="feat-main">100%</div><div class="feat-sub">אנונימי</div></div>'
-      + '<div class="feat"><div class="feat-icon">✓</div><div class="feat-main">חינם</div><div class="feat-sub">לגמרי</div></div>'
-    + '</div>'
-    + '<button class="cta" onclick="go()">מתחילים עכשיו ›</button>'
-    + '<div class="social-proof"><div class="avatars"><div class="av" style="background:#6366f1">א</div><div class="av" style="background:#f97316">מ</div><div class="av" style="background:#22d3ee">ד</div><div class="av" style="background:#a855f7">ר</div></div><span><strong style="color:#d4f542">127,441</strong> כבר השתתפו</span></div>'
-    + '<div class="prizes"><div class="prizes-title">🏆 הפרסים שיחולקו</div><div class="prizes-grid">'
-      + '<div class="prize"><div class="prize-em">📱</div><div class="prize-name">iPhone 15 Pro</div><div class="prize-place">מקום 1</div></div>'
-      + '<div class="prize"><div class="prize-em">💻</div><div class="prize-name">MacBook Air</div><div class="prize-place">מקום 2</div></div>'
-      + '<div class="prize"><div class="prize-em">✈️</div><div class="prize-name">חופשה זוגית</div><div class="prize-place">מקום 3</div></div>'
-      + '<div class="prize"><div class="prize-em">💵</div><div class="prize-name">₪1,000 מזומן</div><div class="prize-place">מקומות 4–10</div></div>'
-    + '</div></div>'
-    + '<div class="how"><div class="how-title">איך זה עובד?</div><div class="how-row">'
-      + '<div class="how-step"><div class="how-icon" style="background:rgba(99,102,241,.18);border:1px solid rgba(99,102,241,.35)">📋</div><div class="how-lbl">עונים על שאלון קצר אנונימי</div></div>'
-      + '<div class="how-arr">←</div>'
-      + '<div class="how-step"><div class="how-icon" style="background:rgba(34,211,238,.14);border:1px solid rgba(34,211,238,.3)">📊</div><div class="how-lbl">בוחרים תחזיות למנדטים</div></div>'
-      + '<div class="how-arr">←</div>'
-      + '<div class="how-step"><div class="how-icon" style="background:rgba(163,230,53,.14);border:1px solid rgba(163,230,53,.28)">🏆</div><div class="how-lbl">צוברים נקודות ומטפסים</div></div>'
-      + '<div class="how-arr">←</div>'
-      + '<div class="how-step"><div class="how-icon" style="background:rgba(250,204,21,.14);border:1px solid rgba(250,204,21,.28)">🎁</div><div class="how-lbl">זוכים בפרסים מטורפים!</div></div>'
-    + '</div></div>'
-    + '<div class="trust"><div class="trust-left"><span style="font-size:24px">🛡</span><div class="trust-txt"><strong style="color:#e0e7ff">המידע שלך בטוח איתנו!</strong><br>משתתפים נשארים אנונימיים לחלוטין</div></div><div class="trust-right"><div class="stars">★★★★★</div><div class="rating">4.9</div><div class="rating-lbl">דירוג המשתמשים</div></div></div>'
-  + '</div></div>';
+  return '<div class="land sc" style="background:linear-gradient(160deg,#0e0730 0%,#130a3a 30%,#0a0d2e 60%,#060d24 100%);padding:0 0 24px">'
+    +'<div class="confetti">'+conf+'</div>'
+    +'<div style="position:relative;z-index:1">'
+
+    // ── TOP BAR: logo left + flag center + live counter right ──
+    +'<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px 12px">'
+      +'<div style="background:rgba(30,20,80,.8);border:1.5px solid #5b50e0;border-radius:10px;padding:6px 11px;display:flex;align-items:center;gap:5px">'
+        +'<span style="font-size:13px;font-weight:900;color:#c7d2fe">הסקר</span>'
+        +'<span style="font-size:10px;font-weight:700;color:#a5b4fc">של המדינה</span>'
+        +'<div style="width:18px;height:18px;background:#22c55e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff">✓</div>'
+      +'</div>'
+      +'<span style="font-size:32px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))">🇮🇱</span>'
+      +'<div style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px">'
+        +'<div class="hdr-dot"></div>'
+        +'<div><div style="font-size:14px;font-weight:900;color:#86efac;line-height:1">2,311</div><div style="font-size:9px;color:rgba(255,255,255,.45)">משתתפים עכשיו</div></div>'
+      +'</div>'
+    +'</div>'
+
+    // ── HERO: headline LEFT + phone mockup RIGHT ──
+    +'<div style="display:flex;align-items:flex-start;gap:0;padding:0 14px">'
+
+      // Left: headline + tagline
+      +'<div style="flex:1;padding-left:8px">'
+        +'<div style="font-size:38px;font-weight:900;line-height:1.0;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.6)">'
+          +'<span style="color:#fff">אם הבחירות</span><br>'
+          +'<span style="color:#fff">היו היום</span><br>'
+          +'<span style="color:#fff">— </span><span style="color:#d4f542">למי היית</span><br>'
+          +'<span style="color:#d4f542">מצביע?</span>'
+        +'</div>'
+        +'<div style="font-size:13px;color:rgba(255,255,255,.85);font-weight:700;margin-bottom:2px">השתתפו במשחק התחזיות הגדול בישראל</div>'
+        +'<div style="font-size:13px;color:#d4f542;font-weight:900;margin-bottom:14px">וזכו בפרסים שנים!</div>'
+      +'</div>'
+
+      // Right: phone mockup
+      +'<div style="width:170px;flex-shrink:0">'
+        +'<div style="background:linear-gradient(160deg,#1a1560,#0c0b2e);border:2px solid rgba(120,100,255,.6);border-radius:22px;padding:10px;box-shadow:0 0 30px rgba(99,102,241,.4)">'
+          +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px">'
+            +'<div style="background:#ef4444;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:900;display:flex;align-items:center;gap:3px"><div style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pu 1s infinite"></div>LIVE</div>'
+            +'<span style="font-size:11px;font-weight:900;color:#e0e7ff">תוצאות בזמן אמת</span>'
+          +'</div>'
+          +'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'
+            +'<span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.6)">תחזיית המנדטים</span>'
+            +'<div style="text-align:left"><div style="font-size:13px;font-weight:900;color:#a5f3fc">127,441</div><div style="font-size:10px;color:rgba(255,255,255,.4)">משתתפים</div></div>'
+          +'</div>'
+          +phoneBars
+        +'</div>'
+      +'</div>'
+    +'</div>'
+
+    // ── FEAT BADGES: 4 icons ──
+    +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:14px 14px 0">'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🛡</div><div style="font-size:13px;font-weight:900">חינם</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">לגמרי</div></div>'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🔒</div><div style="font-size:13px;font-weight:900">100%</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">אנונימי</div></div>'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">⚡</div><div style="font-size:13px;font-weight:900">3 דקות</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">בלבד</div></div>'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🎁</div><div style="font-size:13px;font-weight:900">מלא</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">פרסים</div></div>'
+    +'</div>'
+
+    // ── CTA BUTTON ──
+    +'<div style="padding:16px 14px 4px">'
+      +'<button class="cta" onclick="go()" style="font-size:22px;padding:18px;border-radius:16px;box-shadow:0 4px 30px rgba(212,245,66,.35)">מתחילים עכשיו ›</button>'
+    +'</div>'
+
+    // ── SOCIAL PROOF ──
+    +'<div style="display:flex;align-items:center;justify-content:center;gap:9px;font-size:12px;color:rgba(255,255,255,.55);padding:8px 14px 14px">'
+      +'<div style="display:flex"><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;margin-left:-7px;background:#6366f1;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">א</div><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;margin-left:-7px;background:#f97316;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">מ</div><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;margin-left:-7px;background:#22d3ee;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">ד</div><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;background:#a855f7;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">ר</div></div>'
+      +'<span><strong style="color:#d4f542">127,441</strong> כבר השתתפו</span>'
+    +'</div>'
+
+    // ── PRIZES SECTION ──
+    +'<div style="background:rgba(80,60,180,.15);border:1.5px solid rgba(120,90,255,.35);border-radius:20px;margin:0 14px 16px;padding:14px 12px">'
+      +'<div style="background:rgba(100,80,200,.3);border:1px solid rgba(140,110,255,.4);border-radius:99px;padding:6px 16px;display:inline-flex;align-items:center;gap:6px;margin-bottom:13px;width:100%;justify-content:center">'
+        +'<span style="font-size:16px">🏆</span><span style="font-size:14px;font-weight:900;color:#c7d2fe">הפרסים שיחולקו</span>'
+      +'</div>'
+      +'<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">📱</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">iPhone 15 Pro</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">מקום 1</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">💻</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">MacBook Air</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">מקום 2</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">✈️</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">חופשה זוגית</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">מקום 3</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">💵</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">₪1,000 במזומן</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">4-10 מקומות</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:14px;font-weight:900;color:#f97316;margin-bottom:2px">BUYME</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">₪500 שי</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">11-50 מקומות</div></div>'
+      +'</div>'
+    +'</div>'
+
+    // ── HOW IT WORKS ──
+    +'<div style="padding:0 14px 16px">'
+      +'<div style="font-size:16px;font-weight:900;text-align:center;color:#fff;margin-bottom:14px">איך זה עובד?</div>'
+      +'<div style="display:flex;align-items:flex-start;gap:4px">'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(99,102,241,.2);border:1.5px solid rgba(99,102,241,.5);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">📋</div><div style="font-size:10px;font-weight:900;color:rgba(255,255,255,.85);line-height:1.4">עונים על שאלון קצר אנונימי וללא סיסמאות</div></div>'
+        +'<div style="font-size:16px;color:rgba(255,255,255,.3);margin-top:14px;flex-shrink:0">←</div>'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(34,211,238,.15);border:1.5px solid rgba(34,211,238,.4);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">📊</div><div style="font-size:10px;font-weight:900;color:rgba(255,255,255,.85);line-height:1.4">בוחרים תחזיות למנדטים ולקואליציה</div></div>'
+        +'<div style="font-size:16px;color:rgba(255,255,255,.3);margin-top:14px;flex-shrink:0">←</div>'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(163,230,53,.15);border:1.5px solid rgba(163,230,53,.35);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">🏆</div><div style="font-size:10px;font-weight:900;color:rgba(255,255,255,.85);line-height:1.4">צוברים נקודות ומטפסים בדירוג</div></div>'
+        +'<div style="font-size:16px;color:rgba(255,255,255,.3);margin-top:14px;flex-shrink:0">←</div>'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(250,204,21,.15);border:1.5px solid rgba(250,204,21,.35);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">🎁</div><div style="font-size:10px;font-weight:900;color:#d4f542;line-height:1.4">זוכים בפרסים מטורפים!</div></div>'
+      +'</div>'
+    +'</div>'
+
+    // ── TRUST BAR ──
+    +'<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:13px 15px;margin:0 14px">'
+      +'<div style="display:flex;align-items:center;gap:9px">'
+        +'<span style="font-size:26px">🛡</span>'
+        +'<div><div style="font-size:12px;font-weight:900;color:#e0e7ff;margin-bottom:2px">המידע שלך בטוח איתנו!</div><div style="font-size:11px;color:rgba(255,255,255,.55);line-height:1.5">המשתתפים נשארים אנונימיים<br>והמידע משמש לסטטיסטיקות בלבד.</div></div>'
+      +'</div>'
+      +'<div style="text-align:left">'
+        +'<div style="display:flex;margin-bottom:3px"><div style="width:22px;height:22px;border-radius:50%;background:#6366f1;border:2px solid #0d0a2e;margin-left:-5px;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center">א</div><div style="width:22px;height:22px;border-radius:50%;background:#f97316;border:2px solid #0d0a2e;margin-left:-5px;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center">מ</div><div style="width:22px;height:22px;border-radius:50%;background:#22d3ee;border:2px solid #0d0a2e;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center">ד</div></div>'
+        +'<div style="color:#fbbf24;font-size:13px;letter-spacing:1px">★★★★★</div>'
+        +'<div style="font-size:18px;font-weight:900;color:#fbbf24;line-height:1">4.9</div>'
+        +'<div style="font-size:9px;color:rgba(255,255,255,.4)">דירוג המשתמשים</div>'
+      +'</div>'
+    +'</div>'
+
+  +'</div></div>';
 }
 
 /* ── S1 PARTY ── */
@@ -391,23 +473,39 @@ function s6() {
 
 /* ── S7 FINAL ── */
 function s7() {
+  function row(num, label, value, color) {
+    return '<tr style="border-bottom:1px solid rgba(255,255,255,.07)">'
+      +'<td style="padding:11px 0 11px 8px;vertical-align:middle;width:48%">'
+        +'<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:rgba(163,230,53,.15);border:1px solid rgba(163,230,53,.3);border-radius:6px;font-size:11px;font-weight:900;color:#a3e635;margin-left:7px;flex-shrink:0">'+num+'</span>'
+        +'<span style="font-size:13px;color:rgba(255,255,255,.6)">'+label+'</span>'
+      +'</td>'
+      +'<td style="padding:11px 0;font-size:15px;font-weight:900;color:'+(color||'#fff')+';text-align:left;line-height:1.3">'+(value||'—')+'</td>'
+    +'</tr>';
+  }
   return '<div class="spage sc" style="text-align:center">'
-    + '<div class="bigicon bi-g">🏆</div>'
-    + '<div class="sh2">הדמו הושלם בהצלחה!</div>'
-    + '<div style="font-size:14px;color:rgba(255,255,255,.6);margin-bottom:18px;line-height:1.7">עברת את כל השלבים.</div>'
-    + card('<div style="text-align:right"><div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:9px">סיכום הנתונים</div>'
-      + '<table style="width:100%;font-size:12px;line-height:2.1;border-collapse:collapse">'
-      + '<tr><td style="color:rgba(255,255,255,.5);width:42%">מפלגה</td><td style="font-weight:900">' + (S.party || '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">גיל</td><td style="font-weight:900">' + (S.age || '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">מגדר</td><td style="font-weight:900">' + (S.gender || '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">עיר</td><td style="font-weight:900">' + (S.city || '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">ת.ז. (4 ספרות)</td><td style="font-weight:900">' + (T.id4 ? '****' + T.id4 : '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">טלפון</td><td style="font-weight:900">' + (T.phone || '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">תחזית 1</td><td style="font-weight:900">' + (S.f1 || '—') + '</td></tr>'
-      + '<tr><td style="color:rgba(255,255,255,.5)">הצבעה קודמת</td><td style="font-weight:900">' + (S.prev || '—') + '</td></tr>'
-      + '</table></div>')
-    + '<button class="btn-p" onclick="rst()" style="margin-top:13px">התחל מחדש ›</button>'
-    + '</div>';
+    +'<div class="bigicon bi-g">🏆</div>'
+    +'<div class="sh2">הדמו הושלם בהצלחה!</div>'
+    +'<div style="font-size:14px;color:rgba(255,255,255,.6);margin-bottom:16px;line-height:1.7">תוצאות הסקר שמילאת:</div>'
+    +card(
+      '<div style="font-size:13px;font-weight:900;color:#a3e635;margin-bottom:4px;text-align:right">סקר</div>'
+      +'<table style="width:100%;border-collapse:collapse;text-align:right">'
+      +row(1,'לאיזו מפלגה תצביע', S.party, '#facc15')
+      +row(2,'גיל', S.age, '#fff')
+      +row(3,'מגדר', S.gender, '#fff')
+      +row(4,'ישוב', S.city, '#fff')
+      +row(5,'ת"ז (4 ספרות)', T.id4 ? '****'+T.id4 : '', '#fff')
+      +row(6,'טלפון', T.phone, '#fff')
+      +'</table>'
+      +'<div style="font-size:13px;font-weight:900;color:#a3e635;margin:14px 0 4px;text-align:right">ניחוש</div>'
+      +'<table style="width:100%;border-collapse:collapse;text-align:right">'
+      +row(7,'המפלגה הגדולה', S.f1, '#a3e635')
+      +row(8,'המפלגה השנייה בגודלה', S.f2, '#a3e635')
+      +row(9,'המפלגה השלישית', S.f3, '#a3e635')
+      +row(10,'הצבעה בבחירות הקודמות', S.prev, '#22d3ee')
+      +'</table>'
+    )
+    +'<button class="btn-p" onclick="rst()" style="margin-top:13px">התחל מחדש ›</button>'
+    +'</div>';
 }
 
 function go()  { step = Math.min(7, step + 1); render(); }
