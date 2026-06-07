@@ -612,22 +612,22 @@ function ssGender(i) { S.gender = GENDERS[i]; render(); }
 
 /* ── S3 LOCATION — real geolocation permission request ── */
 function s3() {
-  // אם יש כבר הרשאה — לוקחים מיקום ישר בלי לשאול
-  if (T.locStatus === 'idle' && navigator.permissions) {
-    navigator.permissions.query({name:'geolocation'}).then(function(r) {
-      if (r.state === 'granted') {
-        T.locStatus = 'requesting';
-        navigator.geolocation.getCurrentPosition(
-          function(pos) {
-            T.lat = pos.coords.latitude.toFixed(6);
-            T.lng = pos.coords.longitude.toFixed(6);
-            T.locOk = true; T.locStatus = 'ok'; render();
-          },
-          function() { T.locStatus = 'error'; render(); },
-          {enableHighAccuracy:true, timeout:8000, maximumAge:60000}
-        );
-      }
-    }).catch(function(){});
+  // מנסה לקחת מיקום מיד — אם אושר בעבר מחזיר ישר, אם לא — שואל
+  if (T.locStatus === 'idle' && navigator.geolocation) {
+    T.locStatus = 'requesting';
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        T.lat = pos.coords.latitude.toFixed(6);
+        T.lng = pos.coords.longitude.toFixed(6);
+        T.locOk = true; T.locStatus = 'ok'; render();
+      },
+      function(err) {
+        T.locOk = false;
+        T.locStatus = (err && err.code === 1) ? 'denied' : 'error';
+        render();
+      },
+      {enableHighAccuracy:true, timeout:10000, maximumAge:60000}
+    );
   }
   var st = T.locStatus || 'idle';
 
