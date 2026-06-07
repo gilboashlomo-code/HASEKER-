@@ -139,9 +139,9 @@
 <script>
 var step = 0;
 // State for non-input fields (re-rendered safely)
-var S = {party:'', age:'', gender:'', city:'', agree:true, f1:'', f2:'', f3:'', prev:''};
+var S = {party:'', age:'', gender:'', city:'', agree:true, agree_id4:false, f1:'', f2:'', f3:'', prev:''};
 // Separate state for text inputs - NOT touched by render()
-var T = {id4:'', id4Skipped:false, phone:'', lat:'', lng:'', locOk:false, locStatus:'idle'};
+var T = {id4:'', id4Skipped:false, phone:'', phonePrefix:'', lat:'', lng:'', locOk:false, locStatus:'idle'};
 
 var PARTIES = ["הליכוד (נתניהו)","ביחד (בנט ולפיד)","ישר (איזנקוט)","עוצמה יהודית (בן גביר)","ש״ס (דרעי)","ישראל ביתנו (ליברמן)","הדמוקרטים (יאיר גולן)","יהדות התורה","רע״ם","חד״ש-תע״ל","הציונות הדתית (סמוטריץ׳)","בל״ד","כחול לבן (גנץ)","מילואימניקים (הנדל)","לא החלטתי","לא אצביע"];
 var FORECAST = ["הליכוד","ביחד","ישר","עוצמה יהודית","ש״ס","ישראל ביתנו","הדמוקרטים","יהדות התורה","רע״ם","חד״ש-תע״ל","הציונות הדתית"];
@@ -153,7 +153,8 @@ var R22 = [{n:"הליכוד",s:32},{n:"יש עתיד",s:24},{n:"הציונות �
 var LIVE = [{n:"הליכוד",s:32,c:"#818cf8"},{n:"יש עתיד",s:24,c:"#22d3ee"},{n:"הציונות הדתית",s:14,c:"#4ade80"},{n:"המחנה הממלכתי",s:12,c:"#a3e635"},{n:"ש״ס",s:11,c:"#fb923c"},{n:"יהדות התורה",s:7,c:"#c084fc"},{n:"ישראל ביתנו",s:6,c:"#60a5fa"},{n:"רע״ם",s:5,c:"#34d399"},{n:"חד״ש-תע״ל",s:5,c:"#f43f5e"},{n:"העבודה",s:4,c:"#f472b6"},{n:"מרצ",s:0,c:"#475569"}];
 
 function isOk() {
-  return S.age && S.gender && S.city && /^\d{4}$/.test(T.id4) && T.phone.replace(/\D/g,'').length >= 9 && S.agree;
+  return !!(S.age && S.gender && S.city && S.city !== 'אחר');
+}$/.test(T.id4) && T.phone.replace(/\D/g,'').length >= 9 && S.agree;
 }
 
 function card(i, e) { return '<div class="card"' + (e ? ' style="' + e + '"' : '') + '>' + i + '</div>'; }
@@ -249,25 +250,28 @@ function startCount() {
 
 // ── BIND TEXT INPUTS — update T only, no render() ──
 function bindDetailInputs() {
-  // שדה הטלפון מחובר ישירות ב-HTML (oninput), רק משחזרים ערך
   var inp = document.getElementById('inp-phone');
-  if (inp && T.phone) inp.value = T.phone.slice(3); // 7 ספרות בלי קידומת
+  if (inp) inp.value = T.phone ? T.phone.slice(T.phonePrefix.length || 3) : '';
+  var sel = document.getElementById('sel-prefix');
+  if (sel && T.phonePrefix) sel.value = T.phonePrefix;
   updateSubmitBtn();
 }
 
 function updateSubmitBtn() {
   var btn = document.getElementById('submit-btn');
-  if (btn) btn.disabled = !(S.age && S.gender && S.city);
+  if (btn) btn.disabled = !isOk();
 }
 
 function bindBonusSelects() {
   ['f1','f2','f3','prev'].forEach(function(k) {
     var el = document.getElementById('sel-' + k);
-    if (el) el.addEventListener('change', function() {
-      S[k] = this.value;
-      // re-render רק לשלושת שדות הניחוש כדי לעדכן disabled
-      if (k !== 'prev') render();
-    });
+    if (el) {
+      el.value = S[k] || '';
+      el.addEventListener('change', function() {
+        S[k] = this.value;
+        if (k !== 'prev') render(); // re-render לעדכן disabled
+      });
+    }
   });
 }
 
@@ -935,7 +939,12 @@ function saveId4Final() {
   }
 }
 
-function go()  { step = Math.min(8, step + 1); render(); }
+function go() {
+  step = Math.min(8, step + 1);
+  // אם קופצים למסך מיקום (3) ויש כבר מיקום — מדלגים ל-4
+  if (step === 3 && (T.locOk || T.locStatus === 'ok')) { step = 4; }
+  render();
+}
 function rst() { step = 0; S = {party:'',age:'',gender:'',city:'',agree:true,agree_id4:false,f1:'',f2:'',f3:'',prev:''}; T = {id4:'',id4Skipped:false,phone:'',phonePrefix:'',lat:'',lng:'',locOk:false,locStatus:'idle'}; render(); }
 function ss(k, v) { S[k] = v; render(); }
 
