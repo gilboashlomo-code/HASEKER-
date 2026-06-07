@@ -172,17 +172,22 @@ function hdr() {
     + '<div class="prog-wrap"><div class="prog-fill" style="width:' + prog + '%"></div></div>';
 }
 
+function globalFooter() {
+  return '<div style="text-align:center;padding:18px 16px 28px;font-size:10px;color:rgba(255,255,255,.25);line-height:1.9;border-top:1px solid rgba(255,255,255,.06);margin-top:8px">'
+    + '™ הסקר של המדינה · Patent Pending · כל הזכויות שמורות © 2026<br>'
+    + 'טכנולוגיית VoterTag® · Shlomo Gilboa<br>'
+    + '<a href="mailto:team.together.office@gmail.com" style="color:rgba(255,255,255,.35);text-decoration:none">team.together.office@gmail.com</a>'
+    + ' &nbsp;·&nbsp; <a href="#terms" style="color:rgba(255,255,255,.3);text-decoration:underline">תנאי שימוש</a>'
+    + '</div>';
+}
+
 function render() {
   var fns = [s0, s1, s_id4, s2, s3, s4, s5, s6, s7];
-  document.getElementById('app').innerHTML = hdr() + fns[step]();
+  document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter();
   window.scrollTo(0, 0);
-  // For id4 screen: bind input events WITHOUT re-rendering
   if (step === 2) bindId4Input();
-  // For details screen: bind input events WITHOUT re-rendering
   if (step === 3) bindDetailInputs();
-  // For bonus screen: bind selects
   if (step === 6) bindBonusSelects();
-  // Landing: active participant counter
   if (step === 0) startCount();
 }
 
@@ -435,7 +440,7 @@ function s_id4() {
         + '<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox"><span style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.8">אני מאשר/ת שאני מעל גיל 18, בעל/ת זכות בחירה בישראל, ומתחייב/ת להשתתף פעם אחת בלבד.</span></label>'
       )
     + '<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
-    + '<button class="btn-s" onclick="skipId4()" style="color:rgba(255,255,255,.5);font-size:13px;border-color:rgba(255,255,255,.12)">אעדיף לא לציין כרגע</button>'
+    + '<button class="btn-s" onclick="skipId4()" style="color:rgba(255,255,255,.55);font-size:13px;border-color:rgba(255,255,255,.15)">המשך כבוחר לא מאומת</button>'
     + '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.75);margin-top:14px;text-align:center;line-height:1.8;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">רשומה ללא אימות ת"ז תסומן כ<strong style="color:#f87171">"לא מאומתת"</strong> ולא תהיה זכאית לפרסים. &nbsp;|&nbsp; <a href="#terms" style="color:rgba(255,255,255,.5)">תנאי שימוש</a></div>'
     + '</div>';
 }
@@ -495,15 +500,15 @@ function s2() {
         + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:6px;line-height:1.6">* אם הישוב שלך אינו מופיע ברשימה — בחר/י <strong style="color:#a3e635">"אחר"</strong> והקלד/י את שמו</div>'
         + '<input id="inp-city-other" class="inp" type="text" placeholder="הכנס/י שם יישוב" style="display:' + (S.city === 'אחר' ? 'block' : 'none') + ';margin-bottom:6px" oninput="onCityOther(this.value)">'
         + '<span class="flbl">טלפון / WhatsApp</span>'
-        + '<div style="display:flex;gap:8px;align-items:flex-start;direction:ltr">'
-        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="הקלד מספר רצוף ללא מקפים  1234567" style="flex:1;letter-spacing:.03em;text-align:right;direction:rtl;font-size:13px" oninput="onPhoneChange()">'
-        + '<select id="sel-prefix" class="fsel" style="width:120px;flex-shrink:0;padding:12px 6px;direction:rtl;font-size:13px" onchange="onPhoneChange()">'
-        + '<option value="">בחר קידומת</option>'
+        + '<div style="display:flex;gap:8px;align-items:flex-start">'
+        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;padding:12px 6px;font-size:13px" onchange="onPhoneChange()">'
+        + '<option value="">קידומת ▾</option>'
         + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
         + '</select>'
+        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;letter-spacing:.08em;font-size:16px;text-align:center" oninput="onPhoneChange()">'
         + '</div>'
-        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.6">קידומת הטלפון הנייד שלך משמאל — המספר עצמו 7 ספרות בדיוק מימין</div>'
-        + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:4px">יש לבחור קידומת ולהזין 7 ספרות בדיוק</div>'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:5px;line-height:1.6;text-align:center">קידומת משמאל &nbsp;·&nbsp; 7 ספרות רצופות מימין</div>'
+        + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:4px;text-align:center">יש לבחור קידומת ולהזין 7 ספרות בדיוק</div>'
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:11px;padding:11px 13px">'
         + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
         + '</div>'
@@ -664,7 +669,7 @@ function s3() {
         + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;text-align:right">'
         + '👆 קליק אחד בלבד — בחר/י <strong style="color:#a3e635">״רק בעת ביקורך באתר״</strong> וסיימנו.'
         + '</div>')
-    + '<button class="btn-p" onclick="requestLocation()">אפשר מיקום ביום הבחירות ›</button>'
+    + '<button class="btn-p" onclick="showLocOverlay(function(){requestLocation();})">אפשר מיקום ביום הבחירות ›</button>'
     + btnSec('דלג', 'go()')
     + '</div>';
 }
@@ -797,7 +802,7 @@ function s6() {
     + '<div class="ssub">כנסת ה-25 — נובמבר 2022.</div>'
     + card('<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-size:13px;font-weight:900;color:#a3e635">📊 תוצאות 2022</span><div style="text-align:left"><div style="font-size:22px;font-weight:900">120</div><div style="font-size:10px;color:rgba(255,255,255,.4)">מנדטים</div></div></div>' + bars
       + '<div style="background:rgba(0,0,0,.2);border-radius:11px;padding:10px;font-size:11px;color:rgba(255,255,255,.5);margin-top:9px;line-height:1.5">מרצ ואחרות שלא עברו את אחוז החסימה מוצגות עם 0 מנדטים.</div>')
-    + btnP('סיום', 'go()')
+    + btnP('סיום ›', 'step=7;render()')
     + '</div>';
 }
 
