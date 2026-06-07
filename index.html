@@ -436,7 +436,7 @@ function s_id4() {
       )
     + '<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
     + '<button class="btn-s" onclick="skipId4()" style="color:rgba(255,255,255,.5);font-size:13px;border-color:rgba(255,255,255,.12)">אעדיף לא לציין כרגע</button>'
-    + '<div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:12px;text-align:center;line-height:1.7">רשומה ללא אימות ת"ז תסומן כ"לא מאומתת" ולא תהיה זכאית לפרסים. &nbsp;|&nbsp; <a href="#terms" style="color:rgba(255,255,255,.4)">תנאי שימוש</a></div>'
+    + '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.75);margin-top:14px;text-align:center;line-height:1.8;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">רשומה ללא אימות ת"ז תסומן כ<strong style="color:#f87171">"לא מאומתת"</strong> ולא תהיה זכאית לפרסים. &nbsp;|&nbsp; <a href="#terms" style="color:rgba(255,255,255,.5)">תנאי שימוש</a></div>'
     + '</div>';
 }
 
@@ -491,17 +491,19 @@ function s2() {
         + '<span class="flbl">מגדר</span>'
         + '<div style="display:grid;gap:7px;margin-bottom:13px">' + gens + '</div>'
         + '<span class="flbl">יישוב</span>'
-        + '<select class="fsel" id="sel-city" onchange="onCityChange(this.value)" style="margin-bottom:6px">' + cOpts + '</select>'
+        + '<select class="fsel" id="sel-city" onchange="onCityChange(this.value)" style="margin-bottom:4px">' + cOpts + '</select>'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:6px;line-height:1.6">* אם הישוב שלך אינו מופיע ברשימה — בחר/י <strong style="color:#a3e635">"אחר"</strong> והקלד/י את שמו</div>'
         + '<input id="inp-city-other" class="inp" type="text" placeholder="הכנס/י שם יישוב" style="display:' + (S.city === 'אחר' ? 'block' : 'none') + ';margin-bottom:6px" oninput="onCityOther(this.value)">'
         + '<span class="flbl">טלפון / WhatsApp</span>'
         + '<div style="display:flex;gap:8px;align-items:flex-start;direction:ltr">'
-        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="מלא כאן 7 ספרות" style="flex:1;letter-spacing:.05em;text-align:right;direction:rtl" oninput="onPhoneChange()">'
-        + '<select id="sel-prefix" class="fsel" style="width:105px;flex-shrink:0;padding:12px 8px;direction:rtl" onchange="onPhoneChange()">'
+        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="הקלד מספר רצוף ללא מקפים  1234567" style="flex:1;letter-spacing:.03em;text-align:right;direction:rtl;font-size:13px" oninput="onPhoneChange()">'
+        + '<select id="sel-prefix" class="fsel" style="width:120px;flex-shrink:0;padding:12px 6px;direction:rtl;font-size:13px" onchange="onPhoneChange()">'
         + '<option value="">בחר קידומת</option>'
         + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
         + '</select>'
         + '</div>'
-        + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:5px;text-align:right">יש לבחור קידומת ולהזין 7 ספרות (לדוגמה: 054 + 9876543)</div>'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:4px;line-height:1.6">קידומת הטלפון הנייד שלך משמאל — המספר עצמו 7 ספרות בדיוק מימין</div>'
+        + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:4px">יש לבחור קידומת ולהזין 7 ספרות בדיוק</div>'
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:11px;padding:11px 13px">'
         + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
         + '</div>'
@@ -662,7 +664,7 @@ function s3() {
         + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;text-align:right">'
         + '👆 קליק אחד בלבד — בחר/י <strong style="color:#a3e635">״רק בעת ביקורך באתר״</strong> וסיימנו.'
         + '</div>')
-    + '<button class="btn-p" onclick="requestLocation()">אתר את הקלפי שלי ›</button>'
+    + '<button class="btn-p" onclick="requestLocation()">אפשר מיקום ביום הבחירות ›</button>'
     + btnSec('דלג', 'go()')
     + '</div>';
 }
@@ -712,9 +714,16 @@ function s4() {
     + '<div class="bigicon bi-g">✓</div>'
     + '<div class="sh2">הצטרפת בהצלחה!</div>'
     + '<div style="font-size:19px;font-weight:900;color:#a3e635;margin-bottom:15px">הסקר של המדינה 🇮🇱</div>'
-    + card('<div style="display:flex;align-items:center;gap:11px;text-align:right"><span style="font-size:28px">⭐</span><div><div style="font-size:15px;font-weight:900">בונוס נקודות מחכה לך</div><div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px">ענה על שאלות תחזית וצבור עד 100 נקודות</div></div></div>')
-    + '<button class="btn-p" onclick="goToBonus()" style="margin-top:13px">להוסיף בונוס נקודות ›</button>'
-    + '<button class="btn-s" onclick="goToResults()">דלג לתוצאות</button>'
+    + card(
+        '<div style="text-align:right">'
+        + '<div style="font-size:16px;font-weight:900;color:#facc15;margin-bottom:10px">עכשיו השלב החשוב:</div>'
+        + '<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.9;margin-bottom:10px">תחזית הבחירות שלך — רוצה להוכיח שאתה מכיר את ישראל הפוליטית?</div>'
+        + '<div style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.8">נחש את תוצאות האמת של הבחירות האמיתיות — מי המפלגה הגדולה, השנייה והשלישית.</div>'
+        + '<div style="font-size:13px;font-weight:900;color:#a3e635;margin-top:10px;line-height:1.7">הזוכים יקבעו לפי תוצאות האמת שיפורסמו לאחר הבחירות. 🏆</div>'
+        + '</div>'
+      )
+    + '<button class="btn-p" onclick="goToBonus()" style="margin-top:13px">לתחזית הבחירות שלי ›</button>'
+    + '<button class="btn-s" onclick="goToResults()">דלג</button>'
     + '</div>';
 }
 // ── FIX: bonus → step 5, skip → step 6 ──
@@ -755,10 +764,10 @@ function s5() {
     + '<div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.5">מרצ ובל״ד לא עברו את אחוז החסימה.</div>'
     + '</div></div>';
 
-  return '<div class="spage sc"><span class="pill pill-f">שלב בונוס</span>'
+  return '<div class="spage sc"><span class="pill pill-f">תחזית הבחירות</span>'
     + popup2022
-    + '<div class="sh2">משחק התחזיות הגדול בישראל</div>'
-    + '<div class="ssub">לא חובה. ענה על הכל וצבור עד 100 נקודות.</div>'
+    + '<div class="sh2">תחזית הבחירות שלך</div>'
+    + '<div class="ssub" style="color:rgba(255,255,255,.85);font-size:13px;line-height:1.8">התחזית היא לתוצאות <strong style="color:#facc15">האמת הסופיות</strong> של הבחירות. הזוכים יקבעו לפי הספירה הרשמית בלבד.</div>'
     + card(
         '<div class="bnote" style="margin-bottom:14px">על כל תחזית נכונה תקבל את הנקודות המלאות. סה"כ אפשרי: <strong style="color:#facc15">100 נק׳</strong></div>'
         + selHTML(S.f1, FORECAST, 'f1', 'להערכתך — מי תהיה המפלגה הגדולה בבחירות?', 30, [S.f2,S.f3])
@@ -766,7 +775,7 @@ function s5() {
         + selHTML(S.f3, FORECAST, 'f3', 'להערכתך — מי תהיה המפלגה השלישית?', 10, [S.f1,S.f2])
         + '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">'
         + '<span class="flbl" style="margin:0">למי הצבעת בבחירות 2022?</span>'
-        + '<button onclick="document.getElementById(\'popup22\').style.display=\'block\'" style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:99px;color:#a5b4fc;font-size:11px;font-weight:900;padding:3px 11px;cursor:pointer;font-family:inherit">תוצאות 2022 ›</button>'
+        + '<button onclick="document.getElementById(\'popup22\').style.display=\'block\'" style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:99px;color:#a5b4fc;font-size:11px;font-weight:900;padding:3px 11px;cursor:pointer;font-family:inherit">תוצאות אמת 2022 ›</button>'
         + '</div>'
         + '<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 10px;font-size:11px;color:#facc15;display:inline-block;margin-bottom:6px">40 נק׳</span>'
         + '<select id="sel-prev" class="fsel"><option value="">בחר/י</option>'
@@ -809,7 +818,7 @@ function s7() {
   if (T.id4Skipped && !T.id4) {
     id4Request = '<div style="background:rgba(250,204,21,.08);border:1.5px solid rgba(250,204,21,.3);border-radius:16px;padding:16px;margin-bottom:14px;text-align:right">'
       +'<div style="font-size:15px;font-weight:900;color:#facc15;margin-bottom:6px">🏆 רוצה להיות זכאי/ת לפרסים?</div>'
-      +'<div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:12px;line-height:1.6">הוספת 4 ספרות ת"ז מאמתת את הרשומה שלך ומוסיפה 50 נקודות. לוקח 10 שניות.</div>'
+    + '<div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:12px;line-height:1.8">הוספת 4 ספרות אחרונות של ת"ז מונעת כפילות והטיה מכוונת, ומאמתת שהרשומה היא שלך בלבד. הן יבדקו מול תעודת הזהות שלך <strong style="color:#facc15">רק לצורך קבלת פרס</strong> — לאחר הודעת התוצאות. ומוסיפות <strong style="color:#a3e635">50 נקודות בונוס</strong>. לוקח 10 שניות.</div>'
       +'<input id="inp-id4-final" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.45em;font-size:20px;text-align:center;margin-bottom:10px">'
       +'<button class="btn-p" onclick="saveId4Final()" style="margin-top:0">אמת את הרשומה שלך ›</button>'
       +'</div>';
