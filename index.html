@@ -643,14 +643,12 @@ function s3() {
     return '<div class="spage sc" style="text-align:center">'
       + '<div class="bigicon bi-l">📍</div>'
       + '<span class="pill pill-y">כמעט שם</span>'
-      + '<div class="sh2">המכשיר שלך חסם את המיקום</div>'
-      + '<div class="ssub" style="font-size:14px;line-height:1.9;color:rgba(255,255,255,.9)">אין בעיה — תוכל/י להמשיך בלי מיקום.</div>'
+      + '<div class="sh2">המכשיר שלך חסם את איתור מיקום הקלפי</div>'
+      + '<div class="ssub" style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.9)">אין בעיה — תוכל/י להמשיך בלי מיקום.<br><span style="font-size:13px;color:rgba(255,255,255,.7)">חבל, לא נוכל לספק לך נתוני אמת ביום הבחירות.</span></div>'
       + '<div style="background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;margin:8px 0;text-align:right;font-size:13px;line-height:2;color:rgba(255,255,255,.8)">'
-      + 'אם תרצה/י לאפשר (כמו Waze) — רק ליום הבחירות:<br>'
-      + '1. לחץ/י על <strong style="color:#a3e635">🔒</strong> ליד כתובת האתר<br>'
-      + '2. בחר/י <strong style="color:#a3e635">הרשאות ← מיקום: אפשר</strong><br>'
-      + '3. רענן/י את הדף<br>'
-      + '<a href="https://support.google.com/chrome/answer/142065" target="_blank" style="color:#a3e635;font-size:12px">הוראות מפורטות ›</a>'
+      + 'תוכל לתקן בקלות:<br>'
+      + '<strong style="color:#a3e635">הגדרות ← מיקום ← אפשר</strong><br>'
+      + '<a href="https://support.google.com/chrome/answer/142065" target="_blank" style="color:#a3e635;font-size:12px">הוראות לפי סוג מכשיר ›</a>'
       + '</div>'
       + btnSec('המשך בלי מיקום', 'go()')
       + '</div>';
@@ -844,13 +842,17 @@ function s7() {
   // כפתורי חזרה לשדות חסרים
   var missingBtns = '';
   var missing = [];
-  if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'השלם תחזיות מפלגות', step:6});
-  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:6});
-  if (missing.length > 0 && (T.id4 || !T.id4Skipped)) {
+  if (!T.id4 && T.id4Skipped) missing.push({lbl:'הוסף 4 ספרות ת"ז — ומוסיף 50 נקודות', step:2, note:'מאמת את הרשומה שלך'});
+  if (!T.phone) missing.push({lbl:'הוסף טלפון — לעדכונים ביום הבחירות', step:3, note:'לקבוצת הוואטסאפ'});
+  if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'השלם תחזיות מפלגות', step:6, note:'עד 60 נקודות'});
+  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:6, note:'40 נקודות'});
+  if (missing.length > 0) {
     missingBtns = '<div style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:14px;padding:13px;margin-bottom:14px;text-align:right">'
       +'<div style="font-size:13px;font-weight:900;color:#a5b4fc;margin-bottom:10px">📝 שדות שלא מולאו — רוצה להשלים?</div>'
       + missing.map(function(m){
-          return '<button onclick="step='+m.step+';render()" style="display:block;width:100%;margin-bottom:7px;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:10px;color:#c7d2fe;font-size:13px;font-weight:700;padding:9px 12px;cursor:pointer;font-family:inherit;text-align:right">← '+m.lbl+'</button>';
+          return '<button onclick="step='+m.step+';render()" style="display:block;width:100%;margin-bottom:7px;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:10px;color:#c7d2fe;font-size:13px;font-weight:700;padding:9px 12px;cursor:pointer;font-family:inherit;text-align:right">'
+            +'← '+m.lbl+' <span style="font-size:11px;color:rgba(255,255,255,.5);font-weight:400">('+m.note+')</span>'
+            +'</button>';
         }).join('')
       +'</div>';
   }
