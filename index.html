@@ -483,7 +483,7 @@ function s2() {
   var gens = GENDERS.map(function(g, i) {
     return '<button class="gchip' + (S.gender === g ? ' on' : '') + '" onclick="ssGender(' + i + ')">' + g + '</button>';
   }).join('');
-  var cOpts = '<option value="">בחר/י יישוב</option><option value="אחר" style="font-weight:bold">חסר — הקלד/י ידנית ↓</option>' + CITIES.filter(function(c){return c !== 'אחר';}).map(function(c) {
+  var cOpts = '<option value="">בחר/י יישוב</option><option value="אחר" style="font-weight:bold">חסר — הקלד/י ידנית</option>' + CITIES.filter(function(c){return c !== 'אחר';}).map(function(c){return '<option value="'+c+'"'+(S.city===c?' selected':'')+'>'+c+'</option>';}).join('');}).map(function(c) {
     return '<option value="' + c + '"' + (S.city === c ? ' selected' : '') + '>' + c + '</option>';
   }).join('');
 
@@ -912,7 +912,7 @@ function shareFB() {
   window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
 }
 function shareX() {
-  var txt = encodeURIComponent('הצבעתי בסקר הגדול של המדינה 🇮🇱 — גם אתם יכולים לזכות בפרסים! ');
+  var txt = encodeURIComponent('השתתפ/י בסקר של המדינה - ניחושי תוצאות הבחירות, חינם, 2 דקות, פרסים גדולים!');
   window.open('https://twitter.com/intent/tweet?text=' + txt + encodeURIComponent(window.location.href), '_blank');
 }
 function copyShareLink(btn) {
