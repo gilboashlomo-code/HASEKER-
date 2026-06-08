@@ -643,8 +643,15 @@ function s3() {
     return '<div class="spage sc" style="text-align:center">'
       + '<div class="bigicon bi-l">📍</div>'
       + '<span class="pill pill-y">כמעט שם</span>'
-      + '<div class="sh2">גישה למיקום נחסמה</div>'
-      + '<div class="ssub" style="font-size:13px;line-height:1.9">כדי לאפשר:<br>לחץ/י על 🔒 ליד כתובת האתר ← <strong>הרשאות</strong> ← <strong>מיקום: אפשר</strong><br>ואז רענן/י את הדף.</div>'
+      + '<div class="sh2">המכשיר שלך חסם את המיקום</div>'
+      + '<div class="ssub" style="font-size:14px;line-height:1.9;color:rgba(255,255,255,.9)">אין בעיה — תוכל/י להמשיך בלי מיקום.</div>'
+      + '<div style="background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;margin:8px 0;text-align:right;font-size:13px;line-height:2;color:rgba(255,255,255,.8)">'
+      + 'אם תרצה/י לאפשר (כמו Waze) — רק ליום הבחירות:<br>'
+      + '1. לחץ/י על <strong style="color:#a3e635">🔒</strong> ליד כתובת האתר<br>'
+      + '2. בחר/י <strong style="color:#a3e635">הרשאות ← מיקום: אפשר</strong><br>'
+      + '3. רענן/י את הדף<br>'
+      + '<a href="https://support.google.com/chrome/answer/142065" target="_blank" style="color:#a3e635;font-size:12px">הוראות מפורטות ›</a>'
+      + '</div>'
       + btnSec('המשך בלי מיקום', 'go()')
       + '</div>';
   }
