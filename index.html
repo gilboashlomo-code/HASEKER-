@@ -186,7 +186,8 @@ function globalFooter() {
 function render() {
   var fns = [s0, s1, s_id4, s2, s3, s4, s5, s6, s7];
   var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
-  document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn;
+  var nextBtn = step < 8 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
+  document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
   window.scrollTo(0, 0);
   if (step === 2) bindId4Input();
   if (step === 3) bindDetailInputs();
