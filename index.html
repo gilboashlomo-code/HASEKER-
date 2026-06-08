@@ -483,9 +483,7 @@ function s2() {
   var gens = GENDERS.map(function(g, i) {
     return '<button class="gchip' + (S.gender === g ? ' on' : '') + '" onclick="ssGender(' + i + ')">' + g + '</button>';
   }).join('');
-  var cOpts = '<option value="">בחר/י יישוב</option><option value="אחר" style="font-weight:bold">חסר — הקלד/י ידנית</option>' + CITIES.filter(function(c){return c !== 'אחר';}).map(function(c){return '<option value="'+c+'"'+(S.city===c?' selected':'')+'>'+c+'</option>';}).join('');}).map(function(c) {
-    return '<option value="' + c + '"' + (S.city === c ? ' selected' : '') + '>' + c + '</option>';
-  }).join('');
+  var cOpts = '<option value="">בחר/י יישוב</option><option value="אחר" style="font-weight:bold">חסר — הקלד/י ידנית</option>' + CITIES.filter(function(c){return c !== 'אחר';}).map(function(c){return '<option value="'+c+'"'+(S.city===c?' selected':'')+'>'+c+'</option>';}).join('');
 
   return '<div class="spage sc"><span class="pill pill-c">דיוק הסקר</span>'
     + '<div class="sh2">עוד כמה פרטים כלליים</div>'
