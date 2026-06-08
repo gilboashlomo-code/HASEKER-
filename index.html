@@ -492,8 +492,6 @@ function s2() {
   var gens = GENDERS.map(function(g, i) {
     return '<button class="gchip' + (S.gender === g ? ' on' : '') + '" onclick="ssGender(' + i + ')">' + g + '</button>';
   }).join('');
-  // חיפוש ישוב חופשי
-  var cityInput = S.city && CITIES.indexOf(S.city) === -1 && S.city !== 'אחר' ? S.city : '';
   var cOpts = '<option value="">בחר/י יישוב</option>'
     + '<option value="אחר" style="font-weight:bold">חסר — הקלד/י ידנית ↓</option>'
     + CITIES.filter(function(c){return c !== 'אחר';}).map(function(c) {
@@ -937,11 +935,7 @@ function s7() {
 
 function shareWA() {
   var url = encodeURIComponent(window.location.href);
-  var txt = encodeURIComponent('השתתפ/י עכשיו ב\"סקר של המדינה\" — משחק פנטסטי של ניחושי תוצאות יום הבחירות 🇮🇱
-קל נורא, חינם, 2 דקות — ויש פרסים גדולים למנחשים! שווה! 🏆
-(גם קיבלת 50 נקודות בונוס בזכות הצטרפותך!)
-
-');
+  var txt = encodeURIComponent('השתתפ/י עכשיו בסקר של המדינה — משחק פנטסטי של ניחושי תוצאות יום הבחירות \ud83c\uddee\ud83c\uddf1 קל נורא, חינם, 2 דקות — ויש פרסים גדולים! שווה! \ud83c\udfc6 (גם קיבלת 50 נקודות בונוס בזכות הצטרפותך!) ');
   window.open('https://wa.me/?text=' + txt + url, '_blank');
 }
 function shareFB() {
