@@ -130,7 +130,9 @@
   .btn-p{width:100%;padding:15px;border-radius:14px;background:linear-gradient(to left,var(--lime-dark),var(--cyan));color:#061000;font-size:17px;font-weight:900;border:none;cursor:pointer;margin-top:13px;font-family:inherit;transition:transform .15s}
   .btn-p:active{transform:scale(.98)}
   .btn-p:disabled{opacity:.35;cursor:not-allowed;background:rgba(255,255,255,.2);color:rgba(255,255,255,.4)}
-  .btn-s{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-weight:900;cursor:pointer;margin-top:9px;font-family:inherit;transition:transform .15s}
+  .back-btn{position:fixed;bottom:18px;left:16px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:999;backdrop-filter:blur(4px);transition:background .2s}
+.back-btn:active{background:rgba(255,255,255,.2)}
+.btn-s{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-weight:900;cursor:pointer;margin-top:9px;font-family:inherit;transition:transform .15s}
   .btn-s:active{transform:scale(.98)}
 </style>
 </head>
@@ -183,7 +185,8 @@ function globalFooter() {
 
 function render() {
   var fns = [s0, s1, s_id4, s2, s3, s4, s5, s6, s7];
-  document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter();
+  var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
+  document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn;
   window.scrollTo(0, 0);
   if (step === 2) bindId4Input();
   if (step === 3) bindDetailInputs();
@@ -500,14 +503,14 @@ function s2() {
         + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:6px;line-height:1.6">* אם הישוב שלך אינו מופיע ברשימה — בחר/י <strong style="color:#a3e635">"אחר"</strong> והקלד/י את שמו</div>'
         + '<input id="inp-city-other" class="inp" type="text" placeholder="הכנס/י שם יישוב" style="display:' + (S.city === 'אחר' ? 'block' : 'none') + ';margin-bottom:6px" oninput="onCityOther(this.value)">'
         + '<span class="flbl">טלפון / WhatsApp</span>'
-        + '<div style="display:flex;gap:8px;align-items:flex-start">'
-        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;padding:12px 6px;font-size:13px" onchange="onPhoneChange()">'
+        + '<div style="display:flex;flex-direction:row;gap:8px;align-items:flex-start;direction:ltr">'
+        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;padding:12px 6px;font-size:13px;direction:rtl;text-align:right" onchange="onPhoneChange()">'
         + '<option value="">קידומת ▾</option>'
         + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
         + '</select>'
-        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;letter-spacing:.08em;font-size:16px;text-align:center" oninput="onPhoneChange()">'
+        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;letter-spacing:.08em;font-size:16px;text-align:left;direction:ltr" oninput="onPhoneChange()">'
         + '</div>'
-        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:5px;line-height:1.6;text-align:center">קידומת משמאל &nbsp;·&nbsp; 7 ספרות רצופות מימין</div>'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:5px;line-height:1.6;text-align:center">קידומת משמאל &nbsp;·&nbsp; 7 ספרות מימין</div>'
         + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:4px;text-align:center">יש לבחור קידומת ולהזין 7 ספרות בדיוק</div>'
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:11px;padding:11px 13px">'
         + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
@@ -936,6 +939,7 @@ function saveId4Final() {
 }
 
 function go()  { step = Math.min(8, step + 1); render(); }
+function back() { if (step > 0) { step = step - 1; render(); } }
 function rst() { step = 0; S = {party:'',age:'',gender:'',city:'',agree:true,agree_id4:false,f1:'',f2:'',f3:'',prev:''}; T = {id4:'',id4Skipped:false,phone:'',phonePrefix:'',lat:'',lng:'',locOk:false,locStatus:'idle'}; render(); }
 function ss(k, v) { S[k] = v; render(); }
 
