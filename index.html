@@ -643,9 +643,8 @@ function s3() {
     return '<div class="spage sc" style="text-align:center">'
       + '<div class="bigicon bi-l">📍</div>'
       + '<span class="pill pill-y">כמעט שם</span>'
-      + '<div class="sh2">בלי מיקום נפספס את האזור שלך</div>'
-      + '<div class="ssub">אישור המיקום מאפשר להתאים לך את תוצאות הקלפי שלך ולהזכיר לך איפה להצביע. אפשר לנסות שוב.</div>'
-      + '<button class="btn-p" onclick="requestLocation()">אפשר מיקום ›</button>'
+      + '<div class="sh2">גישה למיקום נחסמה</div>'
+      + '<div class="ssub" style="font-size:13px;line-height:1.9">כדי לאפשר:<br>לחץ/י על 🔒 ליד כתובת האתר ← <strong>הרשאות</strong> ← <strong>מיקום: אפשר</strong><br>ואז רענן/י את הדף.</div>'
       + btnSec('המשך בלי מיקום', 'go()')
       + '</div>';
   }
@@ -656,6 +655,8 @@ function s3() {
       + '<div class="bigicon bi-l">📍</div>'
       + '<div class="sh2">מבקש גישה למיקום…</div>'
       + '<div class="ssub">אשר/י את הבקשה שמופיעה בראש המסך.</div>'
+      + '<div style="margin-top:20px;width:40px;height:40px;border:3px solid rgba(163,230,53,.3);border-top-color:#a3e635;border-radius:50%;animation:spin 1s linear infinite;margin-left:auto;margin-right:auto"></div>'
+      + btnSec('המשך בלי מיקום', 'T.locStatus=\'skipped\';go()')
       + '</div>';
   }
 
