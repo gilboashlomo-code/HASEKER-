@@ -550,45 +550,15 @@ function ssGender(i) { S.gender = GENDERS[i]; render(); }
 
 function onPhoneChange() {
   var prefix = (document.getElementById('sel-prefix') || {}).value || '';
-  var num    = (document.getElementById('inp-phone')  || {}).value || '';
+  var num = (document.getElementById('inp-phone') || {}).value || '';
   num = num.replace(/\D/g,'').slice(0,7);
   var inp = document.getElementById('inp-phone');
   if (inp) inp.value = num;
   T.phonePrefix = prefix;
   T.phone = (prefix && num.length === 7) ? prefix + num : '';
   var err = document.getElementById('phone-err');
-  var hasPhone = !!(T.phone);
-  if (err) err.style.display = (prefix && num.length > 0 && !hasPhone) ? 'block' : 'none';
+  if (err) err.style.display = (prefix && num.length > 0 && !T.phone) ? 'block' : 'none';
   updateSubmitBtn();
-  var locOpt = document.getElementById('loc-opt');
-  if (locOpt) locOpt.style.display = hasPhone ? 'none' : 'block';
-  if (hasPhone && T.locStatus === 'idle') {
-    if (isInAppBrowser()) {
-      T.locStatus = 'inapp';
-    } else if (navigator.geolocation) {
-      showLocOverlay(function() {
-        T.locStatus = 'requesting';
-        navigator.geolocation.getCurrentPosition(
-          function(pos) {
-            T.lat = pos.coords.latitude.toFixed(6);
-            T.lng = pos.coords.longitude.toFixed(6);
-            T.locOk = true;
-            T.locStatus = 'ok';
-          },
-          function(err) {
-            T.locOk = false;
-            T.locStatus = (err && err.code === 1) ? (isInAppBrowser() ? 'inapp' : 'denied') : 'error';
-          },
-          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-        );
-      });
-    }
-  }
-  if (!hasPhone) {
-    var chk = document.getElementById('chk-loc-opt');
-    if (chk) chk.checked = false;
-    if (T.locStatus === 'requesting' || T.locStatus === 'ok') T.locStatus = 'idle';
-  }
 }
 
 function showLocOverlay(callback) {
@@ -912,10 +882,11 @@ function s7_sum() {
 
 function s7_share() {
   return '<div class="spage sc" style="text-align:center">'
+    +'<div class="bigicon">📣</div>'
+    +'<div class="sh2">העבירו לכל חבריכם!</div>'
+    +'<div class="ssub" style="color:rgba(255,255,255,.85)">על כל חבר שיצטרף דרככם — <strong style="color:#facc15">50 נקודות בונוס!</strong></div>'
     +'<img src="https://gilboashlomo-code.github.io/HASEKER-/ChatGPT%20Image%20May%2022%2C%202026%2C%2010_45_25%20PM.png" style="width:100%;border-radius:14px;margin-bottom:14px;display:block" onerror="this.style.display=\'none\'">'
     +'<div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(163,230,53,.1));border:1.5px solid rgba(163,230,53,.3);border-radius:18px;padding:16px;margin-top:0;text-align:right">'
-      +'<div style="font-size:16px;font-weight:900;color:#a3e635;margin-bottom:4px">📣 העבירו לכל חבריכם</div>'
-      +'<div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.7">על כל חבר שיצטרף דרככם — תקבלו <strong style="color:#facc15">50 נקודות בונוס</strong>!</div>'
       +'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">'
         // וואטסאפ
         +'<button onclick="shareWA()" style="background:#25D366;border:none;border-radius:12px;padding:12px 8px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:900;color:#fff">'
