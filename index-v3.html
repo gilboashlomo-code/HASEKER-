@@ -738,71 +738,49 @@ function goToResults() { step = 5; render(); }
 
 /* ── S5 BONUS — selects bound after render ── */
 function s5() {
-  function selHTML(val, opts, id, lbl, pts, exclude) {
+  function sel(val, opts, id, lbl, pts, excl) {
     var os = opts.map(function(o) {
-      var disabled = exclude.indexOf(o) !== -1 && o !== val;
-      return '<option value="' + o + '"' + (val === o ? ' selected' : '') + (disabled ? ' disabled style="color:#888"' : '') + '>' + o + (disabled ? ' ✗' : '') + '</option>';
+      var d = excl && excl.indexOf(o) !== -1 && o !== val;
+      return '<option value="'+o+'"'+(val===o?' selected':'')+(d?' disabled':'')+'>'+(d?'✗ ':'')+o+'</option>';
     }).join('');
-    return '<div style="margin-bottom:4px">'
-      + '<span class="flbl" style="display:flex;justify-content:space-between;align-items:center">'
-      + '<span>' + lbl + '</span>'
-      + '<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 10px;font-size:11px;color:#facc15">' + pts + ' נק׳</span>'
-      + '</span>'
-      + '<select id="sel-' + id + '" class="fsel"><option value="">בחר/י</option>' + os + '</select>'
-      + '</div>';
+    return '<div style="margin-bottom:6px">'
+      +'<span class="flbl" style="display:flex;justify-content:space-between"><span>'+lbl+'</span>'
+      +'<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 9px;font-size:10px;color:#facc15">'+pts+'</span></span>'
+      +'<select id="sel-'+id+'" class="fsel"><option value="">בחר/י</option>'+os+'</select></div>';
   }
 
-  // פופאפ תוצאות 2022
-  var popup2022 = '<div id="popup22" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.75);padding:20px;overflow-y:auto" onclick="if(event.target===this)this.style.display=\'none\'">'
-    + '<div style="background:#1a1640;border:1.5px solid rgba(99,102,241,.4);border-radius:20px;padding:18px 16px;max-width:400px;margin:0 auto">'
-    + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">'
-    + '<div style="font-size:15px;font-weight:900;color:#a3e635">📊 תוצאות בחירות נובמבר 2022</div>'
-    + '<button onclick="document.getElementById(\'popup22\').style.display=\'none\'" style="background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;border-radius:8px;padding:2px 9px">✕</button>'
-    + '</div>'
-    + R22.filter(function(r){return r.s>0;}).map(function(r){
-        return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">'
-          +'<div style="width:90px;font-size:12px;font-weight:700;text-align:right;flex-shrink:0">'+r.n+'</div>'
-          +'<div style="flex:1;height:6px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden"><div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee);border-radius:99px"></div></div>'
-          +'<div style="font-size:13px;font-weight:900;color:#facc15;width:28px;text-align:left">'+r.s+'</div>'
-        +'</div>';
-      }).join('')
-    + '<div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.5">מרצ ובל״ד לא עברו את אחוז החסימה.</div>'
-    + '</div></div>';
-
-  return '<div class="spage sc"><span class="pill pill-f">תחזית הבחירות</span>'
-    + popup2022
-    + '<div class="sh2">תחזית הבחירות שלך</div>'
-    + '<div class="ssub" style="color:rgba(255,255,255,.85);font-size:13px;line-height:1.8">התחזית היא לתוצאות <strong style="color:#facc15">האמת הסופיות</strong> של הבחירות. הזוכים יקבעו לפי הספירה הרשמית בלבד.</div>'
-    + card(
-        '<div class="bnote" style="margin-bottom:14px">על כל תחזית נכונה תקבל את הנקודות המלאות. סה"כ אפשרי: <strong style="color:#facc15">100 נק׳</strong></div>'
-        + selHTML(S.f1, FORECAST, 'f1', 'להערכתך — מי תהיה המפלגה הגדולה בבחירות?', 30, [S.f2,S.f3])
-        + selHTML(S.f2, FORECAST, 'f2', 'להערכתך — מי תהיה המפלגה השנייה בגודלה?', 20, [S.f1,S.f3])
-        + selHTML(S.f3, FORECAST, 'f3', 'להערכתך — מי תהיה המפלגה השלישית?', 10, [S.f1,S.f2])
-        + '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">'
-        + '<span class="flbl" style="margin:0">למי הצבעת בבחירות 2022?</span>'
-        + '<button onclick="document.getElementById(\'popup22\').style.display=\'block\'" style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:99px;color:#a5b4fc;font-size:11px;font-weight:900;padding:3px 11px;cursor:pointer;font-family:inherit">תוצאות אמת 2022 ›</button>'
-        + '</div>'
-        + '<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 10px;font-size:11px;color:#facc15;display:inline-block;margin-bottom:6px">40 נק׳</span>'
-        + '<select id="sel-prev" class="fsel"><option value="">בחר/י</option>'
-        + PREV.map(function(o){ return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>'; }).join('')
-        + '</select>'
-      )
-    + card(
-        '<div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:10px;text-align:right">📊 תוצאות אמת 2022</div>'
+  return '<div class="spage sc">'
+    +'<span class="pill pill-f">תחזית הבחירות</span>'
+    +'<div class="sh2">תחזית הבחירות שלך</div>'
+    +'<div class="ssub" style="color:rgba(255,255,255,.85)">לתוצאות <strong style="color:#facc15">האמת הסופיות</strong>. הזוכים נקבעים לפי הספירה הרשמית.</div>'
+    +card(
+      '<div style="font-size:11px;color:rgba(255,255,255,.75);margin-bottom:10px">סה"כ אפשרי: <strong style="color:#facc15">100 נק.</strong></div>'
+      +sel(S.f1,FORECAST,'f1','מי תהיה המפלגה הגדולה?','30 נק.',[S.f2,S.f3])
+      +sel(S.f2,FORECAST,'f2','מי תהיה המפלגה השנייה?','20 נק.',[S.f1,S.f3])
+      +sel(S.f3,FORECAST,'f3','מי תהיה המפלגה השלישית?','10 נק.',[S.f1,S.f2])
+      +'<span class="flbl" style="margin-top:10px">למי הצבעת ב-2022? — 40 נק.</span>'
+      +'<select id="sel-prev" class="fsel"><option value="">בחר/י</option>'
+      +PREV.map(function(o){return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>';}).join('')
+      +'</select>'
+    )
+    +'<button class="btn-p" onclick="go()">המשך לסיכום בחירתך ›</button>'
+    +'<div style="margin-top:16px;padding:14px;background:rgba(0,0,0,.25);border-radius:14px;border:1px solid rgba(255,255,255,.1)">'
+      +'<div style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:10px;text-align:center">שכחת מה היו תוצאות הבחירות הקודמות? הנה תזכורת:</div>'
+      +card(
+        '<div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:8px;text-align:right">📊 תוצאות אמת — כנסת ה-25, נובמבר 2022</div>'
         +R22.map(function(r){
           return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
-            +'<div style="width:95px;font-size:11px;color:rgba(255,255,255,.85);text-align:right;flex-shrink:0">'+r.n+'</div>'
+            +'<div style="width:100px;font-size:11px;color:rgba(255,255,255,.85);text-align:right;flex-shrink:0">'+r.n+'</div>'
             +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden">'
             +'<div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee)"></div></div>'
-            +'<div style="font-size:11px;color:#facc15;width:20px;text-align:left">'+r.s+'</div></div>';
+            +'<div style="font-size:11px;color:#facc15;width:22px;text-align:left">'+r.s+'</div></div>';
         }).join('')
         +'<div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px">מרצ ובל\"ד לא עברו את אחוז החסימה.</div>'
       )
-    + btnP('המשך ›', 'go()')
-    + '</div>';
+    +'</div>'
+    +'</div>';
 }
 
-/* ── S6 RESULTS ── */
 function s6() {
   var bars = R22.map(function(r) {
     return '<div class="rbar"><div class="rbar-top"><span>' + r.n + '</span><span>' + r.s + '</span></div>'
@@ -887,6 +865,7 @@ function s7_sum() {
     )
     
     +'<div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:14px;line-height:1.7;text-align:center">תוצאות הסקר יפורסמו בקבוצת הוואטסאפ. ואל תשכח — ללכת להצביע! 🗳️</div>'
+    +'<button class="btn-p" onclick="go()" style="margin-top:16px">המשך להעביר לחברים ›</button>'
     +'</div>';
 }
 
@@ -922,10 +901,13 @@ function s7_share() {
     +'</div>'
 
     +'<div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:16px;line-height:1.7;text-align:center"><a href="#terms" style="color:rgba(255,255,255,.4);text-decoration:underline">תנאי שימוש ומדיניות פרטיות</a> &nbsp;·&nbsp; הסקר של המדינה © 2026</div>'
+    +'<div style="margin-top:16px;background:linear-gradient(135deg,rgba(250,204,21,.12),rgba(163,230,53,.08));border:1.5px solid rgba(250,204,21,.4);border-radius:16px;padding:16px;text-align:center">'
+      +'<div style="font-size:16px;font-weight:900;color:#facc15;margin-bottom:6px">🏆 בונוס מיוחד לבוחרים מאומתים</div>'
+      +'<div style="font-size:12px;color:rgba(255,255,255,.8);margin-bottom:12px;line-height:1.7">4 ספרות ת"ז מאמתות שהרשומה היא שלך — ומוסיפות 50 נקודות. רק מאומתים זכאים לפרסים.</div>'
+      +'<button class="btn-p" onclick="go()" style="margin-top:0">לבונוס המאומתים ›</button>'
+      +'</div>'
     +'</div>';
 }
-
-
 function shareWA() {
   var url = encodeURIComponent(window.location.href);
   var txt = encodeURIComponent('השתתפתי בסקר הגדול של המדינה 🇮🇱\nגם אתם יכולים לזכות בפרסים ולעזור לנו לנצח! ');
