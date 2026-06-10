@@ -170,11 +170,11 @@ function btnSec(t, fn) { return '<button class="btn-s" onclick="' + fn + '">' + 
 
 function hdr() {
   if (step === 0) return '';
-  var prog = Math.round(((Math.min(step, 7) + 1) / 8) * 100);
+  var prog = Math.round((step / 9) * 100);
   return '<div class="hdr">'
     + '<div style="display:flex;align-items:center;gap:7px"><div class="hdr-logo">הסקר של המדינה ✓</div><span style="font-size:22px">🇮🇱</span></div>'
     + '<div style="display:flex;align-items:center;gap:8px">'
-    + '<span style="font-size:11px;color:rgba(255,255,255,.45)">' + (Math.min(step, 7) + 1) + ' / 8</span>'
+    + '<span style="font-size:11px;color:rgba(255,255,255,.45)">' + (Math.min(step, 7) + 1) + ' / 9</span>'
     + '<div class="hdr-live"><div class="hdr-dot"></div><span class="hdr-cnt">—</span></div>'
     + '</div></div>'
     + '<div class="prog-wrap"><div class="prog-fill" style="width:' + prog + '%"></div></div>';
@@ -190,12 +190,12 @@ function globalFooter() {
 }
 
 function render() {
-  var fns = [s0, s1, s2, s4, s5, s7_sum, s_id4, s3, s7_share];
+  var fns = [s0, s1, s2, s4, s5, s6, s7_sum, s_id4, s3, s7_share];
   var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
-  var nextBtn = step < 8 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
+  var nextBtn = step < 9 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
   document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
   window.scrollTo(0, 0);
-  if (step === 6) bindId4Input();
+  if (step === 7) bindId4Input();
   if (step === 2) bindDetailInputs();
   if (step === 4) bindBonusSelects();
   if (step === 0) startCount();
@@ -276,15 +276,20 @@ function selectCity(c){
   updateSubmitBtn();
 }
 function bindDetailInputs() {
-  // שדה הטלפון מחובר ישירות ב-HTML (oninput), רק משחזרים ערך
-  var inp = document.getElementById('inp-phone');
-  if (inp && T.phone) inp.value = T.phone.slice(3); // 7 ספרות בלי קידומת
+  var ci = document.getElementById('city-inp');
+  if (ci) ci.value = S.city || '';
+  var pr = document.getElementById('sel-prefix');
+  if (pr && T.phonePrefix) pr.value = T.phonePrefix;
+  var ph = document.getElementById('inp-phone');
+  if (ph && T.phone) ph.value = T.phone.slice(T.phonePrefix ? T.phonePrefix.length : 3);
+  var cb = document.getElementById('chk-agree-demo');
+  if (cb) cb.checked = !!S.agree_demo;
   updateSubmitBtn();
 }
 
 function updateSubmitBtn() {
   var btn = document.getElementById('submit-btn');
-  if (btn) btn.disabled = !(S.age && S.gender && S.city);
+  if (btn) btn.disabled = !(S.age && S.gender && S.city && S.agree_demo);
 }
 
 function bindBonusSelects() {
@@ -505,49 +510,43 @@ function skipId4() {
 /* ── S2 DETAILS — inputs use IDs, bound after render ── */
 function s2() {
   var ages = AGES.map(function(a) {
-    return '<button class="chip' + (S.age === a ? ' on' : '') + '" onclick="ss(\'age\',\'' + a + '\')">' + a + '</button>';
+    return '<button class="chip' + (S.age === a ? ' on' : '') + '" onclick="ss(\'age\',\'' + a + '\');updateSubmitBtn()">' + a + '</button>';
   }).join('');
   var gens = GENDERS.map(function(g, i) {
-    return '<button class="gchip' + (S.gender === g ? ' on' : '') + '" onclick="ssGender(' + i + ')">' + g + '</button>';
-  }).join('');
-  var cOpts = '<option value="">בחר/י יישוב</option>' + CITIES.map(function(c) {
-    return '<option value="' + c + '"' + (S.city === c ? ' selected' : '') + '>' + c + '</option>';
+    return '<button class="gchip' + (S.gender === g ? ' on' : '') + '" onclick="ssGender(' + i + ');updateSubmitBtn()">' + g + '</button>';
   }).join('');
 
   return '<div class="spage sc"><span class="pill pill-c">דיוק הסקר</span>'
     + '<div class="sh2">עוד כמה פרטים כלליים</div>'
-    + '<div class="ssub">לחיתוך דמוגרפי מדויק.</div>'
+    + '<div class="ssub" style="color:rgba(255,255,255,.85)">לחיתוך דמוגרפי מדויק. הכל אנונימי.</div>'
     + card(
         '<span class="flbl" style="margin-top:0">תחום גיל</span>'
         + '<div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px">' + ages + '</div>'
         + '<span class="flbl">מגדר</span>'
         + '<div style="display:grid;gap:7px;margin-bottom:13px">' + gens + '</div>'
         + '<span class="flbl">ישוב — הקלד/י שם</span>'
-        + '<input id="city-inp" class="city-inp" type="text" placeholder="לדוגמה: תל אביב, חיפה, ירושלים..." autocomplete="off" oninput="onCityInput(this.value)" value="' + (S.city || '') + '">'
+        + '<input id="city-inp" class="city-inp" type="text" placeholder="לדוגמה: תל אביב, חיפה, ירושלים..." autocomplete="off" oninput="onCityInput(this.value)">'
         + '<div id="city-ac" class="city-ac"></div>'
-        + '<span class="flbl">טלפון / WhatsApp</span>'
-        + '<div style="display:flex;flex-direction:row;gap:8px;align-items:flex-start;direction:ltr">'
-        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;padding:12px 6px;font-size:13px;direction:rtl;text-align:right" onchange="onPhoneChange()">'
+        + '<span class="flbl">טלפון / WhatsApp <span style="font-weight:400;color:rgba(255,255,255,.6)">(לא חובה)</span></span>'
+        + '<div style="display:flex;flex-direction:row;gap:8px;direction:ltr">'
+        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;direction:rtl;font-size:13px" onchange="onPhoneChange()">'
         + '<option value="">קידומת ▾</option>'
         + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
         + '</select>'
-        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;letter-spacing:.08em;font-size:16px;text-align:left;direction:ltr" oninput="onPhoneChange()">'
+        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;font-size:16px;text-align:center;letter-spacing:.08em;direction:ltr" oninput="onPhoneChange()">'
         + '</div>'
-        + '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:5px;line-height:1.6;text-align:center">קידומת משמאל &nbsp;·&nbsp; 7 ספרות מימין</div>'
-        + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:4px;text-align:center">יש לבחור קידומת ולהזין 7 ספרות בדיוק</div>'
-        + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:11px;padding:11px 13px">'
-        + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:5px;text-align:center">קידומת משמאל · 7 ספרות מימין</div>'
+        + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">'
+        + '📲 הצטרף/י לקבוצת הוואטסאפ — עדכונים שוטפים ביום הבחירות <strong style="color:#facc15">הרבה לפני כולם</strong> + הודעה אם זכית.'
         + '</div>'
-        + '<div id="loc-opt" style="display:none;margin-top:13px;background:rgba(250,204,21,.07);border:1px solid rgba(250,204,21,.25);border-radius:11px;padding:12px 13px">'
-        + '<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">'
-        + '<input type="checkbox" id="chk-loc-opt" style="margin-top:3px;accent-color:#a3e635;width:18px;height:18px;flex-shrink:0" onchange="onLocOptChange(this.checked)">'
-        + '<span style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.8">כן, אני רוצה לקבל את תוצאות הקלפי שלי ועדכונים במהלך יום הבחירות</span>'
-        + '</label>'
-        + '</div>'
+        + '<label class="consent" style="margin-top:12px"><input id="chk-agree-demo" type="checkbox" onchange="S.agree_demo=this.checked;updateSubmitBtn()"><span style="font-size:13px;color:rgba(255,255,255,.85)">אני מעל גיל 18 ובעל/ת זכות בחירה בישראל</span></label>'
       )
     + '<button id="submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
     + '</div>';
 }
+
+function ssGender(i) { S.gender = GENDERS[i]; render(); }
+
 
 function onPhoneChange() {
   var prefix = (document.getElementById('sel-prefix') || {}).value || '';
@@ -913,7 +912,8 @@ function s7_sum() {
 
 function s7_share() {
   return '<div class="spage sc" style="text-align:center">'
-    +'<div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(163,230,53,.1));border:1.5px solid rgba(163,230,53,.3);border-radius:18px;padding:16px;margin-top:16px;text-align:right">'
+    +'<img src="https://gilboashlomo-code.github.io/HASEKER-/ChatGPT%20Image%20May%2022%2C%202026%2C%2010_45_25%20PM.png" style="width:100%;border-radius:14px;margin-bottom:14px;display:block" onerror="this.style.display=\'none\'">'
+    +'<div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(163,230,53,.1));border:1.5px solid rgba(163,230,53,.3);border-radius:18px;padding:16px;margin-top:0;text-align:right">'
       +'<div style="font-size:16px;font-weight:900;color:#a3e635;margin-bottom:4px">📣 העבירו לכל חבריכם</div>'
       +'<div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.7">על כל חבר שיצטרף דרככם — תקבלו <strong style="color:#facc15">50 נקודות בונוס</strong>!</div>'
       +'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">'
@@ -979,7 +979,7 @@ function saveId4Final() {
 }
 
 function go()  {
-  step = Math.min(8, step + 1);
+  step = Math.min(9, step + 1);
   // כשנכנסים למסך מיקום - מאפסים denied/error ישן כדי להציג את מסך הבקשה מחדש
   if (step === 7 && (T.locStatus === 'denied' || T.locStatus === 'error')) {
     T.locStatus = 'idle';
