@@ -174,7 +174,7 @@ function hdr() {
   return '<div class="hdr">'
     + '<div style="display:flex;align-items:center;gap:7px"><div class="hdr-logo">הסקר של המדינה ✓</div><span style="font-size:22px">🇮🇱</span></div>'
     + '<div style="display:flex;align-items:center;gap:8px">'
-    + '<span style="font-size:11px;color:rgba(255,255,255,.75)">' + (Math.min(step, 7) + 1) + ' / 8</span>'
+    + '<span style="font-size:11px;color:rgba(255,255,255,.75)">' + (Math.min(step, 7) + 1) + ' / 9</span>'
     + '<div class="hdr-live"><div class="hdr-dot"></div><span class="hdr-cnt">—</span></div>'
     + '</div></div>'
     + '<div class="prog-wrap"><div class="prog-fill" style="width:' + prog + '%"></div></div>';
@@ -189,10 +189,22 @@ function globalFooter() {
     + '</div>';
 }
 
+function s_end() {
+  return '<div class="spage sc" style="text-align:center">'
+    +'<div class="bigicon bi-g">🎉</div>'
+    +'<div class="sh2">הצטרפת למשחק הניחושים הגדול!</div>'
+    +'<div style="font-size:17px;font-weight:900;color:#a3e635;margin-bottom:8px">בהצלחה! 🇮🇱</div>'
+    +'<div style="font-size:15px;font-weight:700;color:#facc15;margin-bottom:16px;line-height:1.7">ואל תשכח — הכי חשוב זה ללכת להצביע! 🗳️</div>'
+    +'<div style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:14px;padding:14px;margin-bottom:16px">'
+    +'📲 תוצאות הסקר יפורסמו בקבוצת הוואטסאפ.<br>נעדכן אותך אם זכית בפרס.'
+    +'</div>'
+    +'</div>';
+}
+
 function render() {
-  var fns = [s0, s1, s2, s4, s5, s7_sum, s7_share, s_id4, s3];
+  var fns = [s0, s1, s2, s4, s5, s7_sum, s7_share, s_id4, s3, s_end];
   var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
-  var nextBtn = step < 8 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
+  var nextBtn = step < 9 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
   document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
   window.scrollTo(0, 0);
   if (step === 6) bindId4Input();
@@ -475,7 +487,6 @@ function s_id4() {
         +'<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox"><span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">מתחייב/ת להשתתף פעם אחת בלבד.</span></label>'
       )
     +'<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך לסיכום +50 נקודות ›</button>'
-    +'<button class="btn-s" onclick="T.id4Skipped=true;go()" style="color:rgba(255,255,255,.6);font-size:14px;padding:14px">המשך כבוחר לא מאומת ›</button>'
     +'<img src="https://gilboashlomo-code.github.io/HASEKER-/ChatGPT%20Image%20May%2022%2C%202026%2C%2010_45_25%20PM.png" style="width:100%;border-radius:14px;margin-top:16px;margin-bottom:16px;display:block" onerror="this.style.display=\'none\'">'
     +'<button class="btn-p" onclick="T.id4Skipped=true;go()">המשך לסיכום ›</button>'
     +'</div>';
@@ -775,7 +786,7 @@ function s5() {
     )
     +'<button class="btn-p" onclick="go()">המשך לסיכום בחירתך ›</button>'
     +'<div style="margin-top:16px;padding:14px;background:rgba(0,0,0,.25);border-radius:14px;border:1px solid rgba(255,255,255,.1)">'
-      +'<div style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:10px;text-align:center">שכחת מה היו תוצאות הבחירות הקודמות? הנה תזכורת:</div>'
+      +'<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:12px;text-align:center">שכחת מה היו תוצאות הבחירות הקודמות? הנה תזכורת 👇</div>'
       +card(
         '<div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:8px;text-align:right">📊 תוצאות אמת — כנסת ה-25, נובמבר 2022</div>'
         +R22.map(function(r){
@@ -874,7 +885,7 @@ function s7_sum() {
     )
     
     +'<div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:14px;line-height:1.7;text-align:center">תוצאות הסקר יפורסמו בקבוצת הוואטסאפ. ואל תשכח — ללכת להצביע! 🗳️</div>'
-    +'<button class="btn-p" onclick="go()" style="margin-top:16px">המשך להעביר לחברים ›</button>'
+    +'<button class="btn-p" onclick="go()" style="margin-top:16px;font-size:17px;padding:17px">📣 העבר לחברים וקבל בונוס ›</button>'
     +'</div>';
 }
 
@@ -951,7 +962,7 @@ function saveId4Final() {
 }
 
 function go()  {
-  step = Math.min(8, step + 1);
+  step = Math.min(9, step + 1);
   // כשנכנסים למסך מיקום - מאפסים denied/error ישן כדי להציג את מסך הבקשה מחדש
   if (step === 7 && (T.locStatus === 'denied' || T.locStatus === 'error' || T.locStatus === 'skipped')) {
     T.locStatus = 'idle';
