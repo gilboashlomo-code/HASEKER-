@@ -174,7 +174,7 @@ function hdr() {
   return '<div class="hdr">'
     + '<div style="display:flex;align-items:center;gap:7px"><div class="hdr-logo">הסקר של המדינה ✓</div><span style="font-size:22px">🇮🇱</span></div>'
     + '<div style="display:flex;align-items:center;gap:8px">'
-    + '<span style="font-size:11px;color:rgba(255,255,255,.45)">' + (Math.min(step, 7) + 1) + ' / 9</span>'
+    + '<span style="font-size:11px;color:rgba(255,255,255,.45)">' + (Math.min(step, 7) + 1) + ' / 8</span>'
     + '<div class="hdr-live"><div class="hdr-dot"></div><span class="hdr-cnt">—</span></div>'
     + '</div></div>'
     + '<div class="prog-wrap"><div class="prog-fill" style="width:' + prog + '%"></div></div>';
@@ -190,12 +190,12 @@ function globalFooter() {
 }
 
 function render() {
-  var fns = [s0, s1, s2, s4, s5, s6, s7_sum, s_id4, s3, s7_share];
+  var fns = [s0, s1, s2, s4, s5, s7_share, s_id4, s3, s7_sum];
   var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
-  var nextBtn = step < 9 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
+  var nextBtn = step < 8 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
   document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
   window.scrollTo(0, 0);
-  if (step === 7) bindId4Input();
+  if (step === 6) bindId4Input();
   if (step === 2) bindDetailInputs();
   if (step === 4) bindBonusSelects();
   if (step === 0) startCount();
@@ -457,24 +457,23 @@ function pickP(i) { S.party = PARTIES[i]; render(); setTimeout(go, 200); }
 
 /* ── S_ID4 — מסך 4 ספרות (עצמאי, אחרי בחירת מפלגה) ── */
 function s_id4() {
-  return '<div class="spage sc"><span class="pill pill-c">אנונימיות + שקיפות</span>'
-    + '<div class="sh2">הצבעתך אנונימית — ונספרת פעם אחת</div>'
-    + '<div class="ssub" style="font-size:14px;color:rgba(255,255,255,.75)">הסקר הזה שואף לדיוק אמיתי. כדי שכל קול ייספר פעם אחת בלבד — ולא ינוצלו הגשות מרובות שמשבשות תוצאות — אנו מבקשים 4 ספרות אחרונות של תעודת זהות.</div>'
-    + card(
-        '<div style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:14px">'
-        + '🔒 הספרות <strong>אינן</strong> נשמרות בשרת<br>'
-        + '🔒 הן <strong>אינן</strong> מזהות אותך בשום צורה<br>'
-        + '🔒 הן משמשות <strong>אך ורק</strong> לבדיקת כפילות — ונמחקות לאחר מכן<br>'
-        + '🔒 אף אחד לא יכול לדעת מי מסתתר מאחוריהן'
-        + '</div>'
-        + '<span class="flbl" style="margin-top:0;font-size:13px">4 ספרות אחרונות של תעודת זהות</span>'
-        + '<input id="inp-id4" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.45em;font-size:24px;text-align:center;padding:16px">'
-        + '<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox"><span style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.8">אני מאשר/ת שאני מעל גיל 18, בעל/ת זכות בחירה בישראל, ומתחייב/ת להשתתף פעם אחת בלבד.</span></label>'
+  return '<div class="spage sc">'
+    +'<span class="pill pill-g">בונוס מיוחד למאומתים</span>'
+    +'<div class="sh2">רוצה להגן על הקול שלך?</div>'
+    +'<div class="ssub" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.8">4 ספרות אחרונות של ת"ז מונעות כפילויות והטיה מכוונת — ומאמתות שהרשומה היא שלך לצורך קבלת פרס.</div>'
+    +card(
+        '<div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:14px">'
+        +'🔒 הספרות <strong>אינן</strong> נשמרות ולא ניתנות לזיהוי<br>'
+        +'✅ מאמת שהרשומה היא שלך — <strong style="color:#facc15">רק לצורך מסירת פרס</strong><br>'
+        +'🏆 מוסיף <strong style="color:#a3e635">50 נקודות בונוס</strong> — לוקח 10 שניות'
+        +'</div>'
+        +'<span class="flbl">4 ספרות אחרונות של תעודת זהות</span>'
+        +'<input id="inp-id4" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.55em;font-size:28px;text-align:center;padding:20px;border:2px solid rgba(163,230,53,.5)">'
+        +'<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox"><span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">מתחייב/ת להשתתף פעם אחת בלבד.</span></label>'
       )
-    + '<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
-    + '<button class="btn-s" onclick="skipId4()" style="color:rgba(255,255,255,.55);font-size:13px;border-color:rgba(255,255,255,.15)">המשך כבוחר לא מאומת</button>'
-    + '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.75);margin-top:14px;text-align:center;line-height:1.8;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">רשומה ללא אימות ת"ז תסומן כ<strong style="color:#f87171">"לא מאומתת"</strong> ולא תהיה זכאית לפרסים. &nbsp;|&nbsp; <a href="#terms" style="color:rgba(255,255,255,.5)">תנאי שימוש</a></div>'
-    + '</div>';
+    +'<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך +50 נקודות ›</button>'
+    +'<button class="btn-s" onclick="T.id4Skipped=true;go()" style="color:rgba(255,255,255,.5);font-size:13px">המשך כבוחר לא מאומת</button>'
+    +'</div>';
 }
 
 function bindId4Input() {
@@ -734,8 +733,8 @@ function s4() {
 }
 // ── FIX: bonus → step 5, skip → step 6 ──
 // ── bonus → step 6, skip → step 7 ──
-function goToBonus()   { step = 4; render(); }  // → s5 forecast
-function goToResults() { step = 6; render(); }  // → s7_sum summary (skip forecast)
+function goToBonus()   { step = 4; render(); }
+function goToResults() { step = 5; render(); }
 
 /* ── S5 BONUS — selects bound after render ── */
 function s5() {
@@ -788,7 +787,18 @@ function s5() {
         + PREV.map(function(o){ return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>'; }).join('')
         + '</select>'
       )
-    + btnP('המשך', 'go()')
+    + card(
+        '<div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:10px;text-align:right">📊 תוצאות אמת 2022</div>'
+        +R22.map(function(r){
+          return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
+            +'<div style="width:95px;font-size:11px;color:rgba(255,255,255,.85);text-align:right;flex-shrink:0">'+r.n+'</div>'
+            +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden">'
+            +'<div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee)"></div></div>'
+            +'<div style="font-size:11px;color:#facc15;width:20px;text-align:left">'+r.s+'</div></div>';
+        }).join('')
+        +'<div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px">מרצ ובל\"ד לא עברו את אחוז החסימה.</div>'
+      )
+    + btnP('המשך ›', 'go()')
     + '</div>';
 }
 
@@ -876,7 +886,7 @@ function s7_sum() {
       +'</table>'
     )
     
-    +'<button class="btn-p" onclick="go()" style="margin-top:13px">המשך לאימות ›</button>'
+    +'<div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:14px;line-height:1.7;text-align:center">תוצאות הסקר יפורסמו בקבוצת הוואטסאפ. ואל תשכח — ללכת להצביע! 🗳️</div>'
     +'</div>';
 }
 
@@ -950,9 +960,9 @@ function saveId4Final() {
 }
 
 function go()  {
-  step = Math.min(9, step + 1);
+  step = Math.min(8, step + 1);
   // כשנכנסים למסך מיקום - מאפסים denied/error ישן כדי להציג את מסך הבקשה מחדש
-  if (step === 7 && (T.locStatus === 'denied' || T.locStatus === 'error')) {
+  if (step === 7 && (T.locStatus === 'denied' || T.locStatus === 'error' || T.locStatus === 'skipped')) {
     T.locStatus = 'idle';
   }
   render();
