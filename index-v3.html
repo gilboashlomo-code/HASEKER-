@@ -190,7 +190,7 @@ function globalFooter() {
 }
 
 function render() {
-  var fns = [s0, s1, s2, s4, s5, s7_share, s_id4, s3, s7_sum];
+  var fns = [s0, s1, s2, s4, s5, s7_sum, s7_share, s_id4, s3];
   var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
   var nextBtn = step < 8 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
   document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
