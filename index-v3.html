@@ -530,6 +530,9 @@ function s2() {
         + '<input id="city-inp" class="city-inp" type="text" placeholder="לדוגמה: תל אביב, חיפה, ירושלים..." autocomplete="off" oninput="onCityInput(this.value)">'
         + '<div id="city-ac" class="city-ac"></div>'
         + '<span class="flbl">טלפון / WhatsApp <span style="font-weight:400;color:rgba(255,255,255,.6)">(לא חובה)</span></span>'
+        + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.85);line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:12px 14px;margin-bottom:10px">'
+        + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
+        + '</div>'
         + '<div style="display:flex;flex-direction:row;gap:8px;direction:ltr">'
         + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;direction:rtl;font-size:13px" onchange="onPhoneChange()">'
         + '<option value="">קידומת ▾</option>'
@@ -541,7 +544,7 @@ function s2() {
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">'
         + '📲 הצטרף/י לקבוצת הוואטסאפ — עדכונים שוטפים ביום הבחירות <strong style="color:#facc15">הרבה לפני כולם</strong> + הודעה אם זכית.'
         + '</div>'
-        + '<label class="consent" style="margin-top:12px"><input id="chk-agree-demo" type="checkbox" onchange="S.agree_demo=this.checked;updateSubmitBtn()"><span style="font-size:13px;color:rgba(255,255,255,.85)">אני מעל גיל 18 ובעל/ת זכות בחירה בישראל</span></label>'
+        + '<label class="consent" style="margin-top:12px"><input id="chk-agree-demo" type="checkbox" onchange="S.agree_demo=this.checked;updateSubmitBtn()"><span style="font-size:13px;color:rgba(255,255,255,.85)">אני מאשר/ת שאני מעל גיל 18, בעל/ת זכות בחירה בישראל, ומתחייב/ת להשתתף "בסקר של המדינה" פעם אחת בלבד.</span></label>'
       )
     + '<div id="demo-err" style="display:none;font-size:12px;color:#f87171;text-align:center;margin-bottom:8px;font-weight:700">נא להשלים את השדות החסרים: גיל, מגדר, ישוב ואישור גיל 18</div>'
     + '<button id="submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
