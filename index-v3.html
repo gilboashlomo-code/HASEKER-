@@ -289,7 +289,10 @@ function bindDetailInputs() {
 
 function updateSubmitBtn() {
   var btn = document.getElementById('submit-btn');
-  if (btn) btn.disabled = !(S.age && S.gender && S.city && S.agree_demo);
+  var ok = !!(S.age && S.gender && S.city && S.agree_demo);
+  if (btn) btn.disabled = !ok;
+  var err = document.getElementById('demo-err');
+  if (err) err.style.display = (!ok && (S.age || S.gender || S.city)) ? 'block' : 'none';
 }
 
 function bindBonusSelects() {
@@ -540,6 +543,7 @@ function s2() {
         + '</div>'
         + '<label class="consent" style="margin-top:12px"><input id="chk-agree-demo" type="checkbox" onchange="S.agree_demo=this.checked;updateSubmitBtn()"><span style="font-size:13px;color:rgba(255,255,255,.85)">אני מעל גיל 18 ובעל/ת זכות בחירה בישראל</span></label>'
       )
+    + '<div id="demo-err" style="display:none;font-size:12px;color:#f87171;text-align:center;margin-bottom:8px;font-weight:700">נא להשלים את השדות החסרים: גיל, מגדר, ישוב ואישור גיל 18</div>'
     + '<button id="submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
     + '</div>';
 }
@@ -823,9 +827,9 @@ function s7_sum() {
   var missingBtns = '';
   var missing = [];
   if (!T.id4 && T.id4Skipped) missing.push({lbl:'הוסף 4 ספרות ת"ז — ומוסיף 50 נקודות', step:2, note:'מאמת את הרשומה שלך'});
-  if (!T.phone) missing.push({lbl:'הוסף טלפון — לעדכונים ביום הבחירות', step:3, note:'לקבוצת הוואטסאפ'});
-  if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'השלם תחזיות מפלגות', step:6, note:'עד 60 נקודות'});
-  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:6, note:'40 נקודות'});
+  if (!T.phone) missing.push({lbl:'הוסף טלפון — לעדכונים ביום הבחירות', step:2, note:'לקבוצת הוואטסאפ'});
+  if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'השלם תחזיות מפלגות', step:4, note:'עד 60 נקודות'});
+  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:4, note:'40 נקודות'});
   if (missing.length > 0) {
     missingBtns = '<div style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:14px;padding:13px;margin-bottom:14px;text-align:right">'
       +'<div style="font-size:13px;font-weight:900;color:#a5b4fc;margin-bottom:10px">📝 שדות שלא מולאו — רוצה להשלים?</div>'
