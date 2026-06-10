@@ -734,8 +734,8 @@ function s4() {
 }
 // ── FIX: bonus → step 5, skip → step 6 ──
 // ── bonus → step 6, skip → step 7 ──
-function goToBonus()   { step = 6; render(); }
-function goToResults() { step = 7; render(); }
+function goToBonus()   { step = 4; render(); }  // → s5 forecast
+function goToResults() { step = 6; render(); }  // → s7_sum summary (skip forecast)
 
 /* ── S5 BONUS — selects bound after render ── */
 function s5() {
