@@ -2,10 +2,10 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>הסקר של המדינה ✓</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>הסקר של המדינה</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
     --indigo:#4f46e5;--indigo-light:#818cf8;--indigo-dark:#3730a3;
@@ -66,7 +66,7 @@
   .feat-sub{font-size:9px;color:rgba(255,255,255,.4);margin-top:2px}
   .cta{width:100%;padding:17px;border-radius:14px;background:var(--lime);color:#0f1a00;font-size:21px;font-weight:900;border:none;cursor:pointer;margin-bottom:13px;transition:transform .15s;letter-spacing:.2px;font-family:inherit}
   .cta:active{transform:scale(.98)}
-  .social-proof{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12px;color:rgba(255,255,255,.8);margin-bottom:20px}
+  .social-proof{display:flex;align-items:center;justify-content:center;gap:9px;font-size:12px;color:rgba(255,255,255,.55);margin-bottom:20px}
   .avatars{display:flex}
   .av{width:25px;height:25px;border-radius:50%;border:2px solid var(--bg);margin-left:-7px;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center}
   .prizes{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.28);border-radius:18px;padding:14px 13px;margin-bottom:18px}
@@ -85,7 +85,7 @@
   .how-arr{font-size:16px;color:rgba(255,255,255,.25);margin-top:13px;flex-shrink:0}
   .trust{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:14px;padding:13px 15px}
   .trust-left{display:flex;align-items:center;gap:9px}
-  .trust-txt{font-size:11px;line-height:1.55;color:rgba(255,255,255,.88)}
+  .trust-txt{font-size:11px;line-height:1.55;color:rgba(255,255,255,.65)}
   .trust-right{text-align:left}
   .stars{color:#fbbf24;font-size:14px;letter-spacing:1px}
   .rating{font-size:19px;font-weight:900;color:#fbbf24;line-height:1}
@@ -99,13 +99,13 @@
   .pill-y{background:var(--yellow);color:#1a1000}
   .pill-f{background:var(--purple);color:#1a0030}
   .sh2{font-size:26px;font-weight:900;line-height:1.2;margin-bottom:7px}
-  .ssub{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:15px;line-height:1.6}
+  .ssub{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:15px;line-height:1.6}
   .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:15px 16px;margin-bottom:10px}
   .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
   .pcard{border-radius:14px;border:1px solid var(--border);background:var(--card);color:#fff;font-size:12px;font-weight:900;padding:13px 9px;min-height:64px;text-align:right;line-height:1.4;cursor:pointer;width:100%;transition:all .15s;font-family:inherit}
   .pcard:hover{background:rgba(255,255,255,.12)}
   .pcard.on{background:var(--yellow);border-color:var(--yellow);color:#1a1000}
-  .flbl{font-size:11px;font-weight:900;color:rgba(255,255,255,.85);margin-bottom:7px;display:block;margin-top:13px}
+  .flbl{font-size:11px;font-weight:900;color:rgba(255,255,255,.6);margin-bottom:7px;display:block;margin-top:13px}
   .flbl:first-child{margin-top:0}
   .chip{border-radius:99px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff;font-size:12px;font-weight:900;padding:7px 13px;cursor:pointer;transition:all .15s;font-family:inherit}
   .chip.on{background:var(--lime-dark);border-color:var(--lime-dark);color:#0f2000}
@@ -116,9 +116,9 @@
   .inp:focus{border-color:var(--lime-dark)}
   .fsel{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.18);background:#080c1a;color:#fff;font-size:13px;padding:12px 13px;outline:none;appearance:none;margin-top:5px;font-family:inherit}
   .fsel:focus{border-color:var(--lime-dark)}
-  .note{border-radius:11px;border:1px solid rgba(34,211,238,.15);background:rgba(34,211,238,.07);padding:9px 12px;font-size:11px;color:rgba(255,255,255,.85);line-height:1.6;margin:9px 0}
-  .bnote{border-radius:11px;border:1px solid rgba(250,204,21,.2);background:rgba(250,204,21,.07);padding:9px 12px;font-size:11px;color:rgba(255,255,255,.9);line-height:1.6;margin-bottom:9px}
-  .consent{display:flex;align-items:flex-start;gap:10px;background:rgba(0,0,0,.2);border-radius:12px;padding:12px;font-size:11px;line-height:1.75;color:rgba(255,255,255,.88);margin-top:11px;cursor:pointer}
+  .note{border-radius:11px;border:1px solid rgba(34,211,238,.15);background:rgba(34,211,238,.07);padding:9px 12px;font-size:11px;color:rgba(255,255,255,.6);line-height:1.6;margin:9px 0}
+  .bnote{border-radius:11px;border:1px solid rgba(250,204,21,.2);background:rgba(250,204,21,.07);padding:9px 12px;font-size:11px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:9px}
+  .consent{display:flex;align-items:flex-start;gap:10px;background:rgba(0,0,0,.2);border-radius:12px;padding:12px;font-size:11px;line-height:1.75;color:rgba(255,255,255,.65);margin-top:11px;cursor:pointer}
   .consent input{margin-top:3px;accent-color:var(--lime-dark);width:16px;height:16px;flex-shrink:0}
   .bigicon{width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:44px;margin:10px auto 16px}
   .bi-g{background:linear-gradient(135deg,var(--lime-dark),var(--cyan))}
@@ -134,23 +134,16 @@
 .back-btn:active{background:rgba(255,255,255,.2)}
 .btn-s{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:15px;font-weight:900;cursor:pointer;margin-top:9px;font-family:inherit;transition:transform .15s}
   .btn-s:active{transform:scale(.98)}
-
-.city-inp{width:100%;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);color:#fff;font-size:15px;font-family:inherit;direction:rtl;margin-bottom:4px;box-sizing:border-box}
-.city-inp:focus{outline:none;border-color:rgba(163,230,53,.5)}
-.city-inp::placeholder{color:rgba(255,255,255,.3)}
-.city-ac{background:#1a1640;border:1px solid rgba(99,102,241,.4);border-radius:10px;max-height:160px;overflow-y:auto;margin-bottom:8px;display:none}
-.city-ac div{padding:9px 14px;font-size:13px;cursor:pointer;border-bottom:1px solid rgba(255,255,255,.06)}
-.city-ac div:hover{background:rgba(163,230,53,.1);color:#a3e635}
-@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
 var step = 0;
-var S = {party:'', age:'', gender:'', city:'', agree_demo:false, f1:'', f2:'', f3:'', prev:'', agree_id4:false};
-var T = {phone:'', phonePrefix:'', id4:'', id4Skipped:false, lat:'', lng:'', locOk:false, locStatus:'idle'};
-var COUNT=0, CTIMER=null, LIVE_COUNT=0, LIVE_TIMER=null;
+// State for non-input fields (re-rendered safely)
+var S = {party:'', age:'', gender:'', city:'', agree:true, f1:'', f2:'', f3:'', prev:''};
+// Separate state for text inputs - NOT touched by render()
+var T = {id4:'', id4Skipped:false, phone:'', lat:'', lng:'', locOk:false, locStatus:'idle'};
 
 var PARTIES = ["הליכוד (נתניהו)","ביחד (בנט ולפיד)","ישר (איזנקוט)","עוצמה יהודית (בן גביר)","ש״ס (דרעי)","ישראל ביתנו (ליברמן)","הדמוקרטים (יאיר גולן)","יהדות התורה","רע״ם","חד״ש-תע״ל","הציונות הדתית (סמוטריץ׳)","בל״ד","כחול לבן (גנץ)","מילואימניקים (הנדל)","לא החלטתי","לא אצביע"];
 var FORECAST = ["הליכוד","ביחד","ישר","עוצמה יהודית","ש״ס","ישראל ביתנו","הדמוקרטים","יהדות התורה","רע״ם","חד״ש-תע״ל","הציונות הדתית"];
@@ -161,402 +154,812 @@ var CITIES = ["אבו גוש","אבו סנאן","אום אל-פחם","אופקי
 var R22 = [{n:"הליכוד",s:32},{n:"יש עתיד",s:24},{n:"הציונות הדתית ועוצמה יהודית",s:14},{n:"המחנה הממלכתי",s:12},{n:"ש״ס",s:11},{n:"יהדות התורה",s:7},{n:"ישראל ביתנו",s:6},{n:"רע״ם",s:5},{n:"חד״ש-תע״ל",s:5},{n:"העבודה",s:4},{n:"מרצ",s:0},{n:"בל״ד",s:0},{n:"כלכלה",s:0}];
 var LIVE = [{n:"הליכוד",s:32,c:"#818cf8"},{n:"יש עתיד",s:24,c:"#22d3ee"},{n:"הציונות הדתית",s:14,c:"#4ade80"},{n:"המחנה הממלכתי",s:12,c:"#a3e635"},{n:"ש״ס",s:11,c:"#fb923c"},{n:"יהדות התורה",s:7,c:"#c084fc"},{n:"ישראל ביתנו",s:6,c:"#60a5fa"},{n:"רע״ם",s:5,c:"#34d399"},{n:"חד״ש-תע״ל",s:5,c:"#f43f5e"},{n:"העבודה",s:4,c:"#f472b6"},{n:"מרצ",s:0,c:"#475569"}];
 
-// ── HELPERS ──
-function isInAppBrowser(){var ua=navigator.userAgent||'';return /FBAN|FBAV|Instagram|Line|Twitter|Snapchat/.test(ua);}
-function card(i,e){return '<div class="card"'+(e?' style="'+e+'"':'')+'>'+i+'</div>';}
-function btnP(t,fn){return '<button class="btn-p" onclick="'+fn+'">'+t+'</button>';}
-function btnS(t,fn){return '<button class="btn-s" onclick="'+fn+'">'+t+'</button>';}
-
-// ── NAV ──
-function go(){
-  step=Math.min(8,step+1);
-  // דלג על מיקום אם כבר טופל
-  if(step===7&&(T.locOk||T.locStatus==='ok'||T.locStatus==='denied'||T.locStatus==='skipped')){step=8;}
-  render();
-}
-function back(){if(step>0){step--;render();}}
-function ss(k,v){S[k]=v;render();}
-function skipId4(){T.id4Skipped=true;go();}
-function skipLoc(){T.locStatus='skipped';go();}
-function rst(){
-  step=0;
-  S={party:'',age:'',gender:'',city:'',agree_demo:false,f1:'',f2:'',f3:'',prev:'',agree_id4:false};
-  T={phone:'',phonePrefix:'',id4:'',id4Skipped:false,lat:'',lng:'',locOk:false,locStatus:'idle'};
-  render();
+function isOk() {
+  return S.age && S.gender && S.city && /^\d{4}$/.test(T.id4) && T.phone.replace(/\D/g,'').length >= 9 && S.agree;
 }
 
-// ── HEADER ──
-function hdr(){
-  if(step===0)return '';
-  var prog=Math.round((step/8)*100);
+function card(i, e) { return '<div class="card"' + (e ? ' style="' + e + '"' : '') + '>' + i + '</div>'; }
+function btnP(t, fn, dis) { return '<button class="btn-p"' + (dis ? ' disabled' : '') + ' onclick="' + fn + '">' + t + ' ›</button>'; }
+function btnSec(t, fn) { return '<button class="btn-s" onclick="' + fn + '">' + t + '</button>'; }
+
+function hdr() {
+  if (step === 0) return '';
+  var prog = Math.round(((Math.min(step, 7) + 1) / 8) * 100);
   return '<div class="hdr">'
-    +'<div style="display:flex;align-items:center;gap:7px"><div class="hdr-logo">הסקר של המדינה ✓</div><span style="font-size:20px">🇮🇱</span></div>'
-    +'<div style="display:flex;align-items:center;gap:8px">'
-    +'<span style="font-size:11px;color:rgba(255,255,255,.6)">'+step+' / 8</span>'
-    +'<div class="hdr-live"><div class="hdr-dot"></div><span class="hdr-cnt">—</span></div>'
-    +'</div></div>'
-    +'<div class="prog-wrap"><div class="prog-fill" style="width:'+prog+'%"></div></div>';
+    + '<div style="display:flex;align-items:center;gap:7px"><div class="hdr-logo">הסקר של המדינה ✓</div><span style="font-size:22px">🇮🇱</span></div>'
+    + '<div style="display:flex;align-items:center;gap:8px">'
+    + '<span style="font-size:11px;color:rgba(255,255,255,.45)">' + (Math.min(step, 7) + 1) + ' / 8</span>'
+    + '<div class="hdr-live"><div class="hdr-dot"></div><span class="hdr-cnt">—</span></div>'
+    + '</div></div>'
+    + '<div class="prog-wrap"><div class="prog-fill" style="width:' + prog + '%"></div></div>';
 }
 
-// ── FOOTER ──
-function globalFooter(){
-  return '<div style="text-align:center;padding:18px 16px 32px;font-size:11px;color:rgba(255,255,255,.6);line-height:2.1;border-top:1px solid rgba(255,255,255,.15);margin-top:12px;background:rgba(0,0,0,.2)">'
-    +'<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:4px">™ הסקר של המדינה® &nbsp;·&nbsp; VoterTag® &nbsp;·&nbsp; RTV – Real Time Voter®</div>'
-    +'<div>Patent Pending &nbsp;·&nbsp; כל הזכויות שמורות © 2026 &nbsp;·&nbsp; S. Gilboa</div>'
-    +'<a href="mailto:team.together.office@gmail.com" style="color:rgba(163,230,53,.7);text-decoration:none">team.together.office@gmail.com</a>'
-    +' &nbsp;·&nbsp; <a href="#terms" style="color:rgba(255,255,255,.45);text-decoration:underline">תנאי שימוש</a>'
-    +'</div>';
+function globalFooter() {
+  return '<div style="text-align:center;padding:18px 16px 28px;font-size:10px;color:rgba(255,255,255,.25);line-height:1.9;border-top:1px solid rgba(255,255,255,.06);margin-top:8px">'
+    + '™ הסקר של המדינה · Patent Pending · כל הזכויות שמורות © 2026<br>'
+    + 'טכנולוגיית VoterTag® · Shlomo Gilboa<br>'
+    + '<a href="mailto:team.together.office@gmail.com" style="color:rgba(255,255,255,.35);text-decoration:none">team.together.office@gmail.com</a>'
+    + ' &nbsp;·&nbsp; <a href="#terms" style="color:rgba(255,255,255,.3);text-decoration:underline">תנאי שימוש</a>'
+    + '</div>';
 }
 
-// ── S0: נחיתה ──
-function s0(){
-  return '<div class="spage sc" style="text-align:center">'
-    +'<div style="font-size:52px;margin-bottom:8px">🇮🇱</div>'
-    +'<div class="sh2" style="font-size:26px">הסקר של המדינה</div>'
-    +'<div style="font-size:17px;font-weight:900;color:#d4f542;margin-bottom:8px">אם הבחירות היום — למי היית מצביע?</div>'
-    +'<div style="font-size:14px;color:rgba(255,255,255,.85);margin-bottom:16px;line-height:1.8">השתתפ/י במשחק התחזיות הגדול בישראל<br>וזכה/י בפרסים שווים!</div>'
-    +card('<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center">'
-      +'<div><div style="font-size:22px">🏆</div><div style="font-size:10px;font-weight:900;color:#facc15">פרסים</div></div>'
-      +'<div><div style="font-size:22px">⚡</div><div style="font-size:10px;font-weight:900;color:#a3e635">3 דקות</div></div>'
-      +'<div><div style="font-size:22px">🔒</div><div style="font-size:10px;font-weight:900;color:#22d3ee">אנונימי</div></div>'
-      +'<div><div style="font-size:22px">🎁</div><div style="font-size:10px;font-weight:900;color:#c084fc">חינם</div></div>'
-      +'</div>')
-    +'<button class="btn-p" onclick="go()">מתחילים עכשיו ›</button>'
-    +'<div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:10px"><span id="pcount">4,847</span> כבר השתתפו · <span id="live-now">—</span> עכשיו</div>'
-    +'</div>';
+function render() {
+  var fns = [s0, s1, s2, s4, s5, s7_sum, s_id4, s3, s7_share];
+  var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
+  var nextBtn = step < 8 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
+  document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
+  window.scrollTo(0, 0);
+  if (step === 6) bindId4Input();
+  if (step === 2) bindDetailInputs();
+  if (step === 4) bindBonusSelects();
+  if (step === 0) startCount();
 }
 
-// ── S1: הצבעה ──
-function s1(){
-  var btns=PARTIES.map(function(p){
-    var cls=S.party===p?'chip on':'chip';
-    return '<button class="'+cls+'" data-p="'+p+'" onclick="S.party=this.dataset.p;setTimeout(go,300)">'+p+'</button>';
-  }).join('');
-  return '<div class="spage sc">'
-    +'<div class="sh2">אם הבחירות היו היום —<br>למי היית מצביע?</div>'
-    +'<div class="ssub" style="color:rgba(255,255,255,.85)">בחירה אחת. עובר אוטומטית.</div>'
-    +card('<div style="display:flex;flex-wrap:wrap;gap:7px">'+btns+'</div>')
-    +'</div>';
+var COUNT = 0, CTIMER = null;
+var LIVE_COUNT = 0, LIVE_TIMER = null;
+
+function getHourRange() {
+  var h = new Date().getHours();
+  if (h >= 0  && h < 6)  return {min:3,   max:15};
+  if (h >= 6  && h < 9)  return {min:15,  max:80};
+  if (h >= 9  && h < 14) return {min:80,  max:400};
+  if (h >= 14 && h < 18) return {min:200, max:600};
+  if (h >= 18 && h < 23) return {min:400, max:850};
+  return {min:50, max:200};
 }
 
-// ── S2: דמוגרפיה + טלפון ──
-function s2(){
-  var ages=AGES.map(function(a){
-    return '<button class="'+(S.age===a?'chip on':'chip')+'" data-v="'+a+'" onclick="S.age=this.dataset.v;updateDemoBtn()">'+a+'</button>';
-  }).join('');
-  var gens=GENDERS.map(function(g){
-    var safe=encodeURIComponent(g);
-    return '<button class="'+(S.gender===g?'gchip on':'gchip')+'" data-v="'+safe+'" onclick="S.gender=decodeURIComponent(this.dataset.v);updateDemoBtn()">'+g+'</button>';
-  }).join('');
-  return '<div class="spage sc">'
-    +'<span class="pill pill-c">דיוק הסקר</span>'
-    +'<div class="sh2">כמה פרטים כלליים</div>'
-    +'<div class="ssub" style="color:rgba(255,255,255,.85)">לחיתוך דמוגרפי מדויק. הכל אנונימי.</div>'
-    +card(
-      '<span class="flbl" style="margin-top:0">תחום גיל</span>'
-      +'<div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px">'+ages+'</div>'
-      +'<span class="flbl">מגדר</span>'
-      +'<div style="display:grid;gap:7px;margin-bottom:13px">'+gens+'</div>'
-      +'<span class="flbl">ישוב — הקלד/י שם</span>'
-      +'<input id="city-inp" class="city-inp" type="text" placeholder="לדוגמה: תל אביב, חיפה..." autocomplete="off" oninput="onCityInput(this.value)">'
-      +'<div id="city-ac" class="city-ac"></div>'
-      +'<span class="flbl">טלפון / WhatsApp <span style="font-weight:400;color:rgba(255,255,255,.5)">(לא חובה)</span></span>'
-      +'<div style="display:flex;flex-direction:row;gap:8px;direction:ltr">'
-      +'<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;direction:rtl;font-size:13px" onchange="onPhoneChange()">'
-      +'<option value="">קידומת ▾</option>'
-      +['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
-      +'</select>'
-      +'<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;font-size:16px;text-align:center;letter-spacing:.08em;direction:ltr" oninput="onPhoneChange()">'
-      +'</div>'
-      +'<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:5px;text-align:center">קידומת משמאל · 7 ספרות מימין</div>'
-      +'<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">'
-      +'📲 הצטרף/י לקבוצת הוואטסאפ — עדכונים שוטפים ביום הבחירות <strong style="color:#facc15">הרבה לפני כולם</strong> + הודעה אם זכית.'
-      +'</div>'
-      +'<label class="consent" style="margin-top:12px"><input id="chk-demo" type="checkbox" onchange="S.agree_demo=this.checked;updateDemoBtn()"><span style="font-size:13px;color:rgba(255,255,255,.85)">אני מעל גיל 18 ובעל/ת זכות בחירה בישראל</span></label>'
-    )
-    +'<button id="demo-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
-    +'</div>';
-}
-
-function onCityInput(v){
-  S.city=v;updateDemoBtn();
-  var ac=document.getElementById('city-ac');
-  if(!ac)return;
-  if(v.length<1){ac.style.display='none';return;}
-  var m=CITIES.filter(function(c){return c.indexOf(v)!==-1;}).slice(0,6);
-  if(!m.length){ac.style.display='none';return;}
-  ac.innerHTML=m.map(function(c){return '<div data-c="'+c+'" onclick="selectCity(this.dataset.c)">'+c+'</div>';}).join('');
-  ac.style.display='block';
-}
-function selectCity(c){
-  S.city=c;
-  var i=document.getElementById('city-inp');if(i)i.value=c;
-  var ac=document.getElementById('city-ac');if(ac)ac.style.display='none';
-  updateDemoBtn();
-}
-function onPhoneChange(){
-  var p=(document.getElementById('sel-prefix')||{}).value||'';
-  var n=((document.getElementById('inp-phone')||{}).value||'').replace(/\D/g,'').slice(0,7);
-  var inp=document.getElementById('inp-phone');if(inp)inp.value=n;
-  T.phonePrefix=p; T.phone=(p&&n.length===7)?p+n:'';
-}
-function updateDemoBtn(){
-  var b=document.getElementById('demo-btn');
-  if(b)b.disabled=!(S.age&&S.gender&&S.city&&S.agree_demo);
-}
-function bindDemoInputs(){
-  var ci=document.getElementById('city-inp');if(ci)ci.value=S.city||'';
-  var pr=document.getElementById('sel-prefix');if(pr&&T.phonePrefix)pr.value=T.phonePrefix;
-  var ph=document.getElementById('inp-phone');if(ph&&T.phone)ph.value=T.phone.slice(T.phonePrefix.length||3);
-  var cb=document.getElementById('chk-demo');if(cb)cb.checked=!!S.agree_demo;
-  updateDemoBtn();
-}
-
-// ── S3: הצלחה ──
-function s3(){
-  return '<div class="spage sc" style="text-align:center">'
-    +'<div class="bigicon bi-g">✓</div>'
-    +'<div class="sh2">הצטרפת בהצלחה!</div>'
-    +'<div style="font-size:18px;font-weight:900;color:#a3e635;margin-bottom:12px">הסקר של המדינה 🇮🇱</div>'
-    +card('<div style="text-align:right">'
-      +'<div style="font-size:16px;font-weight:900;color:#facc15;margin-bottom:8px">עכשיו השלב החשוב:</div>'
-      +'<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.9;margin-bottom:8px">תחזית הבחירות שלך — רוצה להוכיח שאתה מכיר את ישראל הפוליטית?</div>'
-      +'<div style="font-size:13px;color:rgba(255,255,255,.75);line-height:1.7">נחש נכון — תזכה. הזוכים נקבעים לפי תוצאות האמת הסופיות. 🏆</div>'
-      +'</div>')
-    +btnP('לתחזית הבחירות שלי ›','go()')
-    +btnS('דלג לסיכום','step=5;render()')
-    +'</div>';
-}
-
-// ── S4: תחזית ──
-function s4(){
-  function sel(val,opts,id,lbl,pts,excl){
-    var os=opts.map(function(o){
-      var d=excl&&excl.indexOf(o)!==-1&&o!==val;
-      return '<option value="'+o+'"'+(val===o?' selected':'')+(d?' disabled':'')+'>'+(d?'✗ ':'')+o+'</option>';
-    }).join('');
-    return '<div style="margin-bottom:6px">'
-      +'<span class="flbl" style="display:flex;justify-content:space-between"><span>'+lbl+'</span>'
-      +'<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 9px;font-size:10px;color:#facc15">'+pts+'</span></span>'
-      +'<select id="sel-'+id+'" class="fsel"><option value="">בחר/י</option>'+os+'</select></div>';
+function startCount() {
+  // ── מונה משתתפים כולל ──
+  if (COUNT === 0) {
+    var base = 4847;
+    try { var st = parseInt(localStorage.getItem('hsk_c') || '0', 10); if (st > base) base = st; } catch (e) {}
+    COUNT = base;
   }
-  return '<div class="spage sc">'
-    +'<span class="pill pill-f">תחזית הבחירות</span>'
-    +'<div class="sh2">תחזית הבחירות שלך</div>'
-    +'<div class="ssub" style="color:rgba(255,255,255,.85)">לתוצאות <strong style="color:#facc15">האמת הסופיות</strong>. הזוכים נקבעים לפי הספירה הרשמית.</div>'
-    +card(
-      '<div style="font-size:11px;color:rgba(255,255,255,.7);margin-bottom:10px">סה"כ אפשרי: <strong style="color:#facc15">100 נק.</strong></div>'
-      +sel(S.f1,FORECAST,'f1','מי תהיה המפלגה הגדולה?','30 נק.',[S.f2,S.f3])
-      +sel(S.f2,FORECAST,'f2','מי תהיה המפלגה השנייה?','20 נק.',[S.f1,S.f3])
-      +sel(S.f3,FORECAST,'f3','מי תהיה המפלגה השלישית?','10 נק.',[S.f1,S.f2])
-      +'<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">'
-      +'<span class="flbl" style="margin:0">למי הצבעת ב-2022? — 40 נק.</span>'
-      +'<button onclick="showP22()" style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:99px;color:#a5b4fc;font-size:10px;font-weight:900;padding:3px 10px;cursor:pointer;font-family:inherit">תוצאות אמת 2022 ›</button>'
-      +'</div>'
-      +'<select id="sel-prev" class="fsel" style="margin-top:6px"><option value="">בחר/י</option>'
-      +PREV.map(function(o){return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>';}).join('')
-      +'</select>'
-      +'<div id="p22-box" style="display:none;margin-top:10px;background:rgba(0,0,0,.3);border-radius:10px;padding:10px">'
-      +'<div style="font-size:11px;color:#a3e635;font-weight:900;margin-bottom:8px">📊 תוצאות אמת 2022</div>'
-      +R22.map(function(r){
-        return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
-          +'<div style="width:90px;font-size:11px;text-align:right">'+r.n+'</div>'
-          +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden">'
-          +'<div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee)"></div></div>'
-          +'<div style="font-size:11px;color:#facc15;width:20px">'+r.s+'</div></div>';
-      }).join('')
-      +'<button onclick="hideP22()" style="margin-top:6px;background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);font-size:11px;padding:4px 10px;border-radius:8px;cursor:pointer;font-family:inherit">סגור</button>'
-      +'</div>'
-    )
-    +btnP('המשך ›','go()')
-    +'</div>';
+  var el = document.getElementById('pcount');
+  if (el) el.textContent = COUNT.toLocaleString('he-IL');
+  if (!CTIMER) {
+    // ~3 משתתפים בדקה ביום, ~0.5 בלילה
+    var h = new Date().getHours();
+    var rateMs = (h >= 9 && h < 23) ? 20000 : 120000;
+    CTIMER = setInterval(function() {
+      COUNT += 1;
+      try { localStorage.setItem('hsk_c', COUNT); } catch(e) {}
+      var e2 = document.getElementById('pcount');
+      if (e2) e2.textContent = COUNT.toLocaleString('he-IL');
+    }, rateMs);
+  }
+
+  // ── מונה גולשים חי (לפי שעה) ──
+  if (LIVE_COUNT === 0) {
+    var r = getHourRange();
+    LIVE_COUNT = r.min + Math.floor(Math.random() * (r.max - r.min));
+  }
+  function updateLive() {
+    var r = getHourRange();
+    var step = Math.floor(Math.random() * 8) - 3; // ±3
+    LIVE_COUNT = Math.max(r.min, Math.min(r.max, LIVE_COUNT + step));
+    // עדכון בהדר
+    var hdrEl = document.querySelector('.hdr-cnt');
+    if (hdrEl) hdrEl.textContent = LIVE_COUNT.toLocaleString('he-IL');
+    // עדכון בנחיתה
+    var landEl = document.getElementById('live-now');
+    if (landEl) landEl.textContent = LIVE_COUNT.toLocaleString('he-IL');
+  }
+  updateLive();
+  if (!LIVE_TIMER) {
+    LIVE_TIMER = setInterval(updateLive, 45000);
+  }
 }
-function showP22(){var e=document.getElementById('p22-box');if(e)e.style.display='block';}
-function hideP22(){var e=document.getElementById('p22-box');if(e)e.style.display='none';}
-function bindForecastSelects(){
-  ['f1','f2','f3','prev'].forEach(function(k){
-    var el=document.getElementById('sel-'+k);
-    if(el){el.value=S[k]||'';el.addEventListener('change',function(){S[k]=this.value;if(k!=='prev')render();});}
+
+// ── BIND TEXT INPUTS — update T only, no render() ──
+function bindDetailInputs() {
+  // שדה הטלפון מחובר ישירות ב-HTML (oninput), רק משחזרים ערך
+  var inp = document.getElementById('inp-phone');
+  if (inp && T.phone) inp.value = T.phone.slice(3); // 7 ספרות בלי קידומת
+  updateSubmitBtn();
+}
+
+function updateSubmitBtn() {
+  var btn = document.getElementById('submit-btn');
+  if (btn) btn.disabled = !(S.age && S.gender && S.city);
+}
+
+function bindBonusSelects() {
+  ['f1','f2','f3','prev'].forEach(function(k) {
+    var el = document.getElementById('sel-' + k);
+    if (el) el.addEventListener('change', function() {
+      S[k] = this.value;
+      // re-render רק לשלושת שדות הניחוש כדי לעדכן disabled
+      if (k !== 'prev') render();
+    });
   });
 }
 
-// ── S5: הצטרפת למשחק — סיכום ──
-function s5(){
-  function row(n,l,v,c){
-    return '<tr style="border-bottom:1px solid rgba(255,255,255,.07)">'
-      +'<td style="padding:9px 0 9px 8px;vertical-align:middle;width:45%">'
-      +'<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:rgba(163,230,53,.15);border:1px solid rgba(163,230,53,.3);border-radius:5px;font-size:10px;font-weight:900;color:#a3e635;margin-left:5px">'+n+'</span>'
-      +'<span style="font-size:12px;color:rgba(255,255,255,.8)">'+l+'</span></td>'
-      +'<td style="padding:9px 0;font-size:13px;font-weight:900;color:'+(c||'#fff')+';text-align:left">'+(v||'—')+'</td></tr>';
+/* ── S0 LANDING ── */
+function s0() {
+  var cols = ['#d4f542','#6366f1','#f97316','#22d3ee','#f43f5e','#a855f7','#fbbf24','#34d399','#ec4899','#10b981'];
+  var conf = '';
+  for (var i = 0; i < 35; i++) {
+    var l = Math.floor(Math.random()*100), del = (Math.random()*4).toFixed(2), dur = (2.5+Math.random()*4).toFixed(1);
+    var w = Math.floor(5+Math.random()*9), h = Math.floor(10+Math.random()*18), c = cols[i%cols.length];
+    conf += '<div class="cd" style="left:'+l+'%;width:'+w+'px;height:'+h+'px;background:'+c+';animation-duration:'+dur+'s;animation-delay:'+del+'s;top:-30px;opacity:.9"></div>';
   }
+
+  // Phone mockup bars — ממוצע הסקרים המשוקלל (סקר הסקרים) — כל המפלגות
+  var phoneBars = [
+    {n:'הליכוד',s:24.0,c:'#818cf8'},{n:'ביחד',s:22.3,c:'#22d3ee'},
+    {n:'ישר',s:16.7,c:'#38bdf8'},{n:'עוצמה יהודית',s:9.3,c:'#f97316'},
+    {n:'הדמוקרטים',s:9.3,c:'#fb7185'},{n:"ש״ס",s:9.0,c:'#fb923c'},
+    {n:'ישראל ביתנו',s:8.3,c:'#60a5fa'},{n:'יהדות התורה',s:7.0,c:'#c084fc'},
+    {n:"חד״ש-תע״ל",s:5.7,c:'#f43f5e'},{n:"רע״ם",s:4.3,c:'#34d399'},
+    {n:'הציונות הדתית',s:4.0,c:'#4ade80'},
+    {n:'בל״ד',s:0,c:'#475569',p:'2.2%'},{n:'כחול לבן',s:0,c:'#475569',p:'1.8%'},
+    {n:'מילואימניקים',s:0,c:'#475569',p:'1.6%'}
+  ].map(function(r){
+    var val = r.p ? '<span style="color:rgba(255,255,255,.4)">'+r.p+'</span>' : r.s.toFixed(1);
+    var w = r.p ? 3 : Math.round(r.s/24*90);
+    return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">'
+      +'<div style="width:74px;font-size:9.5px;font-weight:700;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+r.n+'</div>'
+      +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden"><div style="height:100%;width:'+w+'%;background:'+r.c+';border-radius:99px"></div></div>'
+      +'<div style="width:30px;font-size:9.5px;font-weight:900;color:rgba(255,255,255,.75);text-align:left">'+val+'</div>'
+      +'</div>';
+  }).join('');
+
+  return '<div class="land sc" style="background:linear-gradient(160deg,#0e0730 0%,#130a3a 30%,#0a0d2e 60%,#060d24 100%);padding:0 0 24px">'
+    +'<div class="confetti">'+conf+'</div>'
+    +'<div style="position:relative;z-index:1">'
+
+    // ── TOP BAR: logo left + flag center + live counter right ──
+    +'<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px 12px">'
+      +'<div style="background:rgba(30,20,80,.8);border:1.5px solid #5b50e0;border-radius:10px;padding:6px 11px;display:flex;align-items:center;gap:5px">'
+        +'<span style="font-size:13px;font-weight:900;color:#c7d2fe">הסקר</span>'
+        +'<span style="font-size:10px;font-weight:700;color:#a5b4fc">של המדינה</span>'
+        +'<div style="width:18px;height:18px;background:#22c55e;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff">✓</div>'
+      +'</div>'
+      +'<span style="font-size:32px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))">🇮🇱</span>'
+      +'<div style="background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);border-radius:99px;padding:5px 12px;display:flex;align-items:center;gap:5px">'
+        +'<div class="hdr-dot"></div>'
+        +'<div><div id="live-now" style="font-size:14px;font-weight:900;color:#86efac;line-height:1">—</div><div style="font-size:9px;color:rgba(255,255,255,.45)">משתתפים עכשיו</div></div>'
+      +'</div>'
+    +'</div>'
+
+    // ── HERO: headline LEFT + phone mockup RIGHT ──
+    +'<div style="display:flex;align-items:flex-start;gap:0;padding:0 14px">'
+
+      // Left: headline + tagline
+      +'<div style="flex:1;padding-left:8px">'
+        +'<div style="font-size:38px;font-weight:900;line-height:1.0;margin-bottom:8px;text-shadow:0 2px 20px rgba(0,0,0,.6)">'
+          +'<span style="color:#fff">אם הבחירות</span><br>'
+          +'<span style="color:#fff">היו היום</span><br>'
+          +'<span style="color:#fff">— </span><span style="color:#d4f542">למי היית</span><br>'
+          +'<span style="color:#d4f542">מצביע?</span>'
+        +'</div>'
+        +'<div style="font-size:13px;color:rgba(255,255,255,.85);font-weight:700;margin-bottom:2px">השתתפו במשחק התחזיות הגדול בישראל</div>'
+        +'<div style="font-size:13px;color:#d4f542;font-weight:900;margin-bottom:14px">וזכו בפרסים שווים!</div>'
+      +'</div>'
+
+      // Right: phone mockup
+      +'<div style="width:170px;flex-shrink:0">'
+        +'<div style="background:linear-gradient(160deg,#1a1560,#0c0b2e);border:2px solid rgba(120,100,255,.6);border-radius:22px;padding:10px;box-shadow:0 0 30px rgba(99,102,241,.4)">'
+          +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">'
+            +'<div style="background:#6366f1;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:900;display:flex;align-items:center;gap:3px"><div style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pu 1s infinite"></div>מעודכן</div>'
+            +'<span style="font-size:11px;font-weight:900;color:#e0e7ff">ממוצע משוקלל</span>'
+          +'</div>'
+          +'<div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:8px;text-align:center">מתעדכן כל יום ג׳ בשעה 03:00</div>'
+          +phoneBars
+        +'</div>'
+      +'</div>'
+    +'</div>'
+
+    // ── FEAT BADGES: 4 icons ──
+    +'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:14px 14px 0">'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🛡</div><div style="font-size:13px;font-weight:900">חינם</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">לגמרי</div></div>'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🔒</div><div style="font-size:13px;font-weight:900">100%</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">אנונימי</div></div>'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">⚡</div><div style="font-size:13px;font-weight:900">3 דקות</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">בלבד</div></div>'
+      +'<div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:10px 5px;text-align:center"><div style="font-size:22px;margin-bottom:5px">🎁</div><div style="font-size:13px;font-weight:900">מלא</div><div style="font-size:11px;color:rgba(255,255,255,.55);margin-top:2px">פרסים</div></div>'
+    +'</div>'
+
+    // ── CTA BUTTON ──
+    +'<div style="padding:16px 14px 4px">'
+      +'<button class="cta" onclick="go()" style="font-size:22px;padding:18px;border-radius:16px;box-shadow:0 4px 30px rgba(212,245,66,.35)">מתחילים עכשיו ›</button>'
+    +'</div>'
+
+    // ── SOCIAL PROOF ──
+    +'<div style="display:flex;align-items:center;justify-content:center;gap:9px;font-size:12px;color:rgba(255,255,255,.55);padding:8px 14px 14px">'
+      +'<div style="display:flex"><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;margin-left:-7px;background:#6366f1;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">א</div><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;margin-left:-7px;background:#f97316;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">מ</div><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;margin-left:-7px;background:#22d3ee;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">ד</div><div style="width:25px;height:25px;border-radius:50%;border:2px solid #0d0a2e;background:#a855f7;font-size:10px;font-weight:900;display:flex;align-items:center;justify-content:center">ר</div></div>'
+      +'<span><strong id="pcount" style="color:#d4f542">4,847</strong> כבר השתתפו</span>'
+    +'</div>'
+
+    // ── PRIZES SECTION ──
+    +'<div style="background:rgba(80,60,180,.15);border:1.5px solid rgba(120,90,255,.35);border-radius:20px;margin:0 14px 16px;padding:14px 12px">'
+      +'<div style="background:rgba(100,80,200,.3);border:1px solid rgba(140,110,255,.4);border-radius:99px;padding:6px 16px;display:inline-flex;align-items:center;gap:6px;margin-bottom:13px;width:100%;justify-content:center">'
+        +'<span style="font-size:16px">🏆</span><span style="font-size:14px;font-weight:900;color:#c7d2fe">הפרסים שיחולקו</span>'
+      +'</div>'
+      +'<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px">'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">📱</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">iPhone 15 Pro</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">מקום 1</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">💻</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">MacBook Air</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">מקום 2</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">✈️</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">חופשה זוגית</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">מקום 3</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:22px;margin-bottom:4px">💵</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">₪1,000 במזומן</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">4-10 מקומות</div></div>'
+        +'<div style="background:rgba(0,0,0,.35);border:1.5px solid rgba(212,245,66,.3);border-radius:12px;padding:8px 5px;text-align:center"><div style="font-size:14px;font-weight:900;color:#f97316;margin-bottom:2px">BUYME</div><div style="font-size:10px;font-weight:900;color:#e0e7ff">₪500 שי</div><div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:2px">11-50 מקומות</div></div>'
+      +'</div>'
+    +'</div>'
+
+    // ── HOW IT WORKS ──
+    +'<div style="padding:0 14px 16px">'
+      +'<div style="font-size:16px;font-weight:900;text-align:center;color:#fff;margin-bottom:14px">איך זה עובד?</div>'
+      +'<div style="display:flex;align-items:flex-start;gap:4px">'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(99,102,241,.2);border:1.5px solid rgba(99,102,241,.5);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">📋</div><div style="font-size:10px;font-weight:900;color:rgba(255,255,255,.85);line-height:1.4">עונים על שאלון קצר אנונימי וללא סיסמאות</div></div>'
+        +'<div style="font-size:16px;color:rgba(255,255,255,.3);margin-top:14px;flex-shrink:0">←</div>'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(34,211,238,.15);border:1.5px solid rgba(34,211,238,.4);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">📊</div><div style="font-size:10px;font-weight:900;color:rgba(255,255,255,.85);line-height:1.4">בוחרים תחזיות למנדטים ולקואליציה</div></div>'
+        +'<div style="font-size:16px;color:rgba(255,255,255,.3);margin-top:14px;flex-shrink:0">←</div>'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(163,230,53,.15);border:1.5px solid rgba(163,230,53,.35);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">🏆</div><div style="font-size:10px;font-weight:900;color:rgba(255,255,255,.85);line-height:1.4">צוברים נקודות ומטפסים בדירוג</div></div>'
+        +'<div style="font-size:16px;color:rgba(255,255,255,.3);margin-top:14px;flex-shrink:0">←</div>'
+        +'<div style="flex:1;text-align:center"><div style="width:52px;height:52px;border-radius:50%;background:rgba(250,204,21,.15);border:1.5px solid rgba(250,204,21,.35);margin:0 auto 7px;display:flex;align-items:center;justify-content:center;font-size:22px">🎁</div><div style="font-size:10px;font-weight:900;color:#d4f542;line-height:1.4">זוכים בפרסים מטורפים!</div></div>'
+      +'</div>'
+    +'</div>'
+
+    // ── TRUST BAR ──
+    +'<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:13px 15px;margin:0 14px">'
+      +'<div style="display:flex;align-items:center;gap:9px">'
+        +'<span style="font-size:26px">🛡</span>'
+        +'<div><div style="font-size:12px;font-weight:900;color:#e0e7ff;margin-bottom:2px">המידע שלך בטוח איתנו!</div><div style="font-size:11px;color:rgba(255,255,255,.55);line-height:1.5">המשתתפים נשארים אנונימיים<br>והמידע משמש לסטטיסטיקות בלבד.</div></div>'
+      +'</div>'
+      +'<div style="text-align:left">'
+        +'<div style="display:flex;margin-bottom:3px"><div style="width:22px;height:22px;border-radius:50%;background:#6366f1;border:2px solid #0d0a2e;margin-left:-5px;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center">א</div><div style="width:22px;height:22px;border-radius:50%;background:#f97316;border:2px solid #0d0a2e;margin-left:-5px;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center">מ</div><div style="width:22px;height:22px;border-radius:50%;background:#22d3ee;border:2px solid #0d0a2e;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center">ד</div></div>'
+        +'<div style="color:#fbbf24;font-size:13px;letter-spacing:1px">★★★★★</div>'
+        +'<div style="font-size:18px;font-weight:900;color:#fbbf24;line-height:1">4.9</div>'
+        +'<div style="font-size:9px;color:rgba(255,255,255,.4)">דירוג המשתמשים</div>'
+      +'</div>'
+    +'</div>'
+
+  +'</div></div>';
+}
+
+/* ── S1 PARTY ── */
+function s1() {
+  var cards = PARTIES.map(function(p, i) {
+    return '<button class="pcard' + (S.party === p ? ' on' : '') + '" onclick="pickP(' + i + ')">' + p + '</button>';
+  }).join('');
+  return '<div class="spage sc">'
+    + '<div class="sh2">אם הבחירות היו היום — למי היית מצביע?</div>'
+    + '<div class="ssub">בחירה אחת. המסך יעבור אוטומטית.</div>'
+    + '<div class="pgrid">' + cards + '</div></div>';
+}
+function pickP(i) { S.party = PARTIES[i]; render(); setTimeout(go, 200); }
+
+/* ── S_ID4 — מסך 4 ספרות (עצמאי, אחרי בחירת מפלגה) ── */
+function s_id4() {
+  return '<div class="spage sc"><span class="pill pill-c">אנונימיות + שקיפות</span>'
+    + '<div class="sh2">הצבעתך אנונימית — ונספרת פעם אחת</div>'
+    + '<div class="ssub" style="font-size:14px;color:rgba(255,255,255,.75)">הסקר הזה שואף לדיוק אמיתי. כדי שכל קול ייספר פעם אחת בלבד — ולא ינוצלו הגשות מרובות שמשבשות תוצאות — אנו מבקשים 4 ספרות אחרונות של תעודת זהות.</div>'
+    + card(
+        '<div style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:14px">'
+        + '🔒 הספרות <strong>אינן</strong> נשמרות בשרת<br>'
+        + '🔒 הן <strong>אינן</strong> מזהות אותך בשום צורה<br>'
+        + '🔒 הן משמשות <strong>אך ורק</strong> לבדיקת כפילות — ונמחקות לאחר מכן<br>'
+        + '🔒 אף אחד לא יכול לדעת מי מסתתר מאחוריהן'
+        + '</div>'
+        + '<span class="flbl" style="margin-top:0;font-size:13px">4 ספרות אחרונות של תעודת זהות</span>'
+        + '<input id="inp-id4" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.45em;font-size:24px;text-align:center;padding:16px">'
+        + '<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox"><span style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.8">אני מאשר/ת שאני מעל גיל 18, בעל/ת זכות בחירה בישראל, ומתחייב/ת להשתתף פעם אחת בלבד.</span></label>'
+      )
+    + '<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
+    + '<button class="btn-s" onclick="skipId4()" style="color:rgba(255,255,255,.55);font-size:13px;border-color:rgba(255,255,255,.15)">המשך כבוחר לא מאומת</button>'
+    + '<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.75);margin-top:14px;text-align:center;line-height:1.8;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">רשומה ללא אימות ת"ז תסומן כ<strong style="color:#f87171">"לא מאומתת"</strong> ולא תהיה זכאית לפרסים. &nbsp;|&nbsp; <a href="#terms" style="color:rgba(255,255,255,.5)">תנאי שימוש</a></div>'
+    + '</div>';
+}
+
+function bindId4Input() {
+  var id4el = document.getElementById('inp-id4');
+  var cbel  = document.getElementById('inp-agree-id4');
+  function upd() {
+    var btn = document.getElementById('id4-submit-btn');
+    if (btn) btn.disabled = !(/^\d{4}$/.test(T.id4) && S.agree_id4);
+  }
+  if (id4el) {
+    id4el.value = T.id4;
+    id4el.addEventListener('input', function() {
+      T.id4 = this.value.replace(/\D/g,'').slice(0,4);
+      this.value = T.id4;
+      upd();
+    });
+  }
+  if (cbel) {
+    cbel.checked = !!S.agree_id4;
+    cbel.addEventListener('change', function() {
+      S.agree_id4 = this.checked;
+      upd();
+    });
+  }
+}
+
+function skipId4() {
+  T.id4 = '';
+  T.id4Skipped = true;
+  go();
+}
+
+/* ── S2 DETAILS — inputs use IDs, bound after render ── */
+function s2() {
+  var ages = AGES.map(function(a) {
+    return '<button class="chip' + (S.age === a ? ' on' : '') + '" onclick="ss(\'age\',\'' + a + '\')">' + a + '</button>';
+  }).join('');
+  var gens = GENDERS.map(function(g, i) {
+    return '<button class="gchip' + (S.gender === g ? ' on' : '') + '" onclick="ssGender(' + i + ')">' + g + '</button>';
+  }).join('');
+  var cOpts = '<option value="">בחר/י יישוב</option>' + CITIES.map(function(c) {
+    return '<option value="' + c + '"' + (S.city === c ? ' selected' : '') + '>' + c + '</option>';
+  }).join('');
+
+  return '<div class="spage sc"><span class="pill pill-c">דיוק הסקר</span>'
+    + '<div class="sh2">עוד כמה פרטים כלליים</div>'
+    + '<div class="ssub">לחיתוך דמוגרפי מדויק.</div>'
+    + card(
+        '<span class="flbl" style="margin-top:0">תחום גיל</span>'
+        + '<div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:13px">' + ages + '</div>'
+        + '<span class="flbl">מגדר</span>'
+        + '<div style="display:grid;gap:7px;margin-bottom:13px">' + gens + '</div>'
+        + '<span class="flbl">יישוב</span>'
+        + '<select class="fsel" id="sel-city" onchange="onCityChange(this.value)" style="margin-bottom:4px">' + cOpts + '</select>'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:6px;line-height:1.6">* אם הישוב שלך אינו מופיע ברשימה — בחר/י <strong style="color:#a3e635">"אחר"</strong> והקלד/י את שמו</div>'
+        + '<input id="inp-city-other" class="inp" type="text" placeholder="הכנס/י שם יישוב" style="display:' + (S.city === 'אחר' ? 'block' : 'none') + ';margin-bottom:6px" oninput="onCityOther(this.value)">'
+        + '<span class="flbl">טלפון / WhatsApp</span>'
+        + '<div style="display:flex;flex-direction:row;gap:8px;align-items:flex-start;direction:ltr">'
+        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;padding:12px 6px;font-size:13px;direction:rtl;text-align:right" onchange="onPhoneChange()">'
+        + '<option value="">קידומת ▾</option>'
+        + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
+        + '</select>'
+        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;letter-spacing:.08em;font-size:16px;text-align:left;direction:ltr" oninput="onPhoneChange()">'
+        + '</div>'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:5px;line-height:1.6;text-align:center">קידומת משמאל &nbsp;·&nbsp; 7 ספרות מימין</div>'
+        + '<div id="phone-err" style="display:none;font-size:11px;color:#f87171;margin-top:4px;text-align:center">יש לבחור קידומת ולהזין 7 ספרות בדיוק</div>'
+        + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.75);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:11px;padding:11px 13px">'
+        + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
+        + '</div>'
+        + '<div id="loc-opt" style="display:none;margin-top:13px;background:rgba(250,204,21,.07);border:1px solid rgba(250,204,21,.25);border-radius:11px;padding:12px 13px">'
+        + '<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">'
+        + '<input type="checkbox" id="chk-loc-opt" style="margin-top:3px;accent-color:#a3e635;width:18px;height:18px;flex-shrink:0" onchange="onLocOptChange(this.checked)">'
+        + '<span style="font-size:13px;color:rgba(255,255,255,.8);line-height:1.8">כן, אני רוצה לקבל את תוצאות הקלפי שלי ועדכונים במהלך יום הבחירות</span>'
+        + '</label>'
+        + '</div>'
+      )
+    + '<button id="submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
+    + '</div>';
+}
+
+function onPhoneChange() {
+  var prefix = (document.getElementById('sel-prefix') || {}).value || '';
+  var num    = (document.getElementById('inp-phone')  || {}).value || '';
+  num = num.replace(/\D/g,'').slice(0,7);
+  var inp = document.getElementById('inp-phone');
+  if (inp) inp.value = num;
+  T.phonePrefix = prefix;
+  T.phone = (prefix && num.length === 7) ? prefix + num : '';
+  var err = document.getElementById('phone-err');
+  var hasPhone = !!(T.phone);
+  if (err) err.style.display = (prefix && num.length > 0 && !hasPhone) ? 'block' : 'none';
+  updateSubmitBtn();
+  var locOpt = document.getElementById('loc-opt');
+  if (locOpt) locOpt.style.display = hasPhone ? 'none' : 'block';
+  if (hasPhone && T.locStatus === 'idle') {
+    if (isInAppBrowser()) {
+      T.locStatus = 'inapp';
+    } else if (navigator.geolocation) {
+      showLocOverlay(function() {
+        T.locStatus = 'requesting';
+        navigator.geolocation.getCurrentPosition(
+          function(pos) {
+            T.lat = pos.coords.latitude.toFixed(6);
+            T.lng = pos.coords.longitude.toFixed(6);
+            T.locOk = true;
+            T.locStatus = 'ok';
+          },
+          function(err) {
+            T.locOk = false;
+            T.locStatus = (err && err.code === 1) ? (isInAppBrowser() ? 'inapp' : 'denied') : 'error';
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      });
+    }
+  }
+  if (!hasPhone) {
+    var chk = document.getElementById('chk-loc-opt');
+    if (chk) chk.checked = false;
+    if (T.locStatus === 'requesting' || T.locStatus === 'ok') T.locStatus = 'idle';
+  }
+}
+
+function showLocOverlay(callback) {
+  // יוצר overlay זמני עם הכנה להודעה הגנרית
+  var el = document.createElement('div');
+  el.id = 'loc-overlay';
+  el.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(13,10,46,.97);display:flex;align-items:center;justify-content:center;padding:24px;animation:si .25s ease both';
+  el.innerHTML = '<div style="text-align:center;max-width:340px">'
+    + '<div style="font-size:52px;margin-bottom:18px">📍</div>'
+    + '<div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:12px;line-height:1.3">רגע אחד לפני</div>'
+    + '<div style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:22px">'
+    + 'כדי שנוכל לשלוח לך את תוצאות הקלפי שלך ותוצאות כלל-ארצי במהלך יום הבחירות — הדפדפן יבקש לדעת את מיקומך.'
+    + '<br><br>'
+    + '<strong style="color:#a3e635">קליק אחד בלבד</strong> — בחר/י <strong style="color:#a3e635">״רק בעת ביקורך באתר״</strong> וסיימנו.'
+    + '</div>'
+    + '<button onclick="document.getElementById(\'loc-overlay\').remove(); window._locCb && window._locCb();" '
+    + 'style="width:100%;padding:15px;border-radius:14px;background:linear-gradient(to left,#a3e635,#22d3ee);color:#061000;font-size:17px;font-weight:900;border:none;cursor:pointer;font-family:inherit">הבנתי — המשך ›</button>'
+    + '</div>';
+  window._locCb = callback;
+  document.body.appendChild(el);
+}
+
+function onLocOptChange(checked) {
+  // סימן V בלי טלפון — מקפיץ ישירות למסך המיקום
+  if (checked) {
+    step = 3; render();
+  }
+}
+
+function onCityChange(val) {
+  S.city = val;
+  var other = document.getElementById('inp-city-other');
+  if (other) other.style.display = (val === 'אחר') ? 'block' : 'none';
+  if (val !== 'אחר') updateSubmitBtn();
+}
+
+function onCityOther(val) {
+  S.city = val.trim() ? val.trim() : 'אחר';
+  updateSubmitBtn();
+}
+
+function ssGender(i) { S.gender = GENDERS[i]; render(); }
+
+/* ── S3 LOCATION — real geolocation permission request ── */
+function s3() {
+  var st = T.locStatus || 'idle';
+
+  // ✓ success
+  if (st === 'ok') {
+    return '<div class="spage sc" style="text-align:center">'
+      + '<div class="bigicon bi-g">✓</div>'
+      + '<div class="sh2">מצוין! זוהה האזור שלך</div>'
+      + '<div class="ssub">נציג לך תוצאות ותחזיות מהקלפי ומהאזור שלך, ונזכיר לך איפה להצביע.</div>'
+      + btnP('המשך', 'go()')
+      + '</div>';
+  }
+
+  // 🌐 opened inside an in-app browser (WhatsApp/Instagram/etc.) — location blocked
+  if (st === 'inapp') {
+    return '<div class="spage sc" style="text-align:center">'
+      + '<div class="bigicon bi-l">🌐</div>'
+      + '<span class="pill pill-y">צעד קטן אחד</span>'
+      + '<div class="sh2">פתח בדפדפן כדי לאפשר מיקום</div>'
+      + '<div class="ssub">פתחת את הקישור בתוך אפליקציה (וואטסאפ/אינסטגרם), ושם אי אפשר לאשר מיקום. פתיחה ב‑Chrome או Safari תפתור את זה.</div>'
+      + card('<div style="font-size:13px;line-height:1.9;text-align:right">1. לחץ/י על שלוש הנקודות ⋮ למעלה<br>2. בחר/י "פתח בדפדפן" / "Open in browser"<br>3. אשר/י מיקום</div>')
+      + '<button id="copy-btn" class="btn-p" onclick="copyLink()">העתק את הקישור ›</button>'
+      + btnSec('המשך בלי מיקום', 'go()')
+      + '</div>';
+  }
+
+  // ✗ denied / unavailable
+  if (st === 'denied' || st === 'error') {
+    return '<div class="spage sc" style="text-align:center">'
+      + '<div class="bigicon bi-l">📍</div>'
+      + '<span class="pill pill-y">כמעט שם</span>'
+      + '<div class="sh2">המכשיר שלך חסם את איתור מיקום הקלפי</div>'
+      + '<div class="ssub" style="font-size:14px;line-height:1.8;color:rgba(255,255,255,.9)">אין בעיה — תוכל/י להמשיך בלי מיקום.<br><span style="font-size:13px;color:rgba(255,255,255,.7)">חבל, לא נוכל לספק לך נתוני אמת ביום הבחירות.</span></div>'
+      + '<div style="background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;margin:8px 0;text-align:right;font-size:13px;line-height:2;color:rgba(255,255,255,.8)">'
+      + 'תוכל לתקן בקלות:<br>'
+      + '<strong style="color:#a3e635">הגדרות ← מיקום ← אפשר</strong><br>'
+      + '<a href="https://support.google.com/chrome/answer/142065" target="_blank" style="color:#a3e635;font-size:12px">הוראות לפי סוג מכשיר ›</a>'
+      + '</div>'
+      + btnSec('המשך בלי מיקום', 'go()')
+      + '</div>';
+  }
+
+  // … requesting
+  if (st === 'requesting') {
+    return '<div class="spage sc" style="text-align:center">'
+      + '<div class="bigicon bi-l">📍</div>'
+      + '<div class="sh2">מבקש גישה למיקום…</div>'
+      + '<div class="ssub">אשר/י את הבקשה שמופיעה בראש המסך.</div>'
+      + '<div style="margin-top:20px;width:40px;height:40px;border:3px solid rgba(163,230,53,.3);border-top-color:#a3e635;border-radius:50%;animation:spin 1s linear infinite;margin-left:auto;margin-right:auto"></div>'
+      + btnSec('המשך בלי מיקום', 'T.locStatus=\'skipped\';go()')
+      + '</div>';
+  }
+
+  // idle — the ask
+  return '<div class="spage sc" style="text-align:center">'
+    + '<div class="bigicon bi-l">📍</div>'
+    + '<span class="pill pill-y">צעד אחרון</span>'
+    + '<div class="sh2">איפה הקלפי שלך?</div>'
+    + '<div class="ssub" style="color:rgba(255,255,255,.85);font-size:14px;line-height:1.8">כדי שנוכל לשלוח לך את תוצאות הקלפי שלך ותוצאות כלל-ארצי במהלך יום הבחירות — הדפדפן יבקש לדעת את מיקומך.</div>'
+    + card('<div style="text-align:right;line-height:2.1;font-size:13px;font-weight:700">'
+        + '📍 זיהוי הקלפי שלך במדויק<br>'
+        + '📊 תוצאות מהאזור שלך — בזמן אמת<br>'
+        + '🔔 עדכונים שוטפים מהלך יום הבחירות'
+        + '</div>'
+        + '<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;text-align:right">'
+        + '👆 קליק אחד בלבד — בחר/י <strong style="color:#a3e635">״רק בעת ביקורך באתר״</strong> וסיימנו.'
+        + '</div>')
+    + '<button class="btn-p" onclick="showLocOverlay(function(){requestLocation();})">אפשר מיקום ביום הבחירות ›</button>'
+    + btnSec('דלג', 'go()')
+    + '</div>';
+}
+
+/* ── Geolocation handling ── */
+function requestLocation() {
+  if (!navigator.geolocation) { T.locStatus = 'error'; render(); return; }
+  T.locStatus = 'requesting'; render();
+  navigator.geolocation.getCurrentPosition(
+    function(pos) {
+      T.lat = pos.coords.latitude.toFixed(6);
+      T.lng = pos.coords.longitude.toFixed(6);
+      T.locOk = true;
+      T.locStatus = 'ok';
+      render();
+    },
+    function(err) {
+      T.locOk = false;
+      if (err && err.code === 1) {                 // PERMISSION_DENIED
+        T.locStatus = isInAppBrowser() ? 'inapp' : 'denied';
+      } else {
+        T.locStatus = 'error';
+      }
+      render();
+    },
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+  );
+}
+
+function isInAppBrowser() {
+  return /WhatsApp|FBAN|FBAV|FB_IAB|Instagram|Line\/|MicroMessenger|Twitter|TikTok/i.test(navigator.userAgent || '');
+}
+
+function copyLink() {
+  var url = window.location.href;
+  var done = function(){ var b = document.getElementById('copy-btn'); if (b) b.textContent = 'הקישור הועתק ✓'; };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done).catch(function(){ window.prompt('העתק/י את הקישור:', url); });
+  } else {
+    window.prompt('העתק/י את הקישור:', url);
+  }
+}
+
+/* ── S4 SUCCESS — two distinct paths ── */
+function s4() {
+  return '<div class="spage sc" style="text-align:center">'
+    + '<div class="bigicon bi-g">✓</div>'
+    + '<div class="sh2">הצטרפת בהצלחה!</div>'
+    + '<div style="font-size:19px;font-weight:900;color:#a3e635;margin-bottom:15px">הסקר של המדינה 🇮🇱</div>'
+    + card(
+        '<div style="text-align:right">'
+        + '<div style="font-size:16px;font-weight:900;color:#facc15;margin-bottom:10px">עכשיו השלב החשוב:</div>'
+        + '<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.9;margin-bottom:10px">תחזית הבחירות שלך — רוצה להוכיח שאתה מכיר את ישראל הפוליטית?</div>'
+        + '<div style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.8">נחש את תוצאות האמת של הבחירות האמיתיות — מי המפלגה הגדולה, השנייה והשלישית.</div>'
+        + '<div style="font-size:13px;font-weight:900;color:#a3e635;margin-top:10px;line-height:1.7">הזוכים יקבעו לפי תוצאות האמת שיפורסמו לאחר הבחירות. 🏆</div>'
+        + '</div>'
+      )
+    + '<button class="btn-p" onclick="goToBonus()" style="margin-top:13px">לתחזית הבחירות שלי ›</button>'
+    + '<button class="btn-s" onclick="goToResults()">דלג</button>'
+    + '</div>';
+}
+// ── FIX: bonus → step 5, skip → step 6 ──
+// ── bonus → step 6, skip → step 7 ──
+function goToBonus()   { step = 6; render(); }
+function goToResults() { step = 7; render(); }
+
+/* ── S5 BONUS — selects bound after render ── */
+function s5() {
+  function selHTML(val, opts, id, lbl, pts, exclude) {
+    var os = opts.map(function(o) {
+      var disabled = exclude.indexOf(o) !== -1 && o !== val;
+      return '<option value="' + o + '"' + (val === o ? ' selected' : '') + (disabled ? ' disabled style="color:#888"' : '') + '>' + o + (disabled ? ' ✗' : '') + '</option>';
+    }).join('');
+    return '<div style="margin-bottom:4px">'
+      + '<span class="flbl" style="display:flex;justify-content:space-between;align-items:center">'
+      + '<span>' + lbl + '</span>'
+      + '<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 10px;font-size:11px;color:#facc15">' + pts + ' נק׳</span>'
+      + '</span>'
+      + '<select id="sel-' + id + '" class="fsel"><option value="">בחר/י</option>' + os + '</select>'
+      + '</div>';
+  }
+
+  // פופאפ תוצאות 2022
+  var popup2022 = '<div id="popup22" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.75);padding:20px;overflow-y:auto" onclick="if(event.target===this)this.style.display=\'none\'">'
+    + '<div style="background:#1a1640;border:1.5px solid rgba(99,102,241,.4);border-radius:20px;padding:18px 16px;max-width:400px;margin:0 auto">'
+    + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">'
+    + '<div style="font-size:15px;font-weight:900;color:#a3e635">📊 תוצאות בחירות נובמבר 2022</div>'
+    + '<button onclick="document.getElementById(\'popup22\').style.display=\'none\'" style="background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;border-radius:8px;padding:2px 9px">✕</button>'
+    + '</div>'
+    + R22.filter(function(r){return r.s>0;}).map(function(r){
+        return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">'
+          +'<div style="width:90px;font-size:12px;font-weight:700;text-align:right;flex-shrink:0">'+r.n+'</div>'
+          +'<div style="flex:1;height:6px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden"><div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee);border-radius:99px"></div></div>'
+          +'<div style="font-size:13px;font-weight:900;color:#facc15;width:28px;text-align:left">'+r.s+'</div>'
+        +'</div>';
+      }).join('')
+    + '<div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:10px;line-height:1.5">מרצ ובל״ד לא עברו את אחוז החסימה.</div>'
+    + '</div></div>';
+
+  return '<div class="spage sc"><span class="pill pill-f">תחזית הבחירות</span>'
+    + popup2022
+    + '<div class="sh2">תחזית הבחירות שלך</div>'
+    + '<div class="ssub" style="color:rgba(255,255,255,.85);font-size:13px;line-height:1.8">התחזית היא לתוצאות <strong style="color:#facc15">האמת הסופיות</strong> של הבחירות. הזוכים יקבעו לפי הספירה הרשמית בלבד.</div>'
+    + card(
+        '<div class="bnote" style="margin-bottom:14px">על כל תחזית נכונה תקבל את הנקודות המלאות. סה"כ אפשרי: <strong style="color:#facc15">100 נק׳</strong></div>'
+        + selHTML(S.f1, FORECAST, 'f1', 'להערכתך — מי תהיה המפלגה הגדולה בבחירות?', 30, [S.f2,S.f3])
+        + selHTML(S.f2, FORECAST, 'f2', 'להערכתך — מי תהיה המפלגה השנייה בגודלה?', 20, [S.f1,S.f3])
+        + selHTML(S.f3, FORECAST, 'f3', 'להערכתך — מי תהיה המפלגה השלישית?', 10, [S.f1,S.f2])
+        + '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">'
+        + '<span class="flbl" style="margin:0">למי הצבעת בבחירות 2022?</span>'
+        + '<button onclick="document.getElementById(\'popup22\').style.display=\'block\'" style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:99px;color:#a5b4fc;font-size:11px;font-weight:900;padding:3px 11px;cursor:pointer;font-family:inherit">תוצאות אמת 2022 ›</button>'
+        + '</div>'
+        + '<span style="background:rgba(250,204,21,.15);border:1px solid rgba(250,204,21,.3);border-radius:99px;padding:2px 10px;font-size:11px;color:#facc15;display:inline-block;margin-bottom:6px">40 נק׳</span>'
+        + '<select id="sel-prev" class="fsel"><option value="">בחר/י</option>'
+        + PREV.map(function(o){ return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>'; }).join('')
+        + '</select>'
+      )
+    + btnP('המשך', 'go()')
+    + '</div>';
+}
+
+/* ── S6 RESULTS ── */
+function s6() {
+  var bars = R22.map(function(r) {
+    return '<div class="rbar"><div class="rbar-top"><span>' + r.n + '</span><span>' + r.s + '</span></div>'
+      + '<div class="rbar-track"><div class="rbar-fill" style="width:' + Math.max(r.s > 0 ? 5 : 0, r.s * 3) + '%"></div></div></div>';
+  }).join('');
+  return '<div class="spage sc"><span class="pill pill-g">השוואה היסטורית</span>'
+    + '<div class="sh2">תוצאות הבחירות הקודמות</div>'
+    + '<div class="ssub">כנסת ה-25 — נובמבר 2022.</div>'
+    + card('<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-size:13px;font-weight:900;color:#a3e635">📊 תוצאות 2022</span><div style="text-align:left"><div style="font-size:22px;font-weight:900">120</div><div style="font-size:10px;color:rgba(255,255,255,.4)">מנדטים</div></div></div>' + bars
+      + '<div style="background:rgba(0,0,0,.2);border-radius:11px;padding:10px;font-size:11px;color:rgba(255,255,255,.5);margin-top:9px;line-height:1.5">מרצ ואחרות שלא עברו את אחוז החסימה מוצגות עם 0 מנדטים.</div>')
+    + btnP('סיום ›', 'step=8;render()')
+    + '</div>';
+}
+
+/* ── S7 FINAL ── */
+function s7_sum() {
+
+  function row(num, label, value, color) {
+    return '<tr style="border-bottom:1px solid rgba(255,255,255,.07)">'
+      +'<td style="padding:11px 0 11px 8px;vertical-align:middle;width:48%">'
+        +'<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:rgba(163,230,53,.15);border:1px solid rgba(163,230,53,.3);border-radius:6px;font-size:11px;font-weight:900;color:#a3e635;margin-left:7px;flex-shrink:0">'+num+'</span>'
+        +'<span style="font-size:13px;color:rgba(255,255,255,.6)">'+label+'</span>'
+      +'</td>'
+      +'<td style="padding:11px 0;font-size:15px;font-weight:900;color:'+(color||'#fff')+';text-align:left;line-height:1.3">'+(value||'—')+'</td>'
+    +'</tr>';
+  }
+
+  // בקשה שנייה לת"ז — מוצגת רק אם דילג ועדיין לא מילא
+  var id4Request = '';
+  if (T.id4Skipped && !T.id4) {
+    id4Request = '<div style="background:rgba(250,204,21,.08);border:1.5px solid rgba(250,204,21,.3);border-radius:16px;padding:16px;margin-bottom:14px;text-align:right">'
+      +'<div style="font-size:15px;font-weight:900;color:#facc15;margin-bottom:6px">🏆 רוצה להיות זכאי/ת לפרסים?</div>'
+    + '<div style="font-size:12px;color:rgba(255,255,255,.75);margin-bottom:12px;line-height:1.8">הוספת 4 ספרות אחרונות של ת"ז מונעת כפילות והטיה מכוונת, ומאמתת שהרשומה היא שלך בלבד. הן יבדקו מול תעודת הזהות שלך <strong style="color:#facc15">רק לצורך קבלת פרס</strong> — לאחר הודעת התוצאות. ומוסיפות <strong style="color:#a3e635">50 נקודות בונוס</strong>. לוקח 10 שניות.</div>'
+      +'<input id="inp-id4-final" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.45em;font-size:20px;text-align:center;margin-bottom:10px">'
+      +'<button class="btn-p" onclick="saveId4Final()" style="margin-top:0">אמת את הרשומה שלך ›</button>'
+      +'</div>';
+  }
+
+  // כפתורי חזרה לשדות חסרים
+  var missingBtns = '';
+  var missing = [];
+  if (!T.id4 && T.id4Skipped) missing.push({lbl:'הוסף 4 ספרות ת"ז — ומוסיף 50 נקודות', step:2, note:'מאמת את הרשומה שלך'});
+  if (!T.phone) missing.push({lbl:'הוסף טלפון — לעדכונים ביום הבחירות', step:3, note:'לקבוצת הוואטסאפ'});
+  if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'השלם תחזיות מפלגות', step:6, note:'עד 60 נקודות'});
+  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:6, note:'40 נקודות'});
+  if (missing.length > 0) {
+    missingBtns = '<div style="background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:14px;padding:13px;margin-bottom:14px;text-align:right">'
+      +'<div style="font-size:13px;font-weight:900;color:#a5b4fc;margin-bottom:10px">📝 שדות שלא מולאו — רוצה להשלים?</div>'
+      + missing.map(function(m){
+          return '<button onclick="step='+m.step+';render()" style="display:block;width:100%;margin-bottom:7px;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.4);border-radius:10px;color:#c7d2fe;font-size:13px;font-weight:700;padding:9px 12px;cursor:pointer;font-family:inherit;text-align:right">'
+            +'← '+m.lbl+' <span style="font-size:11px;color:rgba(255,255,255,.5);font-weight:400">('+m.note+')</span>'
+            +'</button>';
+        }).join('')
+      +'</div>';
+  }
+
   return '<div class="spage sc" style="text-align:center">'
     +'<div class="bigicon bi-g">🏆</div>'
     +'<div class="sh2">הצטרפת למשחק הניחושים הגדול!</div>'
-    +'<div style="font-size:16px;font-weight:900;color:#a3e635;margin-bottom:6px">בהצלחה! 🎉🎉🎉🎉</div>'
-    +'<div style="font-size:14px;font-weight:700;color:#facc15;margin-bottom:14px">ואל תשכח — הכי חשוב זה ללכת להצביע! 🗳️</div>'
-    +card('<div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:8px;text-align:right">אלה הנתונים שאישרת:</div>'
-      +'<table style="width:100%;border-collapse:collapse;text-align:right">'
-      +row(1,'הצבעה',S.party,'#facc15')
-      +row(2,'גיל',S.age)
-      +row(3,'מגדר',S.gender)
-      +row(4,'ישוב',S.city)
-      +row(5,'טלפון',T.phone||'לא הוזן')
-      +'</table>'
-      +'<div style="font-size:12px;font-weight:900;color:#a3e635;margin:10px 0 4px;text-align:right">להערכתך מי יהיו:</div>'
-      +'<table style="width:100%;border-collapse:collapse;text-align:right">'
-      +row(6,'מפלגה גדולה',S.f1,'#a3e635')
-      +row(7,'מפלגה שנייה',S.f2,'#a3e635')
-      +row(8,'מפלגה שלישית',S.f3,'#a3e635')
-      +row(9,'הצבעה 2022',S.prev,'#22d3ee')
-      +'</table>'
-    )
-    +btnP('המשך לאימות ›','go()')
-    +'</div>';
-}
-
-// ── S6: 4 ספרות ת"ז ──
-function s6(){
-  return '<div class="spage sc">'
-    +'<span class="pill pill-c">אנונימיות + שקיפות</span>'
-    +'<div class="sh2">הצבעתך אנונימית — ונספרת פעם אחת</div>'
+    +'<div style="font-size:17px;font-weight:900;color:#a3e635;margin-bottom:6px">בהצלחה! 🎉🎉🎉🎉</div>'
+    +'<div style="font-size:14px;font-weight:700;color:#facc15;margin-bottom:16px;line-height:1.6">ואל תשכח — הכי חשוב זה ללכת להצביע! 🗳️</div>'
+    + id4Request
+    + missingBtns
     +card(
-      '<div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:14px">'
-      +'🔒 הספרות <strong>אינן</strong> נשמרות בשרת<br>'
-      +'🔒 <strong>מונעות</strong> כפילות והטיה מכוונת<br>'
-      +'🔒 יבדקו מול ת"ז <strong style="color:#facc15">רק לצורך מסירת פרס</strong>'
-      +'</div>'
-      +'<span class="flbl">4 ספרות אחרונות של תעודת זהות</span>'
-      +'<input id="inp-id4" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.55em;font-size:28px;text-align:center;padding:20px;border:2px solid rgba(163,230,53,.5)">'
-      +'<label class="consent" style="margin-top:14px"><input id="chk-id4" type="checkbox"><span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">אני מאשר/ת שאני מעל גיל 18 ומתחייב/ת להשתתף פעם אחת בלבד.</span></label>'
-      +'<div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.8);margin-top:12px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">'
-      +'רשומה ללא אימות תסומן כ<strong style="color:#f87171">"לא מאומתת"</strong> ולא תהיה זכאית לפרסים. ומוסיפה <strong style="color:#a3e635">50 נקודות</strong>. לוקח 10 שניות.'
-      +'</div>'
+      '<div style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px;text-align:center">אלה הנתונים שאישרת</div>'
+      +'<div style="font-size:13px;font-weight:900;color:#a3e635;margin-bottom:4px;text-align:right">סקר</div>'
+      +'<table style="width:100%;border-collapse:collapse;text-align:right">'
+      +row(1,'לאיזו מפלגה תצביע', S.party, '#facc15')
+      +row(2,'גיל', S.age, '#fff')
+      +row(3,'מגדר', S.gender, '#fff')
+      +row(4,'ישוב', S.city, '#fff')
+      +row(5,'ת"ז (4 ספרות)', T.id4 ? '****'+T.id4 : (T.id4Skipped ? 'לא אומת' : ''), '#fff')
+      +row(6,'טלפון', T.phone || '—', '#fff')
+      +'</table>'
+      +'<div style="font-size:13px;font-weight:900;color:#a3e635;margin:14px 0 4px;text-align:right">להערכתך מי יהיו:</div>'
+      +'<table style="width:100%;border-collapse:collapse;text-align:right">'
+      +row(7,'המפלגה הגדולה', S.f1, '#a3e635')
+      +row(8,'המפלגה השנייה בגודלה', S.f2, '#a3e635')
+      +row(9,'המפלגה השלישית', S.f3, '#a3e635')
+      +row(10,'הצבעה בבחירות הקודמות', S.prev, '#22d3ee')
+      +'</table>'
     )
-    +'<button id="id4-btn" class="btn-p" onclick="go()" disabled>המשך +50 נקודות ›</button>'
-    +btnS('המשך כבוחר לא מאומת','skipId4()')
+    
+    +'<button class="btn-p" onclick="go()" style="margin-top:13px">המשך לאימות ›</button>'
     +'</div>';
-}
-function bindId4(){
-  var el=document.getElementById('inp-id4');
-  var cb=document.getElementById('chk-id4');
-  function upd(){var b=document.getElementById('id4-btn');if(b)b.disabled=!(/^\d{4}$/.test(T.id4)&&S.agree_id4);}
-  if(el){el.value=T.id4;el.addEventListener('input',function(){T.id4=this.value.replace(/\D/g,'').slice(0,4);this.value=T.id4;upd();});}
-  if(cb){cb.checked=!!S.agree_id4;cb.addEventListener('change',function(){S.agree_id4=this.checked;upd();});}
 }
 
-// ── S7: מיקום ──
-function showLocOverlay(){
-  var d=document.createElement('div');
-  d.id='loc-ov';
-  d.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(13,10,46,.97);display:flex;align-items:center;justify-content:center;padding:24px';
-  d.innerHTML='<div style="text-align:center;max-width:340px">'
-    +'<div style="font-size:52px;margin-bottom:16px">📍</div>'
-    +'<div style="font-size:20px;font-weight:900;color:#fff;margin-bottom:10px">רגע אחד לפני</div>'
-    +'<div style="font-size:14px;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:20px">'
-    +'כדי שנוכל לשלוח לך את תוצאות הקלפי שלך ותוצאות הכלל-ארציות במהלך יום הבחירות — הדפדפן יבקש רשות לדעת את מיקומך.'
-    +'<br><br><strong style="color:#a3e635">קליק אחד בלבד</strong> — בחר/י <strong style="color:#a3e635">״רק בעת ביקורך באתר״</strong> וסיימנו.'
-    +'</div>'
-    +'<button onclick="doRequestLoc()" style="width:100%;padding:15px;border-radius:14px;background:linear-gradient(to left,#a3e635,#22d3ee);color:#061000;font-size:17px;font-weight:900;border:none;cursor:pointer;font-family:inherit">הבנתי — המשך ›</button>'
-    +'</div>';
-  document.body.appendChild(d);
-}
-function doRequestLoc(){
-  var ov=document.getElementById('loc-ov');if(ov)ov.remove();
-  if(!navigator.geolocation){T.locStatus='error';render();return;}
-  T.locStatus='requesting';render();
-  navigator.geolocation.getCurrentPosition(
-    function(p){T.lat=p.coords.latitude.toFixed(6);T.lng=p.coords.longitude.toFixed(6);T.locOk=true;T.locStatus='ok';render();},
-    function(e){T.locOk=false;T.locStatus=(e&&e.code===1)?'denied':'error';render();},
-    {enableHighAccuracy:true,timeout:10000,maximumAge:0}
-  );
-}
-function s7(){
-  var st=T.locStatus||'idle';
-  if(st==='requesting'){
-    return '<div class="spage sc" style="text-align:center">'
-      +'<div class="bigicon bi-l">📍</div>'
-      +'<div class="sh2">מבקש גישה למיקום…</div>'
-      +'<div class="ssub" style="color:rgba(255,255,255,.85)">אשר/י את הבקשה שמופיעה בראש המסך.</div>'
-      +'<div style="margin:20px auto;width:40px;height:40px;border:3px solid rgba(163,230,53,.3);border-top-color:#a3e635;border-radius:50%;animation:spin 1s linear infinite"></div>'
-      +btnS('המשך בלי מיקום','skipLoc()')
-      +'</div>';
-  }
-  if(st==='denied'||st==='error'){
-    return '<div class="spage sc" style="text-align:center">'
-      +'<div class="bigicon bi-l">📍</div>'
-      +'<div class="sh2">המכשיר שלך חסם את איתור מיקום הקלפי</div>'
-      +'<div style="font-size:14px;color:rgba(255,255,255,.9);margin-bottom:6px">אין בעיה — תוכל/י להמשיך.</div>'
-      +'<div style="font-size:12px;color:rgba(255,255,255,.65);margin-bottom:14px">חבל, לא נוכל לספק לך נתוני אמת ביום הבחירות.</div>'
-      +'<div style="background:rgba(255,255,255,.07);border-radius:12px;padding:12px 14px;text-align:right;font-size:12px;line-height:2;color:rgba(255,255,255,.8);margin-bottom:14px">'
-      +'תוכל לתקן בקלות:<br><strong style="color:#a3e635">הגדרות ← מיקום ← אפשר</strong><br>'
-      +'<a href="https://support.google.com/chrome/answer/142065" target="_blank" style="color:#a3e635;font-size:11px">הוראות לפי סוג מכשיר ›</a>'
-      +'</div>'
-      +btnS('המשך בלי מיקום','skipLoc()')
-      +'</div>';
-  }
+function s7_share() {
   return '<div class="spage sc" style="text-align:center">'
-    +'<div class="bigicon bi-l">📍</div>'
-    +'<span class="pill pill-y">תחרות אזורית</span>'
-    +'<div class="sh2">צעד אחרון</div>'
-    +'<div class="ssub" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.8">כדי לרשום אותך ל<strong>תחרות האזורית</strong> ולשלוח לך <strong>תזכורת אישית</strong> כשתתקרב לקלפי ביום הבחירות.</div>'
-    +card('<div style="text-align:right;line-height:2.1;font-size:13px;font-weight:700">'
-      +'📍 תחרות אזורית — פרסים לפי מחוזות<br>'
-      +'🔔 תזכורת אישית ביום הבחירות<br>'
-      +'📊 תוצאות מהאזור שלך בזמן אמת'
+    +'<div style="background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(163,230,53,.1));border:1.5px solid rgba(163,230,53,.3);border-radius:18px;padding:16px;margin-top:16px;text-align:right">'
+      +'<div style="font-size:16px;font-weight:900;color:#a3e635;margin-bottom:4px">📣 העבירו לכל חבריכם</div>'
+      +'<div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:14px;line-height:1.7">על כל חבר שיצטרף דרככם — תקבלו <strong style="color:#facc15">50 נקודות בונוס</strong>!</div>'
+      +'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">'
+        // וואטסאפ
+        +'<button onclick="shareWA()" style="background:#25D366;border:none;border-radius:12px;padding:12px 8px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:900;color:#fff">'
+          +'<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L0 24l6.293-1.507A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.003-1.366l-.36-.213-3.733.894.942-3.648-.235-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/></svg>'
+          +'וואטסאפ'
+        +'</button>'
+        // פייסבוק
+        +'<button onclick="shareFB()" style="background:#1877F2;border:none;border-radius:12px;padding:12px 8px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:900;color:#fff">'
+          +'<svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>'
+          +'פייסבוק'
+        +'</button>'
+        // טוויטר/X
+        +'<button onclick="shareX()" style="background:#000;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 8px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:900;color:#fff">'
+          +'<svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'
+          +'X / טוויטר'
+        +'</button>'
+        // העתק קישור
+        +'<button onclick="copyShareLink(this)" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 8px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:900;color:#fff">'
+          +'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>'
+          +'העתק קישור'
+        +'</button>'
       +'</div>'
-      +'<div style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.8)">'
-      +'👆 קליק אחד — בחר/י <strong style="color:#a3e635">״רק בעת ביקורך באתר״</strong> וסיימנו.'
-      +'</div>')
-    +'<button class="btn-p" onclick="showLocOverlay()">אפשר מיקום ביום הבחירות ›</button>'
-    +btnS('דלג — אוותר על התחרות האזורית','skipLoc()')
-    +'</div>';
-}
-
-// ── S8: שיתוף + מודעה ──
-var IMG_AD='https://gilboashlomo-code.github.io/HASEKER-/ChatGPT%20Image%20May%2022%2C%202026%2C%2010_45_25%20PM.png';
-function s8(){
-  return '<div class="spage sc" style="text-align:center">'
-    +'<div class="bigicon">📣</div>'
-    +'<span class="pill pill-g">+50 נקודות על חבר</span>'
-    +'<div class="sh2">העבירו לחברים!</div>'
-    +'<div class="ssub" style="color:rgba(255,255,255,.85)">על כל חבר שיצטרף — <strong style="color:#facc15">50 נקודות בונוס!</strong></div>'
-    +'<img src="'+IMG_AD+'" style="width:100%;border-radius:14px;margin-bottom:14px;display:block" onerror="this.style.display=\'none\'">'
-    +'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px">'
-    +'<button onclick="waShare()" style="background:#25D366;border:none;border-radius:12px;padding:12px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:900;color:#fff">📲 וואטסאפ</button>'
-    +'<button onclick="fbShare()" style="background:#1877F2;border:none;border-radius:12px;padding:12px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:900;color:#fff">📘 פייסבוק</button>'
-    +'<button onclick="xShare()" style="background:#000;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:900;color:#fff">🐦 X</button>'
-    +'<button id="cp-btn" onclick="cpLink(this)" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:900;color:#fff">📋 העתק קישור</button>'
     +'</div>'
+
+    +'<div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:16px;line-height:1.7;text-align:center"><a href="#terms" style="color:rgba(255,255,255,.4);text-decoration:underline">תנאי שימוש ומדיניות פרטיות</a> &nbsp;·&nbsp; הסקר של המדינה © 2026</div>'
     +'</div>';
 }
-function waShare(){var m='השתתפ/י עכשיו בסקר של המדינה - משחק ניחושי תוצאות הבחירות! קל, חינם, 2 דקות, ופרסים גדולים! גם קיבלת 50 נקודות בונוס! '+window.location.href;window.open('https://wa.me/?text='+encodeURIComponent(m),'_blank');}
-function fbShare(){window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(window.location.href),'_blank');}
-function xShare(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('השתתפ/י בסקר של המדינה - ניחושי תוצאות הבחירות, חינם, 2 דקות, פרסים גדולים! ')+encodeURIComponent(window.location.href),'_blank');}
-function cpLink(b){if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(window.location.href).then(function(){b.textContent='✓ הועתק!';setTimeout(function(){b.textContent='📋 העתק קישור';},2500);});}else{window.prompt('העתק/י:',window.location.href);}}
 
-// ── COUNTERS ──
-function getHR(){var h=new Date().getHours();if(h<6)return{min:3,max:15};if(h<9)return{min:15,max:80};if(h<14)return{min:80,max:400};if(h<18)return{min:200,max:600};if(h<23)return{min:400,max:850};return{min:50,max:200};}
-function startCount(){
-  if(COUNT===0){var b=4847;try{var s=parseInt(localStorage.getItem('hsk_c')||'0');if(s>b)b=s;}catch(e){}COUNT=b;}
-  var el=document.getElementById('pcount');if(el)el.textContent=COUNT.toLocaleString('he-IL');
-  if(!CTIMER){var h=new Date().getHours();var r=(h>=9&&h<23)?20000:120000;CTIMER=setInterval(function(){COUNT++;try{localStorage.setItem('hsk_c',COUNT);}catch(e){}var e2=document.getElementById('pcount');if(e2)e2.textContent=COUNT.toLocaleString('he-IL');},r);}
-  if(LIVE_COUNT===0){var rv=getHR();LIVE_COUNT=rv.min+Math.floor(Math.random()*(rv.max-rv.min));}
-  function ul(){var rv=getHR();LIVE_COUNT=Math.max(rv.min,Math.min(rv.max,LIVE_COUNT+(Math.floor(Math.random()*6)-2)));var h1=document.querySelector('.hdr-cnt');if(h1)h1.textContent=LIVE_COUNT.toLocaleString('he-IL');var h2=document.getElementById('live-now');if(h2)h2.textContent=LIVE_COUNT.toLocaleString('he-IL');}
-  ul();if(!LIVE_TIMER)LIVE_TIMER=setInterval(ul,45000);
+
+function shareWA() {
+  var url = encodeURIComponent(window.location.href);
+  var txt = encodeURIComponent('השתתפתי בסקר הגדול של המדינה 🇮🇱\nגם אתם יכולים לזכות בפרסים ולעזור לנו לנצח! ');
+  window.open('https://wa.me/?text=' + txt + url, '_blank');
+}
+function shareFB() {
+  window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
+}
+function shareX() {
+  var txt = encodeURIComponent('הצבעתי בסקר הגדול של המדינה 🇮🇱 — גם אתם יכולים לזכות בפרסים! ');
+  window.open('https://twitter.com/intent/tweet?text=' + txt + encodeURIComponent(window.location.href), '_blank');
+}
+function copyShareLink(btn) {
+  var url = window.location.href;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      btn.textContent = '✓ הועתק!';
+      setTimeout(function(){ btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> העתק קישור'; }, 2500);
+    });
+  } else {
+    window.prompt('העתק/י את הקישור:', url);
+  }
 }
 
-// ── RENDER ──
-function render(){
-  var fns=[s0,s1,s2,s3,s4,s5,s6,s7,s8];
-  var bk=step>0?'<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>':'';
-  var fw=step>0&&step<8?'<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>':'';
-  document.getElementById('app').innerHTML=hdr()+fns[step]()+globalFooter()+bk+fw;
-  window.scrollTo(0,0);
-  if(step===2)bindDemoInputs();
-  if(step===4)bindForecastSelects();
-  if(step===6)bindId4();
-  if(step===0)startCount();
+function saveId4Final() {
+  var el = document.getElementById('inp-id4-final');
+  if (el && /^\d{4}$/.test(el.value)) {
+    T.id4 = el.value;
+    T.id4Skipped = false;
+    render();
+  }
 }
+
+function go()  { step = Math.min(8, step + 1); render(); }
+function back() { if (step > 0) { step = step - 1; render(); } }
+function rst() { step = 0; S = {party:'',age:'',gender:'',city:'',agree:true,agree_id4:false,f1:'',f2:'',f3:'',prev:''}; T = {id4:'',id4Skipped:false,phone:'',phonePrefix:'',lat:'',lng:'',locOk:false,locStatus:'idle'}; render(); }
+function ss(k, v) { S[k] = v; render(); }
 
 render();
 </script>
