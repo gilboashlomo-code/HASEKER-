@@ -174,7 +174,7 @@ function hdr() {
   return '<div class="hdr">'
     + '<div style="display:flex;align-items:center;gap:7px"><div class="hdr-logo">הסקר של המדינה ✓</div><span style="font-size:22px">🇮🇱</span></div>'
     + '<div style="display:flex;align-items:center;gap:8px">'
-    + '<span style="font-size:11px;color:rgba(255,255,255,.75)">' + (Math.min(step, 7) + 1) + ' / 9</span>'
+    + '<span style="font-size:11px;color:rgba(255,255,255,.75)">' + (Math.min(step, 7) + 1) + ' / 10</span>'
     + '<div class="hdr-live"><div class="hdr-dot"></div><span class="hdr-cnt">—</span></div>'
     + '</div></div>'
     + '<div class="prog-wrap"><div class="prog-fill" style="width:' + prog + '%"></div></div>';
@@ -201,10 +201,59 @@ function s_end() {
     +'</div>';
 }
 
+function s_push() {
+  return '<div class="spage sc" style="text-align:center">'
+    +'<div class="bigicon bi-l">🔔</div>'
+    +'<span class="pill pill-y">שלב אחרון — בונוס מיוחד</span>'
+    +'<div class="sh2">רוצה לקבל תוצאות חי ביום הבחירות?</div>'
+    +'<div class="ssub" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.9">'
+    +'נשלח לך התראה בבוקר הבחירות — ותקבל תוצאות חמות מהקלפי שלך <strong style="color:#facc15">הרבה לפני כולם.</strong>'
+    +'</div>'
+    +card(
+      '<div style="text-align:right;line-height:2.2;font-size:13px;font-weight:700">'
+      +'🔔 התראה אוטומטית בבוקר הבחירות<br>'
+      +'📊 תוצאות חי מהקלפי שלך<br>'
+      +'🏆 עדכון אם זכית בפרס<br>'
+      +'✅ עובד גם כשהדפדפן סגור'
+      +'</div>'
+      +'<div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:rgba(255,255,255,.75);line-height:1.7">'
+      +'לחיצה אחת על "אפשר" בהודעה שתופיע — וסיימנו.'
+      +'</div>'
+    )
+    +'<button class="btn-p" onclick="requestPushPermission()">כן, אשר התראות ›</button>'
+    +'<button class="btn-s" onclick="go()" style="color:rgba(255,255,255,.6)">דלג</button>'
+    +'<div id="push-status" style="font-size:12px;color:rgba(255,255,255,.65);margin-top:10px;min-height:20px"></div>'
+    +'</div>';
+}
+
+function requestPushPermission() {
+  var statusEl = document.getElementById('push-status');
+  if (!('Notification' in window)) {
+    if (statusEl) statusEl.textContent = 'הדפדפן שלך אינו תומך בהתראות. ממשיך...';
+    setTimeout(function(){ go(); }, 1500);
+    return;
+  }
+  if (Notification.permission === 'granted') {
+    if (statusEl) statusEl.textContent = '✅ כבר מאושר! ממשיך...';
+    setTimeout(function(){ go(); }, 1000);
+    return;
+  }
+  Notification.requestPermission().then(function(result) {
+    if (result === 'granted') {
+      if (statusEl) statusEl.innerHTML = '✅ <strong style="color:#a3e635">מעולה! נשלח לך התראה ביום הבחירות.</strong>';
+      T.pushGranted = true;
+      setTimeout(function(){ go(); }, 1500);
+    } else {
+      if (statusEl) statusEl.textContent = 'לא אושר — ממשיך בלי התראות.';
+      setTimeout(function(){ go(); }, 1500);
+    }
+  });
+}
+
 function render() {
-  var fns = [s0, s1, s2, s4, s5, s7_sum, s7_share, s_id4, s3, s_end];
+  var fns = [s0, s1, s2, s4, s5, s7_sum, s7_share, s_id4, s3, s_push, s_end];
   var backBtn = step > 0 ? '<button class="back-btn" onclick="back()" title="חזור">&#8592;</button>' : '';
-  var nextBtn = step < 9 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
+  var nextBtn = step < 10 ? '<button class="back-btn" onclick="go()" title="המשך" style="left:auto;right:16px">&#8594;</button>' : '';
   document.getElementById('app').innerHTML = hdr() + fns[step]() + globalFooter() + backBtn + nextBtn;
   window.scrollTo(0, 0);
   if (step === 6) bindId4Input();
@@ -962,7 +1011,7 @@ function saveId4Final() {
 }
 
 function go()  {
-  step = Math.min(9, step + 1);
+  step = Math.min(10, step + 1);
   // כשנכנסים למסך מיקום - מאפסים denied/error ישן כדי להציג את מסך הבקשה מחדש
   if (step === 7 && (T.locStatus === 'denied' || T.locStatus === 'error' || T.locStatus === 'skipped')) {
     T.locStatus = 'idle';
