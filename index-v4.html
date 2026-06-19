@@ -183,7 +183,7 @@ function globalFooter() {
     + '™ הסקר של המדינה · Patent Pending · כל הזכויות שמורות © 2026<br>'
     + 'טכנולוגיית VoterTag® · Shlomo Gilboa<br>'
     + '<a href="#" onclick="showContactForm();return false;" style="color:#a3e635;text-decoration:none;font-weight:700">תקשורת, מכוני מחקר, מועמדים ומפלגות — צרו קשר »</a>'
-    + ' &nbsp;·&nbsp; <a href="#terms" style="color:rgba(255,255,255,.65);text-decoration:underline">תנאי שימוש</a>'
+    + '<a href="https://gilboashlomo-code.github.io/HASEKER-/haseker_terms.pdf" target="_blank" rel="noopener" style="color:rgba(255,255,255,.65);text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 12px;font-size:11px">תנאי שימוש</a>'
     + '</div>';
 }
 
@@ -221,9 +221,9 @@ function s_end() {
     +'</div>';
 }
 
-function goToId4FromEnd() { returnToEnd = true; step = 7; render(); }
+function goToId4FromEnd() { returnToEnd = true; step = 6; render(); }
 function goToPhoneFromEnd() { returnToEnd = true; step = 2; render(); }
-function shareToFriends() { step = 6; render(); }
+function shareToFriends() { step = 8; render(); }
 function finishExit() {
   document.getElementById('app').innerHTML =
     '<div style="min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px">'
@@ -242,18 +242,30 @@ function showContactForm() {
   el.innerHTML = '<div style="width:100%;max-width:360px;background:linear-gradient(165deg,#1a0f4f,#0e0730);border:1.5px solid rgba(129,140,248,.4);border-radius:18px;padding:20px;max-height:92vh;overflow-y:auto">'
     + '<img src="https://gilboashlomo-code.github.io/HASEKER-/RTV-LOGO.png" style="width:160px;display:block;margin:0 auto 14px;background:#fff;border-radius:12px;padding:8px" onerror="this.style.display=\'none\'">'
     + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">'
-    + '<div><div style="font-size:22px;font-weight:900;color:#a3e635;line-height:1.1">הסקר של המדינה</div>'
+    + '<div>'
+    + '<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.6);margin-bottom:4px">📬 צור קשר</div>'
+    + '<div style="font-size:22px;font-weight:900;color:#a3e635;line-height:1.1">הסקר של המדינה</div>'
     + '<div style="font-size:13px;font-weight:700;color:#22d3ee;margin-top:2px">מקבוצת RTV — Real-Time Voter</div></div>'
     + '<button onclick="document.getElementById(\'contact-overlay\').remove()" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:26px;cursor:pointer;line-height:1">×</button>'
     + '</div>'
-    + '<div style="font-size:13px;color:rgba(255,255,255,.75);margin:14px 0 16px;font-weight:700">תקשורת · מכוני מחקר · מועמדים · מפלגות</div>'
-    + '<input id="ct-org" class="inp" type="text" placeholder="שם הגוף" style="margin-bottom:10px;font-size:15px">'
-    + '<input id="ct-name" class="inp" type="text" placeholder="שם הפונה" style="margin-bottom:10px;font-size:15px">'
-    + '<select id="ct-type" class="fsel" style="margin-bottom:10px;font-size:15px"><option value="">סוג הגוף —</option><option>מכון מחקר</option><option>עיתונות / תקשורת</option><option>מפלגה</option><option>מועמד/ת</option><option>אחר</option></select>'
-    + '<input id="ct-phone" class="inp" type="tel" placeholder="טלפון ליצירת קשר" style="margin-bottom:10px;font-size:15px">'
-    + '<textarea id="ct-msg" class="inp" rows="4" maxlength="1000" placeholder="הודעה (עד 1000 תווים)" style="margin-bottom:6px;resize:vertical;font-family:inherit;font-size:15px"></textarea>'
+    + '<div style="font-size:13px;color:rgba(255,255,255,.75);margin:14px 0 4px;font-weight:700">תקשורת · מכוני מחקר · מועמדים · מפלגות</div>'
+    + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-bottom:14px">* שדה חובה</div>'
+    + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">שם הגוף *</label>'
+    + '<input id="ct-org" class="inp" type="text" placeholder="שם החברה / הארגון" style="margin-bottom:12px;font-size:15px">'
+    + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">שם הפונה *</label>'
+    + '<input id="ct-name" class="inp" type="text" placeholder="שם מלא" style="margin-bottom:12px;font-size:15px">'
+    + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">סוג הגוף *</label>'
+    + '<select id="ct-type" class="fsel" onchange="showOtherField(this.value)" style="margin-bottom:8px;font-size:15px"><option value="">בחר/י —</option><option>מכון מחקר</option><option>עיתונות / תקשורת</option><option>מפלגה</option><option>מועמד/ת</option><option value="אחר">אחר</option></select>'
+    + '<input id="ct-other" class="inp" type="text" placeholder="מהו הגוף?" style="display:none;margin-bottom:12px;font-size:15px">'
+    + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">טלפון ליצירת קשר *</label>'
+    + '<div style="display:flex;gap:8px;margin-bottom:12px">'
+    + '<input id="ct-area" class="inp" type="tel" inputmode="numeric" maxlength="3" placeholder="קידומת" style="width:90px;flex-shrink:0;font-size:15px;text-align:center">'
+    + '<input id="ct-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="מספר" style="flex:1;font-size:15px">'
+    + '</div>'
+    + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">הודעה</label>'
+    + '<textarea id="ct-msg" class="inp" rows="4" maxlength="1000" placeholder="במה נוכל לעזור? (עד 1000 תווים)" style="margin-bottom:6px;resize:vertical;font-family:inherit;font-size:15px"></textarea>'
     + '<div id="ct-count" style="text-align:left;font-size:11px;color:rgba(255,255,255,.5);margin-bottom:12px">0 / 1000</div>'
-    + '<div id="ct-err" style="display:none;font-size:12px;color:#f87171;margin-bottom:10px;font-weight:700">נא למלא שם, סוג גוף ודרך ליצירת קשר</div>'
+    + '<div id="ct-err" style="display:none;font-size:12px;color:#f87171;margin-bottom:10px;font-weight:700">נא למלא את כל שדות החובה (*)</div>'
     + '<button id="ct-send" class="btn-p" onclick="submitContact()">שגר ›</button>'
     + '</div>';
   document.body.appendChild(el);
@@ -263,26 +275,34 @@ function showContactForm() {
     if (c) c.textContent = msg.value.length + ' / 1000';
   };
 }
+function showOtherField(val) {
+  var f = document.getElementById('ct-other');
+  if (f) f.style.display = val === 'אחר' ? 'block' : 'none';
+}
 function submitContact() {
   var org = (document.getElementById('ct-org')||{}).value || '';
   var name = (document.getElementById('ct-name')||{}).value || '';
   var type = (document.getElementById('ct-type')||{}).value || '';
-  var phone = (document.getElementById('ct-phone')||{}).value || '';
+  var other = (document.getElementById('ct-other')||{}).value || '';
+  var area = (document.getElementById('ct-area')||{}).value || '';
+  var num = (document.getElementById('ct-phone')||{}).value || '';
+  var phone = area && num ? area + '-' + num : (area || num);
   var msg = (document.getElementById('ct-msg')||{}).value || '';
+  var finalType = type === 'אחר' ? ('אחר: ' + other) : type;
   if (!name.trim() || !type || !phone.trim()) {
     var e = document.getElementById('ct-err'); if (e) e.style.display = 'block';
     return;
   }
-  var row = { type:'CONTACT', timestamp:new Date().toISOString(), org:org, name:name, gtype:type, phone:phone, message:msg };
+  var row = { type:'CONTACT', timestamp:new Date().toISOString(), org:org, name:name, gtype:finalType, phone:phone, message:msg };
   if (SHEETS_URL && SHEETS_URL.indexOf('PASTE_') !== 0) {
     fetch(SHEETS_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(row) }).catch(function(){});
   }
   var ov = document.getElementById('contact-overlay');
-  if (ov) ov.innerHTML = '<div style="text-align:center;color:#fff"><div style="font-size:48px;margin-bottom:14px">✓</div><div style="font-size:20px;font-weight:900;margin-bottom:8px">הפנייה נשלחה!</div><div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:20px">נחזור אליך בהקדם.</div><button class="btn-p" onclick="document.getElementById(\'contact-overlay\').remove()" style="max-width:200px">סגור</button></div>';
+  if (ov) ov.innerHTML = '<div style="text-align:center;color:#fff;padding:40px 20px"><div style="font-size:48px;margin-bottom:14px">✓</div><div style="font-size:20px;font-weight:900;margin-bottom:8px">הפנייה נשלחה!</div><div style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:20px">נחזור אליך בהקדם.</div><button class="btn-p" onclick="document.getElementById(\'contact-overlay\').remove()" style="max-width:200px">סגור</button></div>';
 }
 
 function render() {
-  var fns = [s0, s1, s2, s4, s5, s7_sum, s7_share, s_id4, s3, s_end];
+  var fns = [s0, s1, s2, s4, s5, s7_sum, s_id4, s3, s7_share, s_end];
   var DEBUG = /[?&]debug=1/.test(window.location.search);
   var backBtn = (DEBUG && step > 0) ? '<button class="back-btn" onclick="back()" title="אחורה (debug)" style="left:16px;right:auto">&#8594;</button>' : '';
   var nextBtn = (DEBUG && step < 9) ? '<button class="back-btn" onclick="go()" title="קדימה (debug)" style="left:auto;right:16px">&#8592;</button>' : '';
@@ -362,10 +382,23 @@ function bindDetailInputs() {
 
 function updateSubmitBtn() {
   var btn = document.getElementById('submit-btn');
-  var ok = !!(S.age && S.gender && S.city && S.agree_demo);
-  if (btn) btn.disabled = !ok;
+  var missing = [];
+  if (!S.age) missing.push('גיל');
+  if (!S.gender) missing.push('מגדר');
+  if (!S.city) missing.push('ישוב');
+  if (!S.compass) missing.push('סולם ערכי');
+  if (!S.agree_demo) missing.push('אישור הצהרת גיל וזכאות');
+  var ok = missing.length === 0;
+  if (btn) btn.disabled = false; // always allow continuing
   var err = document.getElementById('demo-err');
-  if (err) err.style.display = (!ok && (S.age || S.gender || S.city)) ? 'block' : 'none';
+  if (err) {
+    if (!ok && (S.age || S.gender || S.city || S.compass)) {
+      err.textContent = 'נא להשלים: ' + missing.join(', ');
+      err.style.display = 'block';
+    } else {
+      err.style.display = 'none';
+    }
+  }
 }
 
 function bindBonusSelects() {
@@ -531,19 +564,22 @@ function s_id4() {
   return '<div class="spage sc">'
     +'<span class="pill pill-g">בונוס מיוחד למאומתים</span>'
     +'<div class="sh2">רוצה להגן על הקול שלך?</div>'
-    +'<div class="ssub" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.8">4 ספרות אחרונות של ת"ז מונעות הצבעות כפולות והטיה זדונית מכוונת — זו גם הדרך שלנו לאמת שהרשומה היא אכן שלך לצורך קבלת פרס.</div>'
+    +'<div class="ssub" style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.9">'
+    +'על מנת למנוע הטיית הסקר על ידי הצבעות כפולות וזדוניות, נבקש שתרשום כאן רק את 4 הספרות האחרונות של ת"ז — <strong style="color:#facc15">בדיוק כמו בלוטו</strong> — שמאמת את הזכייה שלך, בלי לחשוף את זהותך.<br><br>'
+    +'4 ספרות אחרונות של ת"ז מונעות הצבעות כפולות והטיה זדונית מכוונת — זו גם הדרך שלנו לאמת שהרשומה היא אכן שלך לצורך קבלת פרס. '
+    +'<strong style="color:#a3e635">🏆 מוסיף 50 נקודות בונוס — לוקח 10 שניות</strong>'
+    +'</div>'
     +card(
-        '<div style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.9;margin-bottom:14px">'
-        +'4 ספרות אחרונות של ת"ז מונעות הצבעות כפולות והטיה זדונית מכוונת — זו גם הדרך שלנו לאמת שהרשומה היא אכן שלך לצורך קבלת פרס.'
-        +'<br><strong style="color:#a3e635">🏆 מוסיף 50 נקודות בונוס — לוקח 10 שניות</strong>'
-        +'</div>'
-        +'<span class="flbl">4 ספרות אחרונות של תעודת זהות</span>'
+        '<span class="flbl">4 ספרות אחרונות של תעודת זהות</span>'
         +'<input id="inp-id4" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.55em;font-size:28px;text-align:center;padding:20px;border:2px solid rgba(163,230,53,.5)">'
         +'<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox" checked><span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">אני מצהיר/ה: אלו 4 הספרות האחרונות של תעודת הזיהוי שלי, וידוע לי שהפרסים יחולקו רק כנגד הצגת תעודת הזיהוי שלי. ידוע לי שהנתונים, הניקוד והפרסים לא יחושבו אם תתגלה כפילות.</span></label>'
       )
     +'<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך לסיכום +50 נקודות ›</button>'
     +'<img src="https://gilboashlomo-code.github.io/HASEKER-/ChatGPT%20Image%20May%2022%2C%202026%2C%2010_45_25%20PM.png" style="width:100%;border-radius:14px;margin-top:16px;margin-bottom:16px;display:block" onerror="this.style.display=\'none\'">'
-    +'<button class="btn-p" onclick="T.id4Skipped=true;go()">המשך בלי אימות ›</button>'
+    +'<button class="btn-s" onclick="T.id4Skipped=true;go()" style="margin-top:0;padding:14px">'
+    +'המשך בלי אימות ובלי השתתפות'
+    +'<br><span style="font-size:11px;font-weight:400;color:rgba(255,255,255,.55)">(קולות סתמיים שאינם מאומתים לא נספרים)</span>'
+    +'</button>'
     +'</div>';
 }
 
@@ -700,7 +736,27 @@ function s3() {
       + '</div>';
   }
 
-  // ✗ denied
+  // ✗ blocked (was previously denied by browser)
+  if (st === 'blocked') {
+    return '<div class="spage sc" style="text-align:center">'
+      + '<div class="bigicon bi-l">🔔</div>'
+      + '<div class="sh2">ההתראות חסומות בדפדפן שלך</div>'
+      + '<div class="ssub" style="font-size:13px;line-height:1.8">כדי לאפשר: לחץ/י על סמל המנעול בסרגל הכתובת → <strong style="color:#a3e635">אפשר התראות</strong> → רענן את הדף.</div>'
+      + btnP('המשך בלי התראות ›', 'go()')
+      + '</div>';
+  }
+
+  // unsupported browser
+  if (st === 'unsupported') {
+    return '<div class="spage sc" style="text-align:center">'
+      + '<div class="bigicon bi-l">🔔</div>'
+      + '<div class="sh2">הדפדפן שלך אינו תומך בהתראות</div>'
+      + '<div class="ssub">פתח/י בדפדפן Chrome לחוויה מלאה.</div>'
+      + btnP('המשך ›', 'go()')
+      + '</div>';
+  }
+
+  // ✗ denied (user just clicked "deny" in the prompt)
   if (st === 'denied') {
     return '<div class="spage sc" style="text-align:center">'
       + '<div class="bigicon bi-l">🔔</div>'
@@ -730,9 +786,9 @@ function s3() {
 }
 
 function requestPush() {
-  if (!('Notification' in window)) { T.pushStatus = 'denied'; render(); return; }
+  if (!('Notification' in window)) { T.pushStatus = 'unsupported'; render(); return; }
   if (Notification.permission === 'granted') { T.pushStatus = 'granted'; render(); return; }
-  if (Notification.permission === 'denied') { T.pushStatus = 'denied'; render(); return; }
+  if (Notification.permission === 'denied') { T.pushStatus = 'blocked'; render(); return; }
   Notification.requestPermission().then(function(p) {
     T.pushStatus = p === 'granted' ? 'granted' : 'denied';
     render();
@@ -915,7 +971,7 @@ function s7_sum() {
     )
     
     +'<div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:14px;line-height:1.7;text-align:center">תוצאות הסקר יפורסמו בקבוצת הוואטסאפ. ואל תשכח — ללכת להצביע! 🗳️</div>'
-    +'<button class="btn-p" onclick="go()" style="margin-top:16px;font-size:17px;padding:17px">📣 העבר לחברים וקבל בונוס ›</button>'
+    +'<button class="btn-p" onclick="go()" style="margin-top:16px;font-size:17px;padding:17px">✅ לאימות הצבעה וסיום ›</button>'
     +'<button class="btn-s" onclick="skipToEnd()" style="margin-top:10px">דלג ›</button>'
     +'</div>';
 }
@@ -950,7 +1006,7 @@ function s7_share() {
       +'</div>'
     +'</div>'
 
-    +'<div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:16px;line-height:1.7;text-align:center"><a href="#terms" style="color:rgba(255,255,255,.72);text-decoration:underline">תנאי שימוש ומדיניות פרטיות</a> &nbsp;·&nbsp; הסקר של המדינה © 2026</div>'
+    +'<div style="font-size:11px;color:rgba(255,255,255,.65);margin-top:16px;line-height:1.7;text-align:center"><a href="https://gilboashlomo-code.github.io/HASEKER-/haseker_terms.pdf" target="_blank" rel="noopener" style="color:rgba(255,255,255,.72);text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:3px 10px">תנאי שימוש ומדיניות פרטיות</a> &nbsp;·&nbsp; הסקר של המדינה © 2026</div>'
     +'<div style="margin-top:16px;background:linear-gradient(135deg,rgba(250,204,21,.12),rgba(163,230,53,.08));border:1.5px solid rgba(250,204,21,.4);border-radius:16px;padding:16px;text-align:center">'
       +'<div style="font-size:16px;font-weight:900;color:#facc15;margin-bottom:6px">🏆 בונוס מיוחד לבוחרים מאומתים</div>'
       +'<div style="font-size:12px;color:rgba(255,255,255,.8);margin-bottom:12px;line-height:1.7">4 ספרות ת"ז מאמתות שהרשומה היא שלך — ומוסיפות 50 נקודות. רק מאומתים זכאים לפרסים.</div>'
@@ -959,7 +1015,7 @@ function s7_share() {
     +'<button class="btn-s" onclick="skipToEnd()" style="margin-top:12px">דלג ›</button>'
     +'</div>';
 }
-function skipToEnd() { if (T.phone) savePartial(); step = 7; render(); }
+function skipToEnd() { if (T.phone) savePartial(); step = 8; render(); }
 function shareWA() {
   var msg = 'השתתפתי בסקר הגדול של המדינה!\nגם אתם יכולים לזכות בפרסים ולעזור לנו לנצח!\n\n';
   var txt = encodeURIComponent(msg + window.location.href);
@@ -1014,7 +1070,7 @@ function go()  {
 }
 
 // ── צינור שמירה ──────────────────────────────────────────────
-var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwnYaz7xaOFlE_pr4VGzRqm7zEvgYNvX1iG2z6KxP15LDWkr1E_ZEBWAocXDHSOWacF/exec';
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycby8q-vpxg8iIaDNUwZ4z9BNp95sw6r_ooR3CTEWtb7x1bInSaaMWbnJE1MH-a47ZFyC/exec';
 var SUBMITTED = false;
 var SESSION_ID = 'S' + Date.now() + Math.random().toString(36).slice(2,7);
 
