@@ -230,9 +230,8 @@ function s_end() {
     +'<div style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:14px;padding:14px;margin-bottom:16px">'
     +'📲 תוצאות הסקר יפורסמו בקבוצת הוואטסאפ.<br>נעדכן אותך אם זכית בפרס.'
     +'</div>'
-    +'<button class="btn-p" onclick="shareToFriends()">📤 שתפו עם החברים והמשפחה</button>'
     +'<button class="btn-s" onclick="openContactForm()" style="margin-top:9px;font-size:13px">💼 תקשורת, מכוני מחקר, מועמדים ומפלגות — צרו קשר</button>'
-    +'<button class="btn-s" onclick="finishExit()" style="margin-top:9px;background:rgba(163,230,53,.15);border-color:rgba(163,230,53,.4);color:#a3e635">לסיום — בהצלחה! 🇮🇱</button>'
+    +'<button class="btn-p" onclick="finishExit()" style="margin-top:12px;background:rgba(163,230,53,.25);border-color:rgba(163,230,53,.6);color:#a3e635;font-size:17px">לסיום — בהצלחה! 🇮🇱</button>'
     +'</div>';
 }
 
@@ -247,8 +246,8 @@ function finishExit() {
     + '<div style="font-size:16px;color:rgba(255,255,255,.8);line-height:1.8;max-width:300px">הסקר של המדינה — בהצלחה ביום הבחירות!<br>אפשר לסגור את החלון.</div>'
     + '</div>';
   window.scrollTo(0,0);
-  setTimeout(function(){ window.close(); }, 1500);
 }
+// window.close removed - doesn't work on mobile
 function openContactForm() { showContactForm(); }
 function showContactForm() {
   var el = document.createElement('div');
