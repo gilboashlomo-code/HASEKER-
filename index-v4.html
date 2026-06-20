@@ -272,13 +272,7 @@ function showContactForm() {
     + '<select id="ct-type" class="fsel" onchange="showOtherField(this.value)" style="margin-bottom:8px;font-size:15px"><option value="">בחר/י —</option><option>מכון מחקר</option><option>עיתונות / תקשורת</option><option>מפלגה</option><option>מועמד/ת</option><option value="אחר">אחר</option></select>'
     + '<input id="ct-other" class="inp" type="text" placeholder="מה האחר?: " style="display:none;margin-bottom:12px;font-size:15px">'
     + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">טלפון ליצירת קשר *</label>'
-    + '<div style="display:flex;gap:8px;margin-bottom:12px;direction:ltr">'
-    + '<input id="ct-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;font-size:15px;text-align:center;direction:ltr">'
-    + '<select id="ct-area" class="fsel" style="width:100px;flex-shrink:0;direction:rtl;font-size:15px">'
-    + '<option value="">קידומת</option>'
-    + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'">'+p+'</option>';}).join('')
-    + '</select>'
-    + '</div>'
+    + '<input id="ct-phone" class="inp" type="tel" inputmode="numeric" maxlength="10" placeholder="0501234567" style="margin-bottom:12px;font-size:16px;text-align:center;direction:ltr">'
     + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">דוא"ל</label>'
     + '<input id="ct-email" class="inp" type="email" inputmode="email" autocomplete="email" placeholder="example@email.com" style="margin-bottom:12px;font-size:15px">'
     + '<label style="font-size:12px;color:rgba(255,255,255,.7);display:block;margin-bottom:4px">הודעה *</label>'
@@ -305,9 +299,8 @@ function submitContact() {
   var name = (document.getElementById('ct-name')||{}).value || '';
   var type = (document.getElementById('ct-type')||{}).value || '';
   var other = (document.getElementById('ct-other')||{}).value || '';
-  var area = (document.getElementById('ct-area')||{}).value || '';
   var num = (document.getElementById('ct-phone')||{}).value || '';
-  var phone = num && area ? num + ' | קידומת: ' + area : (num || area);
+  var phone = num.replace(/\D/g,'').slice(0,10);
   var email = (document.getElementById('ct-email')||{}).value || '';
   var msg = (document.getElementById('ct-msg')||{}).value || '';
   var finalType = type === 'אחר' ? ('אחר: ' + other) : type;
@@ -690,14 +683,8 @@ function s2() {
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.85);line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:12px 14px;margin-bottom:10px">'
         + '📲 הטלפון אינו חובה — אבל יצרף אותך לקבוצת הוואטסאפ שבה תוכל לראות את המצב בסקר בכל רגע, לקבל עדכונים שוטפים במהלך יום הבחירות הרבה לפני כולם — ולדעת באם זכית באחד מהפרסים.'
         + '</div>'
-        + '<div style="display:flex;flex-direction:row;gap:8px;direction:ltr">'
-        + '<select id="sel-prefix" class="fsel" style="width:115px;flex-shrink:0;direction:rtl;font-size:13px" onchange="onPhoneChange()">'
-        + '<option value="">קידומת ▾</option>'
-        + ['050','051','052','053','054','055','056','057','058','059'].map(function(p){return '<option value="'+p+'"'+(T.phonePrefix===p?' selected':'')+'>'+p+'</option>';}).join('')
-        + '</select>'
-        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="7" placeholder="1234567" style="flex:1;font-size:16px;text-align:center;letter-spacing:.08em;direction:ltr" oninput="onPhoneChange()">'
-        + '</div>'
-        + '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:5px;text-align:center">קידומת משמאל · 7 ספרות מימין</div>'
+        + '<input id="inp-phone" class="inp" type="tel" inputmode="numeric" maxlength="10" placeholder="0501234567" style="font-size:18px;text-align:center;letter-spacing:.08em;direction:ltr" oninput="onPhoneChange()">'
+        + '<div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:5px;text-align:center">מספר מלא כולל קידומת — לדוגמה: 0501234567</div>'
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">'
         + '📲 הצטרף/י לקבוצת הוואטסאפ — עדכונים שוטפים ביום הבחירות <strong style="color:#facc15">הרבה לפני כולם</strong> + הודעה אם זכית.'
         + '</div>'
@@ -740,15 +727,13 @@ function setCompass(i) {
 
 
 function onPhoneChange() {
-  var prefix = (document.getElementById('sel-prefix') || {}).value || '';
   var num = (document.getElementById('inp-phone') || {}).value || '';
-  num = num.replace(/\D/g,'').slice(0,7);
+  num = num.replace(/\D/g,'').slice(0,10);
   var inp = document.getElementById('inp-phone');
   if (inp) inp.value = num;
-  T.phonePrefix = prefix;
-  T.phone = (prefix && num.length === 7) ? prefix + num : '';
+  T.phone = (num.length >= 9) ? num : '';
   var err = document.getElementById('phone-err');
-  if (err) err.style.display = (prefix && num.length > 0 && !T.phone) ? 'block' : 'none';
+  if (err) err.style.display = (num.length > 0 && num.length < 9) ? 'block' : 'none';
   updateSubmitBtn();
 }
 
