@@ -203,7 +203,7 @@ function s_end() {
   var missing = [];
   if (!T.phone) missing.push({lbl:'מספר טלפון', pts:50, fn:'goToPhoneFromEnd()'});
   if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'תחזיות מפלגות', pts:300, fn:"returnToEnd=true;step=4;render()"});
-  if (!S.prev) missing.push({lbl:'הצבעה בבחירות 2022', pts:50, fn:"returnToEnd=true;step=4;render()"});
+  if (!S.prev) missing.push({lbl:'הצבעה בבחירות 2022', pts:60, fn:"returnToEnd=true;step=2;render()"});
 
   var missingHtml = '';
   if (missing.length) {
@@ -688,11 +688,31 @@ function s2() {
         + '<div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.8);margin-top:10px;line-height:1.8;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:12px;padding:11px 14px">'
         + '📲 הצטרף/י לקבוצת הוואטסאפ — עדכונים שוטפים ביום הבחירות <strong style="color:#facc15">הרבה לפני כולם</strong> + הודעה אם זכית.'
         + '</div>'
+        + '<div style="margin-top:16px;margin-bottom:4px">'
+        + '<label class="flbl" style="margin-bottom:6px;display:block">למי הצבעת בבחירות 2022? <span style="color:#a3e635;font-size:11px">+60 נק׳</span></label>'
+        + '<select id="sel-prev" class="fsel" onchange="ss(\'prev\',this.value)"><option value="">בחר/י מפלגה</option>'
+        + PREV.map(function(o){return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>';}).join('')
+        + '</select>'
+        + '</div>'
         + '<label class="consent" style="margin-top:12px"><input id="chk-agree-demo" type="checkbox" onchange="S.agree_demo=this.checked;updateSubmitBtn()"><span style="font-size:13px;color:rgba(255,255,255,.85)">אני מאשר/ת שאני מעל גיל 18, בעל/ת זכות בחירה בישראל, ומתחייב/ת להשתתף "בסקר של המדינה" פעם אחת בלבד.</span></label>'
         + '<label class="consent" style="margin-top:10px"><input id="chk-updates" type="checkbox" checked onchange="S.updates=this.checked"><span style="font-size:13px;color:rgba(255,255,255,.85)">אשמח לקבל עדכונים, ותזכורת חכמה ביום הבחירות שתסייע לי למצוא את הקלפי שלי ולממש את זכות ההצבעה.</span></label>'
       )
     + '<div id="demo-err" style="display:none;font-size:12px;color:#f87171;text-align:center;margin-bottom:8px;font-weight:700">נא להשלים את השדות החסרים: גיל, מגדר, ישוב ואישור גיל 18</div>'
     + '<button id="submit-btn" class="btn-p" onclick="go()" disabled>המשך ›</button>'
+    + '<div style="margin-top:20px;padding:14px;background:rgba(0,0,0,.25);border-radius:14px;border:1px solid rgba(255,255,255,.1)">'
+    + '<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:12px;text-align:center">📊 תוצאות בחירות 2022 — לעיונך</div>'
+    + card(
+        '<div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:8px;text-align:right">📊 תוצאות אמת — כנסת ה-25, נובמבר 2022</div>'
+        + R22.map(function(r){
+          return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
+            +'<div style="width:100px;font-size:11px;color:rgba(255,255,255,.85);text-align:right;flex-shrink:0">'+r.n+'</div>'
+            +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden">'
+            +'<div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee)"></div></div>'
+            +'<div style="font-size:11px;color:#facc15;width:22px;text-align:left">'+r.s+'</div></div>';
+        }).join('')
+        + '<div style="font-size:10px;color:rgba(255,255,255,.72);margin-top:6px">מרצ ובל\"ד לא עברו את אחוז החסימה.</div>'
+    )
+    + '</div>'
     + '</div>';
 }
 
@@ -878,6 +898,7 @@ function s4() {
     + card(
         '<div style="text-align:right">'
         + '<div style="font-size:16px;font-weight:900;color:#facc15;margin-bottom:10px">עכשיו השלב החשוב:</div>'
+        + '<div style="font-size:22px;font-weight:900;color:#a3e635;margin-bottom:12px;line-height:1.4">🎮 משחק הניחושים<br>בחירות 2026</div>'
         + '<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.9;margin-bottom:10px">תחזית הבחירות שלך — רוצה להוכיח שאתה מכיר את ישראל הפוליטית?</div>'
         + '<div style="font-size:13px;color:rgba(255,255,255,.7);line-height:1.8">נחש את תוצאות האמת של הבחירות האמיתיות — מי המפלגה הגדולה, השנייה והשלישית.</div>'
         + '<div style="font-size:13px;font-weight:900;color:#a3e635;margin-top:10px;line-height:1.7">הזוכים יקבעו לפי תוצאות האמת שיפורסמו לאחר הבחירות. 🏆</div>'
@@ -914,26 +935,8 @@ function s5() {
       +sel(S.f1,FORECAST,'f1','מי תהיה המפלגה הגדולה?','עד 300 נק׳',[S.f2,S.f3])
       +sel(S.f2,FORECAST,'f2','מי תהיה המפלגה השנייה?','עד 300 נק׳',[S.f1,S.f3])
       +sel(S.f3,FORECAST,'f3','מי תהיה המפלגה השלישית?','עד 300 נק׳',[S.f1,S.f2])
-      +'<span class="flbl" style="margin-top:14px;font-size:14px;color:#facc15;white-space:nowrap">למי הצבעת בבחירות האחרונות בשנת 2022 — <span style="color:#a3e635">60 נקודות</span></span>'
-      +'<select id="sel-prev" class="fsel"><option value="">בחר/י</option>'
-      +PREV.map(function(o){return '<option value="'+o+'"'+(S.prev===o?' selected':'')+'>'+o+'</option>';}).join('')
-      +'</select>'
     )
     +'<button class="btn-p" onclick="go()">המשך לסיכום בחירתך ›</button>'
-    +'<div style="margin-top:16px;padding:14px;background:rgba(0,0,0,.25);border-radius:14px;border:1px solid rgba(255,255,255,.1)">'
-      +'<div style="font-size:14px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:12px;text-align:center">שכחת מה היו תוצאות הבחירות הקודמות? הנה תזכורת 👇</div>'
-      +card(
-        '<div style="font-size:12px;font-weight:900;color:#a3e635;margin-bottom:8px;text-align:right">📊 תוצאות אמת — כנסת ה-25, נובמבר 2022</div>'
-        +R22.map(function(r){
-          return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px">'
-            +'<div style="width:100px;font-size:11px;color:rgba(255,255,255,.85);text-align:right;flex-shrink:0">'+r.n+'</div>'
-            +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden">'
-            +'<div style="height:100%;width:'+Math.round(r.s/32*100)+'%;background:linear-gradient(to left,#a3e635,#22d3ee)"></div></div>'
-            +'<div style="font-size:11px;color:#facc15;width:22px;text-align:left">'+r.s+'</div></div>';
-        }).join('')
-        +'<div style="font-size:10px;color:rgba(255,255,255,.72);margin-top:6px">מרצ ובל\"ד לא עברו את אחוז החסימה.</div>'
-      )
-    +'</div>'
     +'</div>';
 }
 
@@ -967,7 +970,7 @@ function s7_sum() {
   if (!T.id4 && T.id4Skipped) missing.push({lbl:'הוסף 4 ספרות ת"ז — ומוסיף 50 נקודות', step:2, note:'מאמת את הרשומה שלך'});
   if (!T.phone) missing.push({lbl:'הוסף טלפון — לעדכונים ביום הבחירות', step:2, note:'לקבוצת הוואטסאפ'});
   if (!S.f1 || !S.f2 || !S.f3) missing.push({lbl:'השלם תחזיות מפלגות', step:4, note:'עד 300 נק׳ לכל ניחוש'});
-  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:4, note:'50 נקודות'});
+  if (!S.prev) missing.push({lbl:'השלם הצבעה 2022', step:2, note:'60 נקודות'});
   if (missing.length > 0) {
     missingBtns = '<div style="background:rgba(251,146,60,.08);border:1.5px solid rgba(251,146,60,.4);border-radius:14px;padding:13px;margin-bottom:14px;text-align:right">'
       +'<div style="font-size:15px;font-weight:900;color:#fb923c;margin-bottom:12px">📝 שדות שלא מולאו — רוצה להשלים?</div>'
