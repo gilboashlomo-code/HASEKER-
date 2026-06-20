@@ -1152,7 +1152,7 @@ function buildRow() {
 }
 
 function savePartial() {
-  if (!T.phone) return;
+  // Save regardless of phone
   var row = buildRow();
   if (SHEETS_URL && SHEETS_URL.indexOf('PASTE_') !== 0) {
     fetch(SHEETS_URL, { method:'POST', mode:'no-cors',
