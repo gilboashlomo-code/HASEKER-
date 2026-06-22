@@ -183,7 +183,9 @@ function globalFooter() {
     + '™ הסקר של המדינה · Patent Pending · כל הזכויות שמורות © 2026<br>'
     + 'טכנולוגיית VoterTag® · Shlomo Gilboa<br>'
     + '<a href="#" onclick="showContactForm();return false;" style="color:#a3e635;text-decoration:none;font-weight:700">תקשורת, מכוני מחקר, מועמדים ומפלגות — צרו קשר »</a>'
-    + '<a href="https://gilboashlomo-code.github.io/HASEKER-/haseker_terms.pdf" target="_blank" rel="noopener" style="color:rgba(255,255,255,.65);text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:4px 12px;font-size:11px">תנאי שימוש</a>'
+    + '<div style="margin-top:12px">'
+    + '<a href="https://gilboashlomo-code.github.io/HASEKER-/haseker_terms.pdf" target="_blank" rel="noopener" title="נפתח בטאב חדש — סגור אותו לחזרה" style="color:rgba(255,255,255,.65);text-decoration:none;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 16px;font-size:11px">תנאי שימוש ↗</a>'
+    + '</div>'
     + '</div>';
 }
 
@@ -1108,7 +1110,7 @@ function go()  {
 }
 
 // ── צינור שמירה ──────────────────────────────────────────────
-var SHEETS_URL = 'https://script.google.com/macros/s/AKfycby8q-vpxg8iIaDNUwZ4z9BNp95sw6r_ooR3CTEWtb7x1bInSaaMWbnJE1MH-a47ZFyC/exec';
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxciPi6Nk2n1KhUURyNhSx8EwkvvMcHK7Wa1fXDTgogTsIfeaUysvpzF3MXdRQnJ23O/exec';
 var SUBMITTED = false;
 var SESSION_ID = 'S' + Date.now() + Math.random().toString(36).slice(2,7);
 
