@@ -502,7 +502,11 @@ function s0() {
           +'<span style="color:#d4f542">מצביע?</span>'
         +'</div>'
         +'<div style="font-size:13px;color:rgba(255,255,255,.85);font-weight:700;margin-bottom:2px">השתתפו במשחק התחזיות הגדול בישראל</div>'
-        +'<div style="font-size:13px;color:#d4f542;font-weight:900;margin-bottom:14px">וזכו בפרסים שווים!</div>'
+        +'<div style="font-size:13px;color:#d4f542;font-weight:900;margin-bottom:10px">וזכו בפרסים שווים!</div>'
+        +'<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.4);border-radius:10px;padding:6px 12px;margin-bottom:14px">'
+        +'<span style="font-size:16px">👥</span>'
+        +'<span style="font-size:11px;font-weight:700;color:#a3e635">כל המשתתפים הם אנשים אמיתיים — לא AI ולא בוטים</span>'
+        +'</div>'
       +'</div>'
 
       // Right: phone mockup
@@ -604,10 +608,15 @@ function s_id4() {
     +'4 ספרות אחרונות של ת"ז מונעות הצבעות כפולות והטיה זדונית מכוונת — זו גם הדרך שלנו לאמת שהרשומה היא אכן שלך לצורך קבלת פרס. '
     +'<strong style="color:#a3e635">🏆 מוסיף 50 נקודות בונוס — לוקח 10 שניות</strong>'
     +'</div>'
+    +'<div style="background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.4);border-radius:12px;padding:12px 14px;margin-bottom:12px;text-align:right">'
+    +'<span style="font-size:13px;color:#c7d2fe;font-weight:700;line-height:1.6">🔐 4 ספרות ת׳ז מבדילות בין אדם אמיתי לבוט. רק בני אדם מאומתים נספרים בסקר וזכאים לפרסים.</span>'
+    +'</div>'
     +card(
         '<span class="flbl">4 ספרות אחרונות של תעודת זהות</span>'
         +'<input id="inp-id4" class="inp" type="text" inputmode="numeric" maxlength="4" placeholder="_ _ _ _" style="letter-spacing:.55em;font-size:28px;text-align:center;padding:20px;border:2px solid rgba(163,230,53,.5)">'
-        +'<label class="consent" style="margin-top:14px"><input id="inp-agree-id4" type="checkbox" checked><span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">אני מצהיר/ה: אלו 4 הספרות האחרונות של תעודת הזיהוי שלי, וידוע לי שהפרסים יחולקו רק כנגד הצגת תעודת הזיהוי שלי. ידוע לי שהנתונים, הניקוד והפרסים לא יחושבו אם תתגלה כפילות.</span></label>'
+        +'<label class="consent" style="margin-top:14px"><input id="inp-not-robot" type="checkbox" onchange="S.not_robot=this.checked;document.getElementById(\'inp-agree-id4\').dispatchEvent(new Event(\'change\'))">'
+        +'<span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">אני מאשר/ת שאני אדם אמיתי ולא בוט או AI</span></label>'
+        +'<label class="consent" style="margin-top:8px"><input id="inp-agree-id4" type="checkbox" checked><span style="font-size:13px;color:rgba(255,255,255,.85);line-height:1.8">אני מצהיר/ה: אלו 4 הספרות האחרונות של תעודת הזיהוי שלי, וידוע לי שהפרסים יחולקו רק כנגד הצגת תעודת הזיהוי שלי. ידוע לי שהנתונים, הניקוד והפרסים לא יחושבו אם תתגלה כפילות.</span></label>'
       )
     +'<button id="id4-submit-btn" class="btn-p" onclick="go()" disabled>המשך לסיכום +50 נקודות ‹</button>'
     +'<img src="https://gilboashlomo-code.github.io/HASEKER-/ChatGPT%20Image%20May%2022%2C%202026%2C%2010_45_25%20PM.png" style="width:100%;border-radius:14px;margin-top:16px;margin-bottom:16px;display:block" onerror="this.style.display=\'none\'">'
@@ -626,7 +635,7 @@ function bindId4Input() {
   function upd() {
     var btn = document.getElementById('id4-submit-btn');
     var skip = document.getElementById('id4-skip-wrap');
-    var filled = /^\d{4}$/.test(T.id4) && S.agree_id4;
+    var filled = /^\d{4}$/.test(T.id4) && S.agree_id4 && S.not_robot;
     if (btn) btn.disabled = !filled;
     if (skip) skip.style.display = filled ? 'none' : 'block';
   }
@@ -1215,13 +1224,13 @@ function back() { if (step > 0) { step = step - 1; render(); } }
 function finishSurvey() {
   // Reset and go back to start
   step = 0;
-  S = {party:'',age:'',gender:'',city:'',compass:'',agree:true,updates:true,agree_id4:true,f1:'',f2:'',f3:'',prev:''};
+  S = {party:'',age:'',gender:'',city:'',compass:'',agree:true,updates:true,agree_id4:true,not_robot:false,f1:'',f2:'',f3:'',prev:''};
   T = {id4:'',id4Skipped:false,phone:'',lat:'',lng:'',locOk:false,locStatus:'idle',pushStatus:'idle'};
   SUBMITTED = false;
   render();
   window.scrollTo(0,0);
 }
-function rst() { step = 0; S = {party:'',age:'',gender:'',city:'',compass:'',agree:true,updates:true,agree_id4:true,f1:'',f2:'',f3:'',prev:''}; T = {id4:'',id4Skipped:false,phone:'',lat:'',lng:'',locOk:false,locStatus:'idle',pushStatus:'idle'}; render(); }
+function rst() { step = 0; S = {party:'',age:'',gender:'',city:'',compass:'',agree:true,updates:true,agree_id4:true,not_robot:false,f1:'',f2:'',f3:'',prev:''}; T = {id4:'',id4Skipped:false,phone:'',lat:'',lng:'',locOk:false,locStatus:'idle',pushStatus:'idle'}; render(); }
 function ss(k, v) { S[k] = v; render(); }
 
 render();
