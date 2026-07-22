@@ -442,7 +442,7 @@ function s0() {
     var val = r.p ? '<span style="color:rgba(255,255,255,.72)">'+r.p+'</span>' : (r.s % 1 === 0 ? r.s.toFixed(0) : r.s.toFixed(1));
     var w = r.p ? 3 : Math.round(r.s/24*90);
     return '<div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">'
-      +'<div style="width:70px;font-size:9.5px;font-weight:700;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+r.n+'</div>'
+      +'<div style="width:88px;font-size:8px;font-weight:700;text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+r.n+'</div>'
       +'<div style="flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden"><div style="height:100%;width:'+w+'%;background:'+r.c+';border-radius:99px"></div></div>'
       +'<div style="width:34px;font-size:9.5px;font-weight:900;color:rgba(255,255,255,.75);text-align:left">'+val+'</div>'
       +'</div>';
@@ -484,7 +484,7 @@ function s0() {
             +'<div style="background:#6366f1;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:900;display:flex;align-items:center;gap:3px"><div style="width:5px;height:5px;background:#fff;border-radius:50%;animation:pu 1s infinite"></div>מעודכן</div>'
             +'<span style="font-size:11px;font-weight:900;color:#e0e7ff">תוצאות משוקללות של הסקר</span>'
           +'</div>'
-          +'<div style="font-size:9px;color:rgba(255,255,255,.72);margin-bottom:8px;text-align:center">עדכון אחרון: 17/07/2026</div>'
+          +'<div style="font-size:9px;color:rgba(255,255,255,.72);margin-bottom:8px;text-align:center">עדכון אחרון: '+(function(){var d=new Date();return String(d.getDate()).padStart(2,"0")+"/"+String(d.getMonth()+1).padStart(2,"0")+"/"+d.getFullYear();})()+'</div>'
           +phoneBars
         +'</div>'
       +'</div>'
